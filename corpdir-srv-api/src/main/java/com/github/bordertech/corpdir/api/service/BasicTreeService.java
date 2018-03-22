@@ -10,15 +10,46 @@ import java.util.List;
  * @param <T> the tree API object
  * @author Jonathan Austin
  * @since 1.0.0
+ * @deprecated split in read and write
  */
+@Deprecated
 public interface BasicTreeService<T extends ApiTreeable> extends BasicKeyIdService<T> {
 
+	/**
+	 *
+	 * @param keyId
+	 * @return 
+	 * @deprecated use {@link BasicTreeReadOnlyService#getSubs()} instead.  
+	 */
+	@Deprecated
 	DataResponse<List<T>> getSubs(final String keyId);
 
+	/**
+	 *
+	 * @param keyId
+	 * @param subKeyId
+	 * @return 
+	 * @deprecated use {@link BasicTreeWriteService#addSub()} instead.  
+	 */
+	@Deprecated
 	DataResponse<T> addSub(final String keyId, final String subKeyId);
 
+	/**
+	 *
+	 * @param keyId
+	 * @param subKeyId
+	 * @return 
+	 * @deprecated use {@link BasicTreeWriteService#removeSub()} instead.  
+	 */
+	@Deprecated
 	DataResponse<T> removeSub(final String keyId, final String subKeyId);
 
+	/**
+	 *
+	 * @return 
+	 * @deprecated use {@link BasicTreeReadOnlyService#getRootItems()} instead.  
+	 */
+	@Deprecated
 	DataResponse<List<T>> getRootItems();
 
 }
