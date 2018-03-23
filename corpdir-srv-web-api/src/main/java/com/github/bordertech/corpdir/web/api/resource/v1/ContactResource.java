@@ -2,9 +2,10 @@ package com.github.bordertech.corpdir.web.api.resource.v1;
 
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.v1.ContactService;
 import com.github.bordertech.corpdir.api.v1.model.Contact;
 import com.github.bordertech.corpdir.api.v1.model.Position;
+import com.github.bordertech.corpdir.modify.api.v1.ContactWriteService;
+import com.github.bordertech.corpdir.readonly.api.v1.ContactReadOnlyService;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
@@ -24,23 +25,27 @@ import javax.ws.rs.core.MediaType;
  * @since 1.0.0
  */
 @Path(value = "v1/contacts")
-public class ContactResource implements ContactService {
+public class ContactResource implements ContactReadOnlyService, ContactWriteService {
 
-	private final ContactService impl;
+	private final ContactReadOnlyService readImpl;
+	
+	private final ContactWriteService writeImpl;
 
 	/**
-	 * @param impl the service implementation
+         * @param readImpl
+	 * @param writeImpl
 	 */
 	@Inject
-	public ContactResource(final ContactService impl) {
-		this.impl = impl;
+	public ContactResource(final ContactReadOnlyService readImpl, final ContactWriteService writeImpl) {
+		this.readImpl = readImpl;
+		this.writeImpl = writeImpl;
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<List<Contact>> search(@QueryParam("search") final String search) {
-		return impl.search(search);
+		return readImpl.search(search);
 	}
 
 	@GET
@@ -48,14 +53,14 @@ public class ContactResource implements ContactService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Contact> retrieve(@PathParam("key") final String keyId) {
-		return impl.retrieve(keyId);
+		return readImpl.retrieve(keyId);
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Contact> create(final Contact contact) {
-		return impl.create(contact);
+		return writeImpl.create(contact);
 	}
 
 	@PUT
@@ -63,7 +68,7 @@ public class ContactResource implements ContactService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Contact> update(@PathParam("key") final String keyId, final Contact contact) {
-		return impl.update(keyId, contact);
+		return writeImpl.update(keyId, contact);
 	}
 
 	@DELETE
@@ -71,7 +76,7 @@ public class ContactResource implements ContactService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public BasicResponse delete(@PathParam("key") final String keyId) {
-		return impl.delete(keyId);
+		return writeImpl.delete(keyId);
 	}
 
 	@GET
@@ -79,7 +84,7 @@ public class ContactResource implements ContactService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<List<Position>> getPositions(@PathParam("key") final String keyId) {
-		return impl.getPositions(keyId);
+		return readImpl.getPositions(keyId);
 	}
 
 	@PUT
@@ -87,7 +92,7 @@ public class ContactResource implements ContactService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Contact> addPosition(@PathParam("key") final String keyId, @PathParam("subKey") final String positionKeyId) {
-		return impl.addPosition(keyId, positionKeyId);
+		return writeImpl.addPosition(keyId, positionKeyId);
 	}
 
 	@DELETE
@@ -95,37 +100,37 @@ public class ContactResource implements ContactService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Contact> removePosition(@PathParam("key") final String keyId, @PathParam("subKey") final String positionKeyId) {
-		return impl.removePosition(keyId, positionKeyId);
+		return writeImpl.removePosition(keyId, positionKeyId);
 	}
 
 	@Override
 	public DataResponse<byte[]> getImage(final String keyId) {
-		return impl.getImage(keyId);
+		return readImpl.getImage(keyId);
 	}
 
 	@Override
 	public BasicResponse deleteImage(final String keyId) {
-		return impl.deleteImage(keyId);
+		return writeImpl.deleteImage(keyId);
 	}
 
 	@Override
 	public BasicResponse setImage(final String keyId, final byte[] image) {
-		return impl.setImage(keyId, image);
+		return writeImpl.setImage(keyId, image);
 	}
 
 	@Override
 	public DataResponse<byte[]> getThumbnail(final String keyId) {
-		return impl.getThumbnail(keyId);
+		return readImpl.getThumbnail(keyId);
 	}
 
 	@Override
 	public BasicResponse deleteThumbnail(final String keyId) {
-		return impl.deleteThumbnail(keyId);
+		return writeImpl.deleteThumbnail(keyId);
 	}
 
 	@Override
 	public BasicResponse setThumbnail(final String keyId, final byte[] image) {
-		return impl.setThumbnail(keyId, image);
+		return writeImpl.setThumbnail(keyId, image);
 	}
 
 	@Override

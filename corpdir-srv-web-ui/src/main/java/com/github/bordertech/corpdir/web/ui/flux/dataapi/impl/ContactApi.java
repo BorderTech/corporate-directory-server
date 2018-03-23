@@ -1,8 +1,9 @@
 package com.github.bordertech.corpdir.web.ui.flux.dataapi.impl;
 
-import com.github.bordertech.corpdir.api.v1.ContactService;
 import com.github.bordertech.corpdir.api.v1.model.Contact;
-import com.github.bordertech.corpdir.web.ui.flux.dataapi.DefaultCorpCrudVersionDataApi;
+import com.github.bordertech.corpdir.modify.api.v1.ContactWriteService;
+import com.github.bordertech.corpdir.readonly.api.v1.ContactReadOnlyService;
+import com.github.bordertech.corpdir.web.ui.flux.dataapi.temp.DefaultCorpCrudVersionDataApiTemp;
 import javax.inject.Inject;
 
 /**
@@ -10,11 +11,11 @@ import javax.inject.Inject;
  *
  * @author jonathan
  */
-public class ContactApi extends DefaultCorpCrudVersionDataApi<Contact, ContactService> {
+public class ContactApi extends DefaultCorpCrudVersionDataApiTemp<Contact, ContactReadOnlyService, ContactWriteService> {
 
 	@Inject
-	public ContactApi(final ContactService service) {
-		super(Contact.class, service);
+	public ContactApi(final ContactReadOnlyService readService, ContactWriteService writeService) {
+		super(Contact.class, readService, writeService);
 	}
 
 }
