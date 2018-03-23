@@ -23,7 +23,9 @@ import javax.persistence.Table;
  * @param <P> the entity type
  * @author Jonathan Austin
  * @since 1.0.0
+ * @deprecated split in read and write
  */
+@Deprecated
 @Singleton
 public abstract class JpaBasicVersionTreeService<A extends ApiTreeable & ApiVersionable, U extends ItemTreeVersion<P, U>, P extends PersistVersionableKeyId<P, U>> extends JpaBasicVersionKeyIdService<A, U, P> implements BasicVersionTreeService<A> {
 

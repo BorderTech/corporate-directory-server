@@ -21,7 +21,9 @@ import javax.persistence.criteria.CriteriaQuery;
  * @param <P> the entity type
  * @author Jonathan Austin
  * @since 1.0.0
+ * @deprecated split in read and write
  */
+@Deprecated
 @Singleton
 public abstract class JpaBasicVersionKeyIdService<A extends ApiVersionable, U extends ItemVersion<P>, P extends PersistVersionableKeyId<P, U>> extends AbstractJpaKeyIdService<A, P> implements BasicVersionKeyIdService<A> {
 

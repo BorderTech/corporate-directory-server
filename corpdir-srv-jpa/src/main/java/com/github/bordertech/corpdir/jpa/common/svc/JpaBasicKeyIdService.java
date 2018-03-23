@@ -12,7 +12,9 @@ import javax.inject.Singleton;
  * @param <P> the entity type
  * @author Jonathan Austin
  * @since 1.0.0
+ * @deprecated split in read and write
  */
+@Deprecated
 @Singleton
 public abstract class JpaBasicKeyIdService<A extends ApiKeyIdObject, P extends PersistKeyIdObject> extends JpaBasicIdService<A, P> implements BasicKeyIdService<A> {
 

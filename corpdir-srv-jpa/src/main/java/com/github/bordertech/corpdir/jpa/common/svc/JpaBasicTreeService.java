@@ -20,7 +20,9 @@ import javax.persistence.criteria.Root;
  * @param <P> the entity type
  * @author Jonathan Austin
  * @since 1.0.0
+ * @deprecated split in read and write
  */
+@Deprecated
 @Singleton
 public abstract class JpaBasicTreeService<A extends ApiTreeable, P extends PersistKeyIdTree<P>> extends JpaBasicKeyIdService<A, P> implements BasicTreeService<A> {
 
