@@ -12,7 +12,9 @@ import com.github.bordertech.didums.Didums;
  * @param <T> the CorpDir API Object
  * @param <D> the CorpDir data API type
  * @author jonathan
+ * @deprecated 
  */
+@Deprecated
 public class DefaultCorpCrudVersionStore<T extends ApiVersionable, D extends CorpCrudVersionDataApi<T, ?>> extends DefaultCorpCrudStore<T, D> implements CorpCrudVersionStore<T, D> {
 
 	private static final SystemCtrlApi CTRL = Didums.getService(SystemCtrlApi.class);

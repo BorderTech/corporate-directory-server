@@ -11,7 +11,9 @@ import com.github.bordertech.flux.crud.store.impl.DefaultDataApiCrudStore;
  * @param <T> the CorpDir API Object
  * @param <D> the CorpDir data API type
  * @author jonathan
+ * @deprecated 
  */
+@Deprecated
 public class DefaultCorpCrudStore<T extends ApiIdObject, D extends CorpCrudDataApi<T, ?>> extends DefaultDataApiCrudStore<String, String, T, D> implements CorpCrudStore<T, D> {
 
 	/**
