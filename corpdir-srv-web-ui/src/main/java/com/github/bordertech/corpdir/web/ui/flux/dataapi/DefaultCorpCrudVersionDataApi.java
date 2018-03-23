@@ -12,7 +12,9 @@ import java.util.List;
  * @param <S> the CorpDir tree service type
  *
  * @author jonathan
+ * @deprecated split in read and write
  */
+@Deprecated
 public class DefaultCorpCrudVersionDataApi<T extends ApiVersionable, S extends BasicVersionKeyIdService<T>> extends DefaultCorpCrudDataApi<T, S> implements CorpCrudVersionDataApi<T, S> {
 
 	public DefaultCorpCrudVersionDataApi(final Class<T> apiClass, final S service) {

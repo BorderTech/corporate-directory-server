@@ -13,7 +13,9 @@ import java.util.List;
  * @param <S> the CorpDir service type
  *
  * @author jonathan
+ * @deprecated split in read and write
  */
+@Deprecated
 public class DefaultCorpCrudDataApi<T extends ApiIdObject, S extends BasicIdService<T>> implements CorpCrudDataApi<T, S> {
 
 	private final Class<T> apiClass;

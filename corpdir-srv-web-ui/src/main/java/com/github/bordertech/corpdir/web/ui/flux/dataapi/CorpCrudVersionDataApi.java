@@ -10,7 +10,9 @@ import java.util.List;
  * @author jonathan
  * @param <T> the Corp API Versionable Object
  * @param <S> the Corp backing Service
+ * @deprecated split in read and write
  */
+@Deprecated
 public interface CorpCrudVersionDataApi<T extends ApiVersionable, S extends BasicVersionKeyIdService<T>> extends CorpCrudDataApi<T, S> {
 
 	T retrieve(final Long versionId, final String key);
