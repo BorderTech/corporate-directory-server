@@ -12,7 +12,9 @@ import com.github.bordertech.flux.crud.actioncreator.impl.DefaultDataApiCrudActi
  * @param <D> the backing Corp API
  *
  * @author jonathan
+ * @deprecated 
  */
+@Deprecated
 public class DefaultCorpCrudActionCreator<T extends ApiIdObject, D extends CorpCrudDataApi<T, ?>> extends DefaultDataApiCrudActionCreator<String, T, D> implements CorpCrudActionCreator<T, D> {
 
 	/**
