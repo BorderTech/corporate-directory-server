@@ -11,7 +11,9 @@ import com.github.bordertech.corpdir.api.v1.model.Contact;
  *
  * @author Jonathan Austin
  * @since 1.0.0
+ * @deprecated split into read and write
  */
+@Deprecated
 public interface ContactService extends BasicVersionKeyIdService<Contact>, PositionFunctions<Contact> {
 
 	DataResponse<byte[]> getImage(final String keyId);

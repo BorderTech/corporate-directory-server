@@ -28,7 +28,9 @@ import javax.persistence.EntityManager;
  *
  * @author Jonathan Austin
  * @since 1.0.0
+ * @deprecated split into read and write
  */
+@Deprecated
 @Singleton
 public class ContactServiceImpl extends JpaBasicVersionKeyIdService<Contact, ContactVersionEntity, ContactEntity> implements ContactService {
 
