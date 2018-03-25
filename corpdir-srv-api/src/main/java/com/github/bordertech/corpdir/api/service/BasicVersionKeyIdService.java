@@ -2,6 +2,7 @@ package com.github.bordertech.corpdir.api.service;
 
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
 import com.github.bordertech.corpdir.api.response.DataResponse;
+import com.github.bordertech.corpdir.api.service.readonly.BasicVersionKeyIdReadOnlyService;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public interface BasicVersionKeyIdService<T extends ApiVersionable> extends Basi
 	 * @param versionId
 	 * @param search
 	 * @return 
-	 * @deprecated use {@link BasicVersionKeyIdReadOnlyService#search()} instead.  
+	 * @deprecated use {@link BasicVersionKeyIdReadOnlyService#search(java.lang.Long, java.lang.String) } instead.  
 	 */
 	@Deprecated
 	DataResponse<List<T>> search(final Long versionId, final String search);
@@ -30,7 +31,7 @@ public interface BasicVersionKeyIdService<T extends ApiVersionable> extends Basi
 	 * @param versionId
 	 * @param keyId
 	 * @return 
-	 * @deprecated use {@link BasicVersionKeyIdReadOnlyService#retrieve()} instead.  
+	 * @deprecated use {@link BasicVersionKeyIdReadOnlyService#retrieve(java.lang.Long, java.lang.String) } instead.  
 	 */
 	@Deprecated
 	DataResponse<T> retrieve(final Long versionId, final String keyId);

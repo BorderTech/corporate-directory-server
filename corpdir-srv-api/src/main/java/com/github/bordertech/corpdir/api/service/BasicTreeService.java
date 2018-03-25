@@ -2,6 +2,8 @@ package com.github.bordertech.corpdir.api.service;
 
 import com.github.bordertech.corpdir.api.common.ApiTreeable;
 import com.github.bordertech.corpdir.api.response.DataResponse;
+import com.github.bordertech.corpdir.api.service.modify.BasicTreeWriteService;
+import com.github.bordertech.corpdir.api.service.readonly.BasicTreeReadOnlyService;
 import java.util.List;
 
 /**
@@ -19,7 +21,7 @@ public interface BasicTreeService<T extends ApiTreeable> extends BasicKeyIdServi
 	 *
 	 * @param keyId
 	 * @return 
-	 * @deprecated use {@link BasicTreeReadOnlyService#getSubs()} instead.  
+	 * @deprecated use {@link BasicTreeReadOnlyService#getSubs(java.lang.String) } instead.  
 	 */
 	@Deprecated
 	DataResponse<List<T>> getSubs(final String keyId);
@@ -29,7 +31,7 @@ public interface BasicTreeService<T extends ApiTreeable> extends BasicKeyIdServi
 	 * @param keyId
 	 * @param subKeyId
 	 * @return 
-	 * @deprecated use {@link BasicTreeWriteService#addSub()} instead.  
+	 * @deprecated use {@link BasicTreeWriteService#addSub(java.lang.String, java.lang.String)  instead.  
 	 */
 	@Deprecated
 	DataResponse<T> addSub(final String keyId, final String subKeyId);
@@ -39,7 +41,7 @@ public interface BasicTreeService<T extends ApiTreeable> extends BasicKeyIdServi
 	 * @param keyId
 	 * @param subKeyId
 	 * @return 
-	 * @deprecated use {@link BasicTreeWriteService#removeSub()} instead.  
+	 * @deprecated use {@link BasicTreeWriteService#removeSub(java.lang.String, java.lang.String) } instead.  
 	 */
 	@Deprecated
 	DataResponse<T> removeSub(final String keyId, final String subKeyId);
@@ -47,7 +49,7 @@ public interface BasicTreeService<T extends ApiTreeable> extends BasicKeyIdServi
 	/**
 	 *
 	 * @return 
-	 * @deprecated use {@link BasicTreeReadOnlyService#getRootItems()} instead.  
+	 * @deprecated use {@link BasicTreeReadOnlyService#getRootItems() } instead.  
 	 */
 	@Deprecated
 	DataResponse<List<T>> getRootItems();

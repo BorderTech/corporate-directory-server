@@ -3,6 +3,8 @@ package com.github.bordertech.corpdir.api.service;
 import com.github.bordertech.corpdir.api.common.ApiIdObject;
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
+import com.github.bordertech.corpdir.api.service.modify.BasicIdWriteService;
+import com.github.bordertech.corpdir.api.service.readonly.BasicIdReadOnlyService;
 import java.io.Serializable;
 import java.util.List;
 
@@ -21,7 +23,7 @@ public interface BasicIdService<T extends ApiIdObject> extends Serializable {
 	 *
 	 * @param search
 	 * @return 
-	 * @deprecated use {@link BasicIdReadOnlyService#search()} instead.
+	 * @deprecated use {@link BasicIdReadOnlyService#search(java.lang.String) } instead.
 	 */
 	@Deprecated
 	DataResponse<List<T>> search(final String search);
@@ -30,7 +32,7 @@ public interface BasicIdService<T extends ApiIdObject> extends Serializable {
 	 *
 	 * @param id
 	 * @return 
-	 * @deprecated use {@link BasicIdReadOnlyService#retrieve()} instead.
+	 * @deprecated use {@link BasicIdReadOnlyService#retrieve(java.lang.String) } instead.
 	 */
 	@Deprecated
 	DataResponse<T> retrieve(final String id);
@@ -39,7 +41,7 @@ public interface BasicIdService<T extends ApiIdObject> extends Serializable {
 	 *
 	 * @param apiObject
 	 * @return 
-	 * @deprecated use {@link BasicIdWriteService#create()} instead.
+	 * @deprecated use {@link BasicIdWriteService#create(com.github.bordertech.corpdir.api.common.ApiIdObject) } instead.
 	 */
 	@Deprecated
 	DataResponse<T> create(final T apiObject);
@@ -49,7 +51,7 @@ public interface BasicIdService<T extends ApiIdObject> extends Serializable {
 	 * @param id
 	 * @param apiObject
 	 * @return 
-	 * @deprecated use {@link BasicIdWriteService#update()} instead.
+	 * @deprecated use {@link BasicIdWriteService#update(java.lang.String, com.github.bordertech.corpdir.api.common.ApiIdObject) } instead.
 	 */
 	@Deprecated
 	DataResponse<T> update(final String id, final T apiObject);
@@ -58,7 +60,7 @@ public interface BasicIdService<T extends ApiIdObject> extends Serializable {
 	 *
 	 * @param id
 	 * @return 
-	 * @deprecated use {@link BasicIdWriteService#delete()} instead.
+	 * @deprecated use {@link BasicIdWriteService#delete(java.lang.String) } instead.
 	 */
 	@Deprecated
 	BasicResponse delete(final String id);

@@ -3,6 +3,8 @@ package com.github.bordertech.corpdir.api.v1.func;
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
 import com.github.bordertech.corpdir.api.response.DataResponse;
 import com.github.bordertech.corpdir.api.v1.model.Position;
+import com.github.bordertech.corpdir.modify.api.v1.func.PositionWriteFunctions;
+import com.github.bordertech.corpdir.readonly.api.v1.func.PositionReadOnlyFunctions;
 import java.io.Serializable;
 import java.util.List;
 
@@ -21,7 +23,7 @@ public interface PositionFunctions<T extends ApiVersionable> extends Serializabl
 	 *
 	 * @param keyId
 	 * @return 
-	 * @deprecated use {@link PositionReadOnlyFunctions#getPositions()} instead.
+	 * @deprecated use {@link PositionReadOnlyFunctions#getPositions(java.lang.String) } instead.
 	 */
 	@Deprecated
 	DataResponse<List<Position>> getPositions(final String keyId);
@@ -31,7 +33,7 @@ public interface PositionFunctions<T extends ApiVersionable> extends Serializabl
 	 * @param keyId
 	 * @param positionKeyId
 	 * @return 
-	 * @deprecated use {@link PositionWriteFunctions#addPosition()} instead.
+	 * @deprecated use {@link PositionWriteFunctions#addPosition(java.lang.String, java.lang.String) } instead.
 	 */
 	@Deprecated
 	DataResponse<T> addPosition(final String keyId, final String positionKeyId);
@@ -41,7 +43,7 @@ public interface PositionFunctions<T extends ApiVersionable> extends Serializabl
 	 * @param keyId
 	 * @param positionKeyId
 	 * @return 
-	 * @deprecated use {@link PositionWriteFunctions#removePosition()} instead.
+	 * @deprecated use {@link PositionWriteFunctions#removePosition(java.lang.String, java.lang.String) } instead.
 	 */
 	@Deprecated
 	DataResponse<T> removePosition(final String keyId, final String positionKeyId);
@@ -51,7 +53,7 @@ public interface PositionFunctions<T extends ApiVersionable> extends Serializabl
 	 * @param versionId
 	 * @param keyId
 	 * @return 
-	 * @deprecated use {@link PositionReadOnlyFunctions#getPositions()} instead.
+	 * @deprecated use {@link PositionReadOnlyFunctions#getPositions(java.lang.Long, java.lang.String) } instead.
 	 */
 	@Deprecated
 	DataResponse<List<Position>> getPositions(final Long versionId, final String keyId);
@@ -62,7 +64,7 @@ public interface PositionFunctions<T extends ApiVersionable> extends Serializabl
 	 * @param keyId
 	 * @param positionKeyId
 	 * @return 
-	 * @deprecated use {@link PositionWriteFunctions#addPosition()} instead.
+	 * @deprecated use {@link PositionWriteFunctions#addPosition(java.lang.Long, java.lang.String, java.lang.String) } instead.
 	 */
 	@Deprecated
 	DataResponse<T> addPosition(final Long versionId, final String keyId, final String positionKeyId);
@@ -73,7 +75,7 @@ public interface PositionFunctions<T extends ApiVersionable> extends Serializabl
 	 * @param keyId
 	 * @param positionKeyId
 	 * @return 
-	 * @deprecated use {@link PositionWriteFunctions#removePosition()} instead.
+	 * @deprecated use {@link PositionWriteFunctions#removePosition(java.lang.Long, java.lang.String, java.lang.String) } instead.
 	 */
 	@Deprecated
 	DataResponse<T> removePosition(final Long versionId, final String keyId, final String positionKeyId);
