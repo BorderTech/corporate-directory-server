@@ -10,7 +10,10 @@ import com.github.bordertech.flux.crud.dataapi.CrudTreeApi;
  * @author jonathan
  * @param <T> the Corp API Treeable Object
  * @param <S> the Corp backing Tree Service
+
+ * @deprecated 
  */
+@Deprecated
 public interface CorpCrudTreeDataApi<T extends ApiTreeable, S extends BasicTreeService<T>> extends CorpCrudDataApi<T, S>, CrudTreeApi<String, String, T> {
 
 }

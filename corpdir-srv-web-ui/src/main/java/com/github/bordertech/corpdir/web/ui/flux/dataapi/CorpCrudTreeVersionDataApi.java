@@ -11,7 +11,10 @@ import java.util.List;
  * @author jonathan
  * @param <T> the Corp API Treeable &amp; Versionable Object
  * @param <S> the Corp backing Tree Service
+ 
+ * @deprecated 
  */
+@Deprecated
 public interface CorpCrudTreeVersionDataApi<T extends ApiTreeable & ApiVersionable, S extends BasicVersionTreeService<T>> extends CorpCrudTreeDataApi<T, S>, CorpCrudVersionDataApi<T, S> {
 
 	boolean hasChildren(final Long versionId, final T item);

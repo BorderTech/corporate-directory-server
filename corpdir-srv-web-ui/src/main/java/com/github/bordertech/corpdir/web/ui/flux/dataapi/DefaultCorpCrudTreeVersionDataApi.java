@@ -13,7 +13,9 @@ import java.util.List;
  * @param <S> the versionable tree service type
  *
  * @author jonathan
+ * @deprecated 
  */
+@Deprecated
 public class DefaultCorpCrudTreeVersionDataApi<T extends ApiTreeable & ApiVersionable, S extends BasicVersionTreeService<T>> extends DefaultCorpCrudTreeDataApi<T, S> implements CorpCrudTreeVersionDataApi<T, S> {
 
 	public DefaultCorpCrudTreeVersionDataApi(final Class<T> apiClass, final S service) {

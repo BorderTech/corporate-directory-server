@@ -12,7 +12,9 @@ import java.util.List;
  * @param <S> the CorpDir tree service type
  *
  * @author jonathan
+ * @deprecated 
  */
+@Deprecated
 public class DefaultCorpCrudTreeDataApi<T extends ApiTreeable, S extends BasicTreeService<T>> extends DefaultCorpCrudDataApi<T, S> implements CorpCrudTreeDataApi<T, S> {
 
 	public DefaultCorpCrudTreeDataApi(final Class<T> apiClass, final S service) {
