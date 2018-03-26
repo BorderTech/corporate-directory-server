@@ -14,7 +14,9 @@ import com.github.bordertech.flux.crud.store.impl.DefaultDataApiCrudTreeStore;
  * @param <T> the CorpDir API Object
  * @param <D> the CorpDir data API type
  * @author jonathan
+ * @deprecated 
  */
+@Deprecated
 public class DefaultCorpCrudTreeVersionStore<T extends ApiTreeable & ApiVersionable, D extends CorpCrudTreeVersionDataApi<T, ?>> extends DefaultDataApiCrudTreeStore<String, String, T, D> implements CorpCrudTreeVersionStore<T, D> {
 
 	private static final SystemCtrlApi CTRL = Didums.getService(SystemCtrlApi.class);
