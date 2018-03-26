@@ -22,7 +22,7 @@ import javax.persistence.EntityManager;
  * @since 1.0.0
  */
 @Singleton
-public abstract class JpaBasicVersionWriteTreeService<A extends ApiTreeable & ApiVersionable, U extends ItemTreeVersion<P, U>, P extends PersistVersionableKeyId<P, U>> extends JpaBasicVersionKeyIdWriteService<A, U, P> implements BasicVersionTreeWriteService<A> {
+public abstract class JpaBasicVersionTreeWriteService<A extends ApiTreeable & ApiVersionable, U extends ItemTreeVersion<P, U>, P extends PersistVersionableKeyId<P, U>> extends JpaBasicVersionKeyIdWriteService<A, U, P> implements BasicVersionTreeWriteService<A> {
 
 	@Override
 	public DataResponse<A> addSub(final String keyId, final String subKeyId) {
