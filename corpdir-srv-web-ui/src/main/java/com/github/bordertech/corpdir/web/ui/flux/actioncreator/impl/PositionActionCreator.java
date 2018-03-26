@@ -2,7 +2,7 @@ package com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl;
 
 import com.github.bordertech.corpdir.api.v1.model.Position;
 import com.github.bordertech.corpdir.web.ui.CorpEntityType;
-import com.github.bordertech.corpdir.web.ui.flux.actioncreator.DefaultCorpCrudTreeActionCreator;
+import com.github.bordertech.corpdir.web.ui.flux.actioncreator.temp.DefaultCorpCrudTreeActionCreatorTemp;
 import com.github.bordertech.corpdir.web.ui.flux.dataapi.impl.PositionApi;
 import javax.inject.Inject;
 
@@ -11,7 +11,7 @@ import javax.inject.Inject;
  *
  * @author jonathan
  */
-public class PositionActionCreator extends DefaultCorpCrudTreeActionCreator<Position, PositionApi> {
+public class PositionActionCreator extends DefaultCorpCrudTreeActionCreatorTemp<Position, PositionApi> {
 
 	/**
 	 * @param api the backing API
