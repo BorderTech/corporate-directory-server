@@ -26,7 +26,9 @@ import javax.persistence.EntityManager;
  *
  * @author Jonathan Austin
  * @since 1.0.0
+ * @deprecated split into read and write
  */
+@Deprecated
 @Singleton
 public class PositionServiceImpl extends JpaBasicVersionTreeService<Position, PositionVersionEntity, PositionEntity> implements PositionService {
 
