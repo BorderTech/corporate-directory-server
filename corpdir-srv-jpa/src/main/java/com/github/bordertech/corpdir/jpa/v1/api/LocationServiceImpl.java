@@ -13,7 +13,9 @@ import javax.inject.Singleton;
  *
  * @author Jonathan Austin
  * @since 1.0.0
+ * @deprecated split into read and write
  */
+@Deprecated
 @Singleton
 public class LocationServiceImpl extends JpaBasicTreeService<Location, LocationEntity> implements LocationService {
 
