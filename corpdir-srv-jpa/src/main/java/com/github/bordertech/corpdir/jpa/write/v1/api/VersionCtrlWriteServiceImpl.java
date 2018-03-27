@@ -6,7 +6,6 @@ import com.github.bordertech.corpdir.api.v1.model.VersionCtrl;
 import com.github.bordertech.corpdir.jpa.common.map.MapperApi;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
 import com.github.bordertech.corpdir.jpa.modify.common.svc.JpaBasicIdWriteService;
-import com.github.bordertech.corpdir.jpa.v1.api.VersionCtrlServiceImpl;
 import com.github.bordertech.corpdir.jpa.v1.mapper.VersionCtrlMapper;
 import com.github.bordertech.corpdir.modify.api.v1.VersionCtrlWriteService;
 import javax.inject.Singleton;
@@ -24,7 +23,7 @@ import org.slf4j.LoggerFactory;
 @Singleton
 public class VersionCtrlWriteServiceImpl extends JpaBasicIdWriteService<VersionCtrl, VersionCtrlEntity> implements VersionCtrlWriteService {
 
-	private static final Logger LOG = LoggerFactory.getLogger(VersionCtrlServiceImpl.class);
+	private static final Logger LOG = LoggerFactory.getLogger(VersionCtrlWriteServiceImpl.class);
 
 	private static final VersionCtrlMapper MAPPER = new VersionCtrlMapper();
 
