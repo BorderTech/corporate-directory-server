@@ -2,7 +2,7 @@ package com.github.bordertech.corpdir.web.ui.flux.store.old;
 
 import com.github.bordertech.corpdir.api.common.ApiTreeable;
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
-import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudTreeVersionDataApi;
+import com.github.bordertech.corpdir.web.ui.flux.dataapi.old.CorpCrudTreeVersionDataApi;
 
 /**
  * Corp CRUD Tree Version Store with backing data API.

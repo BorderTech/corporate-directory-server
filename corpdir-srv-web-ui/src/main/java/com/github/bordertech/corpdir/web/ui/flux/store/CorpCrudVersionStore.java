@@ -1,7 +1,7 @@
 package com.github.bordertech.corpdir.web.ui.flux.store;
 
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
-import com.github.bordertech.corpdir.web.ui.flux.dataapi.temp.CorpCrudVersionDataApiTemp;
+import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudVersionDataApi;
 
 /**
  * Corp CRUD Store with backing data API.
@@ -12,7 +12,7 @@ import com.github.bordertech.corpdir.web.ui.flux.dataapi.temp.CorpCrudVersionDat
  * @author Jonathan Austin
  * @author Aswin Kandula
  */
-public interface CorpCrudVersionStore<T extends ApiVersionable, D extends CorpCrudVersionDataApiTemp<T, ?, ?>> extends CorpCrudStore<T, D> {
+public interface CorpCrudVersionStore<T extends ApiVersionable, D extends CorpCrudVersionDataApi<T, ?, ?>> extends CorpCrudStore<T, D> {
 
 	/**
 	 * @return the current version id

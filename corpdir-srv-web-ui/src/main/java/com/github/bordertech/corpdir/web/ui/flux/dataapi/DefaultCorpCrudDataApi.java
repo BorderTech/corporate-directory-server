@@ -2,33 +2,40 @@ package com.github.bordertech.corpdir.web.ui.flux.dataapi;
 
 import com.github.bordertech.corpdir.api.common.ApiIdObject;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.service.BasicIdService;
+import com.github.bordertech.corpdir.api.service.modify.BasicIdWriteService;
+import com.github.bordertech.corpdir.api.service.readonly.BasicIdReadOnlyService;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
  * CRUD API calling CorpDir Services.
  *
- * @param <T> the CorpDir API object type
- * @param <S> the CorpDir service type
+ * @param <R> the CorpDir tree read-only service type
+ * @param <W> the CorpDir tree write service type
  *
- * @author jonathan
- * @deprecated split in read and write
+ * @author Jonathan Austin
+ * @author Aswin Kandula
  */
-@Deprecated
-public class DefaultCorpCrudDataApi<T extends ApiIdObject, S extends BasicIdService<T>> implements CorpCrudDataApi<T, S> {
+public class DefaultCorpCrudDataApi<T extends ApiIdObject, R extends BasicIdReadOnlyService<T>, W extends BasicIdWriteService<T>> implements CorpCrudDataApi<T, R, W> {
 
 	private final Class<T> apiClass;
-	private final S service;
+	private final R readService;
+	private final W writeService;
 
-	public DefaultCorpCrudDataApi(final Class<T> apiClass, final S service) {
+	public DefaultCorpCrudDataApi(final Class<T> apiClass, final R readService, final W writeService) {
 		this.apiClass = apiClass;
-		this.service = service;
+		this.readService = readService;
+		this.writeService = writeService;
 	}
 
 	@Override
-	public final S getService() {
-		return service;
+	public final R getReadService() {
+		return readService;
+	}
+
+	@Override
+	public final W getWriteService() {
+		return writeService;
 	}
 
 	@Override
@@ -38,30 +45,30 @@ public class DefaultCorpCrudDataApi<T extends ApiIdObject, S extends BasicIdServ
 
 	@Override
 	public List<T> search(final String criteria) {
-		DataResponse<List<T>> resp = getService().search(criteria);
+		DataResponse<List<T>> resp = getReadService().search(criteria);
 		return resp.getData();
 	}
 
 	@Override
 	public T create(final T entity) {
-		DataResponse<T> resp = getService().create(entity);
+		DataResponse<T> resp = getWriteService().create(entity);
 		return resp.getData();
 	}
 
 	@Override
 	public T update(final T entity) {
-		DataResponse<T> resp = getService().update(entity.getId(), entity);
+		DataResponse<T> resp = getWriteService().update(entity.getId(), entity);
 		return resp.getData();
 	}
 
 	@Override
 	public void delete(final T entity) {
-		getService().delete(entity.getId());
+		getWriteService().delete(entity.getId());
 	}
 
 	@Override
 	public T retrieve(final String key) {
-		DataResponse<T> resp = getService().retrieve(key);
+		DataResponse<T> resp = getReadService().retrieve(key);
 		return resp.getData();
 	}
 
@@ -78,5 +85,4 @@ public class DefaultCorpCrudDataApi<T extends ApiIdObject, S extends BasicIdServ
 			throw new IllegalStateException("Could not create API class. " + e.getMessage(), e);
 		}
 	}
-
 }

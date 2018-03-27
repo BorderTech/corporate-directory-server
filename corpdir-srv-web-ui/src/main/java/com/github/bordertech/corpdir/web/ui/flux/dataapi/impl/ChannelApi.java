@@ -4,16 +4,16 @@ import com.github.bordertech.corpdir.api.common.ApiIdObject;
 import com.github.bordertech.corpdir.api.service.modify.BasicIdWriteService;
 import com.github.bordertech.corpdir.api.service.readonly.BasicIdReadOnlyService;
 import com.github.bordertech.corpdir.api.v1.model.Channel;
-import com.github.bordertech.corpdir.web.ui.flux.dataapi.temp.CorpCrudDataApiTemp;
 import java.util.List;
 import java.util.UUID;
+import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudDataApi;
 
 /**
  * Channel CRUD API implementation. Only used for creating a new instance.
  *
  * @author jonathan
  */
-public class ChannelApi implements CorpCrudDataApiTemp<Channel, BasicIdReadOnlyService<Channel>, BasicIdWriteService<Channel>> {
+public class ChannelApi implements CorpCrudDataApi<Channel, BasicIdReadOnlyService<Channel>, BasicIdWriteService<Channel>> {
 
 	@Override
 	public Channel createInstance() {

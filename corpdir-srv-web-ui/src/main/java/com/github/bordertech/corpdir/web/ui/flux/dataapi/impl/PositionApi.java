@@ -3,7 +3,7 @@ package com.github.bordertech.corpdir.web.ui.flux.dataapi.impl;
 import com.github.bordertech.corpdir.api.v1.model.Position;
 import com.github.bordertech.corpdir.modify.api.v1.PositionWriteService;
 import com.github.bordertech.corpdir.readonly.api.v1.PositionReadOnlyService;
-import com.github.bordertech.corpdir.web.ui.flux.dataapi.temp.DefaultCorpCrudTreeVersionDataApiTemp;
+import com.github.bordertech.corpdir.web.ui.flux.dataapi.DefaultCorpCrudTreeVersionDataApi;
 import javax.inject.Inject;
 
 /**
@@ -11,7 +11,7 @@ import javax.inject.Inject;
  *
  * @author jonathan
  */
-public class PositionApi extends DefaultCorpCrudTreeVersionDataApiTemp<Position, PositionReadOnlyService, PositionWriteService> {
+public class PositionApi extends DefaultCorpCrudTreeVersionDataApi<Position, PositionReadOnlyService, PositionWriteService> {
 
 	@Inject
 	public PositionApi(final PositionReadOnlyService readService, final PositionWriteService writeService) {

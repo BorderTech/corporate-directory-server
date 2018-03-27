@@ -1,9 +1,8 @@
-package com.github.bordertech.corpdir.web.ui.flux.dataapi;
+package com.github.bordertech.corpdir.web.ui.flux.dataapi.old;
 
 import com.github.bordertech.corpdir.api.common.ApiTreeable;
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
-import com.github.bordertech.corpdir.api.service.modify.BasicVersionTreeWriteService;
-import com.github.bordertech.corpdir.api.service.readonly.BasicVersionTreeReadOnlyService;
+import com.github.bordertech.corpdir.api.service.BasicVersionTreeService;
 import java.util.List;
 
 /**
@@ -11,10 +10,12 @@ import java.util.List;
  *
  * @author jonathan
  * @param <T> the Corp API Treeable &amp; Versionable Object
- * @param <R> the Corp backing Tree read-only Service
- * @param <W> the Corp backing Tree write Service
+ * @param <S> the Corp backing Tree Service
+ 
+ * @deprecated 
  */
-public interface CorpCrudTreeVersionDataApi<T extends ApiTreeable & ApiVersionable, R extends BasicVersionTreeReadOnlyService<T>, W extends BasicVersionTreeWriteService<T>> extends CorpCrudTreeDataApi<T, R, W>, CorpCrudVersionDataApi<T, R, W> {
+@Deprecated
+public interface CorpCrudTreeVersionDataApi<T extends ApiTreeable & ApiVersionable, S extends BasicVersionTreeService<T>> extends CorpCrudTreeDataApi<T, S>, CorpCrudVersionDataApi<T, S> {
 
 	boolean hasChildren(final Long versionId, final T item);
 
@@ -25,4 +26,5 @@ public interface CorpCrudTreeVersionDataApi<T extends ApiTreeable & ApiVersionab
 	T addChild(final Long versionId, final T parent, final T child);
 
 	T removeChild(final Long versionId, final T parent, final T child);
+
 }

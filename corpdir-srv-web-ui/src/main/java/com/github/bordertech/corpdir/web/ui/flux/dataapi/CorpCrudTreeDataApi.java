@@ -1,19 +1,20 @@
 package com.github.bordertech.corpdir.web.ui.flux.dataapi;
 
 import com.github.bordertech.corpdir.api.common.ApiTreeable;
-import com.github.bordertech.corpdir.api.service.BasicTreeService;
+import com.github.bordertech.corpdir.api.service.modify.BasicTreeWriteService;
+import com.github.bordertech.corpdir.api.service.readonly.BasicTreeReadOnlyService;
 import com.github.bordertech.flux.crud.dataapi.CrudTreeApi;
 
 /**
  * Corp CRUD Tree API with defined types.
  *
- * @author jonathan
  * @param <T> the Corp API Treeable Object
- * @param <S> the Corp backing Tree Service
-
- * @deprecated 
+ * @param <R> the Corp backing Tree read-only Service
+ * @param <W> the Corp backing Tree write Service
+ * 
+ * @author Jonathan Austin
+ * @author Aswin Kandula
  */
-@Deprecated
-public interface CorpCrudTreeDataApi<T extends ApiTreeable, S extends BasicTreeService<T>> extends CorpCrudDataApi<T, S>, CrudTreeApi<String, String, T> {
-
+public interface CorpCrudTreeDataApi<T extends ApiTreeable, R extends BasicTreeReadOnlyService<T>, W extends BasicTreeWriteService<T>> extends CorpCrudDataApi<T, R, W>, CrudTreeApi<String, String, T> {
+    
 }

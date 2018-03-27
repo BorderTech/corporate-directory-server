@@ -1,7 +1,7 @@
 package com.github.bordertech.corpdir.web.ui.flux.store.old;
 
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
-import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudVersionDataApi;
+import com.github.bordertech.corpdir.web.ui.flux.dataapi.old.CorpCrudVersionDataApi;
 
 /**
  * Corp CRUD Store with backing data API.
