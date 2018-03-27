@@ -2,8 +2,9 @@ package com.github.bordertech.corpdir.web.api.resource.v1;
 
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.v1.SystemCtrlService;
 import com.github.bordertech.corpdir.api.v1.model.SystemCtrl;
+import com.github.bordertech.corpdir.modify.api.v1.SystemCtrlWriteService;
+import com.github.bordertech.corpdir.readonly.api.v1.SystemCtrlReadOnlyService;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
@@ -23,23 +24,26 @@ import javax.ws.rs.core.MediaType;
  * @since 1.0.0
  */
 @Path(value = "v1/ctrl")
-public class SystemCtrlResource implements SystemCtrlService {
+public class SystemCtrlResource implements SystemCtrlReadOnlyService, SystemCtrlWriteService {
 
-	private final SystemCtrlService impl;
+	private final SystemCtrlReadOnlyService readImpl;
+	private final SystemCtrlWriteService writeImpl;
 
 	/**
-	 * @param impl the service implementation
+	 * @param readImpl
+	 * @param writeImpl
 	 */
 	@Inject
-	public SystemCtrlResource(final SystemCtrlService impl) {
-		this.impl = impl;
+	public SystemCtrlResource(final SystemCtrlReadOnlyService readImpl, final SystemCtrlWriteService writeImpl) {
+		this.readImpl = readImpl;
+		this.writeImpl = writeImpl;
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<List<SystemCtrl>> search(@QueryParam("search") final String search) {
-		return impl.search(search);
+		return readImpl.search(search);
 	}
 
 	@GET
@@ -48,14 +52,14 @@ public class SystemCtrlResource implements SystemCtrlService {
 	@Override
 	public DataResponse<SystemCtrl> retrieve(@PathParam("key") final String keyId) {
 		// TODO Only supports one key anyway
-		return impl.retrieve(keyId);
+		return readImpl.retrieve(keyId);
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<SystemCtrl> create(final SystemCtrl type) {
-		return impl.create(type);
+		return writeImpl.create(type);
 	}
 
 	@PUT
@@ -63,7 +67,7 @@ public class SystemCtrlResource implements SystemCtrlService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<SystemCtrl> update(@PathParam("key") final String keyId, final SystemCtrl type) {
-		return impl.update(keyId, type);
+		return writeImpl.update(keyId, type);
 	}
 
 	@DELETE
@@ -79,7 +83,7 @@ public class SystemCtrlResource implements SystemCtrlService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Long> getCurrentVersion() {
-		return impl.getCurrentVersion();
+		return readImpl.getCurrentVersion();
 	}
 
 	@PUT
@@ -87,7 +91,7 @@ public class SystemCtrlResource implements SystemCtrlService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Long> setCurrentVersion(@PathParam("vers") final Long versionId) {
-		return impl.setCurrentVersion(versionId);
+		return writeImpl.setCurrentVersion(versionId);
 	}
 
 }

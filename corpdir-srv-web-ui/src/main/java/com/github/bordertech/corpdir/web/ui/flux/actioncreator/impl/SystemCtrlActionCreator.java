@@ -2,7 +2,7 @@ package com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl;
 
 import com.github.bordertech.corpdir.api.v1.model.SystemCtrl;
 import com.github.bordertech.corpdir.web.ui.CorpEntityType;
-import com.github.bordertech.corpdir.web.ui.flux.actioncreator.DefaultCorpCrudActionCreator;
+import com.github.bordertech.corpdir.web.ui.flux.actioncreator.temp.DefaultCorpCrudActionCreatorTemp;
 import com.github.bordertech.corpdir.web.ui.flux.dataapi.impl.SystemCtrlApi;
 import javax.inject.Inject;
 
@@ -11,7 +11,7 @@ import javax.inject.Inject;
  *
  * @author jonathan
  */
-public class SystemCtrlActionCreator extends DefaultCorpCrudActionCreator<SystemCtrl, SystemCtrlApi> {
+public class SystemCtrlActionCreator extends DefaultCorpCrudActionCreatorTemp<SystemCtrl, SystemCtrlApi> {
 
 	/**
 	 * @param api the backing API
