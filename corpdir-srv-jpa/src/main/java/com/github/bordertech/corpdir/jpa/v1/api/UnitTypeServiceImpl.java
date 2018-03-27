@@ -23,7 +23,9 @@ import javax.persistence.criteria.Root;
  *
  * @author Jonathan Austin
  * @since 1.0.0
+ * @deprecated split into read and write
  */
+@Deprecated
 @Singleton
 public class UnitTypeServiceImpl extends JpaBasicKeyIdService<UnitType, UnitTypeEntity> implements UnitTypeService {
 
