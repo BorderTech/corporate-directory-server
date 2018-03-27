@@ -2,7 +2,7 @@ package com.github.bordertech.corpdir.web.ui.flux.store;
 
 import com.github.bordertech.corpdir.api.common.ApiIdObject;
 import com.github.bordertech.corpdir.web.ui.CorpEntityType;
-import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudDataApi;
+import com.github.bordertech.corpdir.web.ui.flux.dataapi.temp.CorpCrudDataApiTemp;
 import com.github.bordertech.flux.crud.store.impl.DefaultDataApiCrudStore;
 
 /**
@@ -10,11 +10,12 @@ import com.github.bordertech.flux.crud.store.impl.DefaultDataApiCrudStore;
  *
  * @param <T> the CorpDir API Object
  * @param <D> the CorpDir data API type
- * @author jonathan
- * @deprecated 
+ * 
+ * @author Jonathan Austin
+ * @author Aswin Kandula
  */
-@Deprecated
-public class DefaultCorpCrudStore<T extends ApiIdObject, D extends CorpCrudDataApi<T, ?>> extends DefaultDataApiCrudStore<String, String, T, D> implements CorpCrudStore<T, D> {
+public class DefaultCorpCrudStore<T extends ApiIdObject, D extends CorpCrudDataApiTemp<T, ?, ?>> extends DefaultDataApiCrudStore<String, String, T, D> implements CorpCrudStore<T, D> {
+
 
 	/**
 	 * @param type the corp entity type
@@ -23,5 +24,4 @@ public class DefaultCorpCrudStore<T extends ApiIdObject, D extends CorpCrudDataA
 	public DefaultCorpCrudStore(final CorpEntityType type, final D api) {
 		super(type.getStoreKey(), CorpEntityType.getLinkedCreators(type), api);
 	}
-
 }

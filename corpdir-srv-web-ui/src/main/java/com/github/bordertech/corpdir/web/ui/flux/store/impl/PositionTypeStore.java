@@ -3,7 +3,7 @@ package com.github.bordertech.corpdir.web.ui.flux.store.impl;
 import com.github.bordertech.corpdir.api.v1.model.PositionType;
 import com.github.bordertech.corpdir.web.ui.CorpEntityType;
 import com.github.bordertech.corpdir.web.ui.flux.dataapi.impl.PositionTypeApi;
-import com.github.bordertech.corpdir.web.ui.flux.store.temp.DefaultCorpCrudStoreTemp;
+import com.github.bordertech.corpdir.web.ui.flux.store.DefaultCorpCrudStore;
 import javax.inject.Inject;
 
 /**
@@ -11,7 +11,7 @@ import javax.inject.Inject;
  *
  * @author jonathan
  */
-public class PositionTypeStore extends DefaultCorpCrudStoreTemp<PositionType, PositionTypeApi> {
+public class PositionTypeStore extends DefaultCorpCrudStore<PositionType, PositionTypeApi> {
 
 	/**
 	 * @param api the backing API

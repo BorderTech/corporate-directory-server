@@ -3,7 +3,7 @@ package com.github.bordertech.corpdir.web.ui.flux.store.impl;
 import com.github.bordertech.corpdir.api.v1.model.UnitType;
 import com.github.bordertech.corpdir.web.ui.CorpEntityType;
 import com.github.bordertech.corpdir.web.ui.flux.dataapi.impl.UnitTypeApi;
-import com.github.bordertech.corpdir.web.ui.flux.store.temp.DefaultCorpCrudStoreTemp;
+import com.github.bordertech.corpdir.web.ui.flux.store.DefaultCorpCrudStore;
 import javax.inject.Inject;
 
 /**
@@ -11,7 +11,7 @@ import javax.inject.Inject;
  *
  * @author jonathan
  */
-public class UnitTypeStore extends DefaultCorpCrudStoreTemp<UnitType, UnitTypeApi> {
+public class UnitTypeStore extends DefaultCorpCrudStore<UnitType, UnitTypeApi> {
 
 	/**
 	 * @param api the backing API

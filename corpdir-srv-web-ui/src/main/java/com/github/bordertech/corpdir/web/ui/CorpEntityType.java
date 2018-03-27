@@ -9,6 +9,7 @@ import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.PositionType
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.SystemCtrlActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.UnitTypeActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.VersionCtrlActionCreator;
+import com.github.bordertech.corpdir.web.ui.flux.store.CorpCrudStore;
 import com.github.bordertech.corpdir.web.ui.flux.store.impl.ContactStore;
 import com.github.bordertech.corpdir.web.ui.flux.store.impl.LocationStore;
 import com.github.bordertech.corpdir.web.ui.flux.store.impl.OrgUnitStore;
@@ -18,7 +19,6 @@ import com.github.bordertech.corpdir.web.ui.flux.store.impl.SystemCtrlStore;
 import com.github.bordertech.corpdir.web.ui.flux.store.impl.UnitTypeStore;
 import com.github.bordertech.corpdir.web.ui.flux.store.impl.VersionCtrlStore;
 import com.github.bordertech.flux.crud.actioncreator.DataApiCrudActionCreator;
-import com.github.bordertech.flux.crud.store.DataApiCrudStore;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -38,7 +38,7 @@ public enum CorpEntityType {
 	SYSTEM_CTRL("systemctrl", true, SystemCtrlActionCreator.class, SystemCtrlStore.class),
 	CHANNEL("channel", false, ChannelActionCreator.class, null);
 
-	CorpEntityType(final String key, final boolean linked, final Class<? extends DataApiCrudActionCreator> actionCreatorClass, final Class<? extends DataApiCrudStore> storeClass) {
+	CorpEntityType(final String key, final boolean linked, final Class<? extends DataApiCrudActionCreator> actionCreatorClass, final Class<? extends CorpCrudStore> storeClass) {
 		this.key = key;
 		this.linked = linked;
 		this.actionCreatorClass = actionCreatorClass;
@@ -49,14 +49,13 @@ public enum CorpEntityType {
 	final boolean linked;
 	// TODO: change to CorpCrudActionCreator once all entities are moved to new DatApi
 	final Class<? extends DataApiCrudActionCreator> actionCreatorClass;
-	// TODO: change to CorpCrudStore once all entities are moved to new DatApi
-	final Class<? extends DataApiCrudStore> storeClass;
+	final Class<? extends CorpCrudStore> storeClass;
 
 	public Class<? extends DataApiCrudActionCreator> getActionCreatorClass() {
 		return actionCreatorClass;
 	}
 
-	public Class<? extends DataApiCrudStore> getStoreClass() {
+	public Class<? extends CorpCrudStore> getStoreClass() {
 		return storeClass;
 	}
 

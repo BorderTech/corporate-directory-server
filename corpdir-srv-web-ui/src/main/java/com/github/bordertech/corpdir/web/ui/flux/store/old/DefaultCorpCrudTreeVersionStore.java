@@ -1,10 +1,10 @@
-package com.github.bordertech.corpdir.web.ui.flux.store.temp;
+package com.github.bordertech.corpdir.web.ui.flux.store.old;
 
 import com.github.bordertech.corpdir.api.common.ApiTreeable;
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
 import com.github.bordertech.corpdir.web.ui.CorpEntityType;
+import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudTreeVersionDataApi;
 import com.github.bordertech.corpdir.web.ui.flux.dataapi.impl.SystemCtrlApi;
-import com.github.bordertech.corpdir.web.ui.flux.dataapi.temp.CorpCrudTreeVersionDataApiTemp;
 import com.github.bordertech.didums.Didums;
 import com.github.bordertech.flux.crud.store.impl.DefaultDataApiCrudTreeStore;
 
@@ -13,11 +13,11 @@ import com.github.bordertech.flux.crud.store.impl.DefaultDataApiCrudTreeStore;
  *
  * @param <T> the CorpDir API Object
  * @param <D> the CorpDir data API type
- * 
- * @author Jonathan Austin
- * @author Aswin Kandula
+ * @author jonathan
+ * @deprecated 
  */
-public class DefaultCorpCrudTreeVersionStoreTemp<T extends ApiTreeable & ApiVersionable, D extends CorpCrudTreeVersionDataApiTemp<T, ?, ?>> extends DefaultDataApiCrudTreeStore<String, String, T, D> implements CorpCrudTreeVersionStoreTemp<T, D> {
+@Deprecated
+public class DefaultCorpCrudTreeVersionStore<T extends ApiTreeable & ApiVersionable, D extends CorpCrudTreeVersionDataApi<T, ?>> extends DefaultDataApiCrudTreeStore<String, String, T, D> implements CorpCrudTreeVersionStore<T, D> {
 
 	private static final SystemCtrlApi CTRL = Didums.getService(SystemCtrlApi.class);
 
@@ -25,7 +25,7 @@ public class DefaultCorpCrudTreeVersionStoreTemp<T extends ApiTreeable & ApiVers
 	 * @param type the corp entity type
 	 * @param api the backing API
 	 */
-	public DefaultCorpCrudTreeVersionStoreTemp(final CorpEntityType type, final D api) {
+	public DefaultCorpCrudTreeVersionStore(final CorpEntityType type, final D api) {
 		super(type.getStoreKey(), CorpEntityType.getLinkedCreators(type), api);
 	}
 

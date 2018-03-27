@@ -2,8 +2,8 @@ package com.github.bordertech.corpdir.web.ui.flux.store;
 
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
 import com.github.bordertech.corpdir.web.ui.CorpEntityType;
-import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudVersionDataApi;
 import com.github.bordertech.corpdir.web.ui.flux.dataapi.impl.SystemCtrlApi;
+import com.github.bordertech.corpdir.web.ui.flux.dataapi.temp.CorpCrudVersionDataApiTemp;
 import com.github.bordertech.didums.Didums;
 
 /**
@@ -11,11 +11,11 @@ import com.github.bordertech.didums.Didums;
  *
  * @param <T> the CorpDir API Object
  * @param <D> the CorpDir data API type
- * @author jonathan
- * @deprecated 
+ * 
+ * @author Jonathan Austin
+ * @author Aswin Kandula
  */
-@Deprecated
-public class DefaultCorpCrudVersionStore<T extends ApiVersionable, D extends CorpCrudVersionDataApi<T, ?>> extends DefaultCorpCrudStore<T, D> implements CorpCrudVersionStore<T, D> {
+public class DefaultCorpCrudVersionStore<T extends ApiVersionable, D extends CorpCrudVersionDataApiTemp<T, ?, ?>> extends DefaultCorpCrudStore<T, D> implements CorpCrudVersionStore<T, D> {
 
 	private static final SystemCtrlApi CTRL = Didums.getService(SystemCtrlApi.class);
 
@@ -38,5 +38,4 @@ public class DefaultCorpCrudVersionStore<T extends ApiVersionable, D extends Cor
 		// Append the version id
 		return super.getCacheKey(action, criteria) + "-" + getCurrentVersionId();
 	}
-
 }

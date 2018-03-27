@@ -1,9 +1,9 @@
-package com.github.bordertech.corpdir.web.ui.flux.store.temp;
+package com.github.bordertech.corpdir.web.ui.flux.store.old;
 
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
 import com.github.bordertech.corpdir.web.ui.CorpEntityType;
+import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudVersionDataApi;
 import com.github.bordertech.corpdir.web.ui.flux.dataapi.impl.SystemCtrlApi;
-import com.github.bordertech.corpdir.web.ui.flux.dataapi.temp.CorpCrudVersionDataApiTemp;
 import com.github.bordertech.didums.Didums;
 
 /**
@@ -11,11 +11,11 @@ import com.github.bordertech.didums.Didums;
  *
  * @param <T> the CorpDir API Object
  * @param <D> the CorpDir data API type
- * 
- * @author Jonathan Austin
- * @author Aswin Kandula
+ * @author jonathan
+ * @deprecated 
  */
-public class DefaultCorpCrudVersionStoreTemp<T extends ApiVersionable, D extends CorpCrudVersionDataApiTemp<T, ?, ?>> extends DefaultCorpCrudStoreTemp<T, D> implements CorpCrudVersionStoreTemp<T, D> {
+@Deprecated
+public class DefaultCorpCrudVersionStore<T extends ApiVersionable, D extends CorpCrudVersionDataApi<T, ?>> extends DefaultCorpCrudStore<T, D> implements CorpCrudVersionStore<T, D> {
 
 	private static final SystemCtrlApi CTRL = Didums.getService(SystemCtrlApi.class);
 
@@ -23,7 +23,7 @@ public class DefaultCorpCrudVersionStoreTemp<T extends ApiVersionable, D extends
 	 * @param type the corp entity type
 	 * @param api the backing API
 	 */
-	public DefaultCorpCrudVersionStoreTemp(final CorpEntityType type, final D api) {
+	public DefaultCorpCrudVersionStore(final CorpEntityType type, final D api) {
 		super(type, api);
 	}
 
@@ -38,4 +38,5 @@ public class DefaultCorpCrudVersionStoreTemp<T extends ApiVersionable, D extends
 		// Append the version id
 		return super.getCacheKey(action, criteria) + "-" + getCurrentVersionId();
 	}
+
 }
