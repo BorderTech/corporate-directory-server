@@ -11,7 +11,7 @@ import com.github.bordertech.corpdir.modify.api.v1.VersionCtrlWriteService;
  *
  * @author Jonathan Austin
  * @since 1.0.0
- * @deprecated split into read and write
+ * @deprecated split into {@link VersionCtrlReadOnlyService} and {@link VersionCtrlWriteService}
  */
 @Deprecated
 public interface VersionCtrlService extends BasicIdService<VersionCtrl> {

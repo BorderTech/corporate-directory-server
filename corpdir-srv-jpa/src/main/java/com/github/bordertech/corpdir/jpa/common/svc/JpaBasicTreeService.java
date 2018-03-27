@@ -4,6 +4,8 @@ import com.github.bordertech.corpdir.api.common.ApiTreeable;
 import com.github.bordertech.corpdir.api.response.DataResponse;
 import com.github.bordertech.corpdir.api.service.BasicTreeService;
 import com.github.bordertech.corpdir.jpa.common.feature.PersistKeyIdTree;
+import com.github.bordertech.corpdir.jpa.modify.common.svc.JpaBasicTreeWriteService;
+import com.github.bordertech.corpdir.jpa.readonly.common.svc.JpaBasicTreeReadOnlyService;
 import com.github.bordertech.corpdir.jpa.util.CriteriaUtil;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +22,7 @@ import javax.persistence.criteria.Root;
  * @param <P> the entity type
  * @author Jonathan Austin
  * @since 1.0.0
- * @deprecated split in read and write
+ * @deprecated split in {@link JpaBasicTreeReadOnlyService} and {@link JpaBasicTreeWriteService}
  */
 @Deprecated
 @Singleton

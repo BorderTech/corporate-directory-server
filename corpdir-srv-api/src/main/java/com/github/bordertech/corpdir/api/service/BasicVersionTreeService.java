@@ -13,7 +13,7 @@ import java.util.List;
  * @param <T> the tree API object
  * @author Jonathan Austin
  * @since 1.0.0
- * @deprecated split in read and write
+ * @deprecated split in {@link BasicVersionTreeReadOnlyService} and {@link BasicVersionTreeWriteService}
  */
 @Deprecated
 public interface BasicVersionTreeService<T extends ApiTreeable & ApiVersionable> extends BasicVersionKeyIdService<T>, BasicTreeService<T> {

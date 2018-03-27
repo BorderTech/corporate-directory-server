@@ -11,7 +11,7 @@ import com.github.bordertech.flux.crud.actioncreator.DataApiCrudTreeActionCreato
  * @param <D> the backing data API
  * @author jonathan
  
- * @deprecated
+ * @deprecated use {@link com.github.bordertech.corpdir.web.ui.flux.actioncreator.CorpCrudTreeActionCreator}
  */
 @Deprecated
 public interface CorpCrudTreeActionCreator<T extends ApiTreeable, D extends CorpCrudTreeDataApi<T, ?>> extends CorpCrudActionCreator<T, D>, DataApiCrudTreeActionCreator<String, T, D> {

@@ -11,7 +11,7 @@ import com.github.bordertech.flux.crud.store.impl.DefaultDataApiCrudTreeStore;
  * @param <T> the CorpDir API Object
  * @param <D> the CorpDir data API type
  * @author jonathan
- * @deprecated 
+ * @deprecated use {@link com.github.bordertech.corpdir.web.ui.flux.store.DefaultCorpCrudTreeStore}
  */
 @Deprecated
 public class DefaultCorpCrudTreeStore<T extends ApiTreeable, D extends CorpCrudTreeDataApi<T, ?>> extends DefaultDataApiCrudTreeStore<String, String, T, D> implements CorpCrudTreeStore<T, D> {

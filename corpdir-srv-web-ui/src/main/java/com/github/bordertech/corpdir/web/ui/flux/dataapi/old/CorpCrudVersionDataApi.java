@@ -10,7 +10,7 @@ import java.util.List;
  * @author jonathan
  * @param <T> the Corp API Versionable Object
  * @param <S> the Corp backing Service
- * @deprecated split in read and write
+ * @deprecated split in read and write use {@link com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudVersionDataApi}
  */
 @Deprecated
 public interface CorpCrudVersionDataApi<T extends ApiVersionable, S extends BasicVersionKeyIdService<T>> extends CorpCrudDataApi<T, S> {

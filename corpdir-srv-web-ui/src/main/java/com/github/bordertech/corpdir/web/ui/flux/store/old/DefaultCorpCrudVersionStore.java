@@ -2,8 +2,8 @@ package com.github.bordertech.corpdir.web.ui.flux.store.old;
 
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
 import com.github.bordertech.corpdir.web.ui.CorpEntityType;
-import com.github.bordertech.corpdir.web.ui.flux.dataapi.old.CorpCrudVersionDataApi;
 import com.github.bordertech.corpdir.web.ui.flux.dataapi.impl.SystemCtrlApi;
+import com.github.bordertech.corpdir.web.ui.flux.dataapi.old.CorpCrudVersionDataApi;
 import com.github.bordertech.didums.Didums;
 
 /**
@@ -12,7 +12,7 @@ import com.github.bordertech.didums.Didums;
  * @param <T> the CorpDir API Object
  * @param <D> the CorpDir data API type
  * @author jonathan
- * @deprecated 
+ * @deprecated use {@link com.github.bordertech.corpdir.web.ui.flux.store.DefaultCorpCrudVersionStore}
  */
 @Deprecated
 public class DefaultCorpCrudVersionStore<T extends ApiVersionable, D extends CorpCrudVersionDataApi<T, ?>> extends DefaultCorpCrudStore<T, D> implements CorpCrudVersionStore<T, D> {

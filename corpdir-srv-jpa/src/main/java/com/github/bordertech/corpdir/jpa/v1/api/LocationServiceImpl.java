@@ -5,7 +5,9 @@ import com.github.bordertech.corpdir.api.v1.model.Location;
 import com.github.bordertech.corpdir.jpa.common.map.MapperApi;
 import com.github.bordertech.corpdir.jpa.common.svc.JpaBasicTreeService;
 import com.github.bordertech.corpdir.jpa.entity.LocationEntity;
+import com.github.bordertech.corpdir.jpa.readonly.v1.api.LocationReadOnlyServiceImpl;
 import com.github.bordertech.corpdir.jpa.v1.mapper.LocationMapper;
+import com.github.bordertech.corpdir.jpa.write.v1.api.LocationWriteServiceImpl;
 import javax.inject.Singleton;
 
 /**
@@ -13,7 +15,7 @@ import javax.inject.Singleton;
  *
  * @author Jonathan Austin
  * @since 1.0.0
- * @deprecated split into read and write
+ * @deprecated split into {@link LocationReadOnlyServiceImpl} and {@link LocationWriteServiceImpl}
  */
 @Deprecated
 @Singleton

@@ -6,6 +6,8 @@ import com.github.bordertech.corpdir.api.response.DataResponse;
 import com.github.bordertech.corpdir.api.service.BasicIdService;
 import com.github.bordertech.corpdir.jpa.common.feature.PersistIdObject;
 import com.github.bordertech.corpdir.jpa.common.map.MapperApi;
+import com.github.bordertech.corpdir.jpa.modify.common.svc.JpaBasicIdWriteService;
+import com.github.bordertech.corpdir.jpa.readonly.common.svc.JpaBasicIdReadOnlyService;
 import java.util.List;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
@@ -18,7 +20,7 @@ import javax.persistence.criteria.CriteriaQuery;
  * @param <P> the entity type
  * @author Jonathan Austin
  * @since 1.0.0
- * @deprecated split in read and write
+ * @deprecated split in {@link JpaBasicIdReadOnlyService} and {@link JpaBasicIdWriteService}
  */
 @Deprecated
 @Singleton

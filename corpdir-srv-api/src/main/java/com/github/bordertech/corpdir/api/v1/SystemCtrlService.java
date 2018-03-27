@@ -11,7 +11,7 @@ import com.github.bordertech.corpdir.readonly.api.v1.SystemCtrlReadOnlyService;
  *
  * @author Jonathan Austin
  * @since 1.0.0
- * @deprecated split into read and write
+ * @deprecated split into {@link SystemCtrlReadOnlyService} and {@link SystemCtrlWriteService}
  */
 @Deprecated
 public interface SystemCtrlService extends BasicIdService<SystemCtrl> {

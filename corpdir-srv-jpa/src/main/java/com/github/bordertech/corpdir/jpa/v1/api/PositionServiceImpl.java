@@ -12,10 +12,12 @@ import com.github.bordertech.corpdir.jpa.entity.ContactEntity;
 import com.github.bordertech.corpdir.jpa.entity.PositionEntity;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
 import com.github.bordertech.corpdir.jpa.entity.version.PositionVersionEntity;
+import com.github.bordertech.corpdir.jpa.readonly.v1.api.PositionReadOnlyServiceImpl;
 import com.github.bordertech.corpdir.jpa.util.MapperUtil;
 import com.github.bordertech.corpdir.jpa.v1.mapper.ContactMapper;
 import com.github.bordertech.corpdir.jpa.v1.mapper.OrgUnitMapper;
 import com.github.bordertech.corpdir.jpa.v1.mapper.PositionMapper;
+import com.github.bordertech.corpdir.jpa.write.v1.api.PositionWriteServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Singleton;
@@ -26,7 +28,7 @@ import javax.persistence.EntityManager;
  *
  * @author Jonathan Austin
  * @since 1.0.0
- * @deprecated split into read and write
+ * @deprecated split into {@link PositionReadOnlyServiceImpl} and {@link PositionWriteServiceImpl}
  */
 @Deprecated
 @Singleton

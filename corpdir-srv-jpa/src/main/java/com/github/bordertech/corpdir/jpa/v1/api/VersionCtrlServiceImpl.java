@@ -7,7 +7,9 @@ import com.github.bordertech.corpdir.api.v1.model.VersionCtrl;
 import com.github.bordertech.corpdir.jpa.common.map.MapperApi;
 import com.github.bordertech.corpdir.jpa.common.svc.JpaBasicIdService;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
+import com.github.bordertech.corpdir.jpa.readonly.v1.api.VersionCtrlReadOnlyServiceImpl;
 import com.github.bordertech.corpdir.jpa.v1.mapper.VersionCtrlMapper;
+import com.github.bordertech.corpdir.jpa.write.v1.api.VersionCtrlWriteServiceImpl;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import org.slf4j.Logger;
@@ -18,7 +20,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Jonathan Austin
  * @since 1.0.0
- * @deprecated split into read and write
+ * @deprecated split into {@link VersionCtrlReadOnlyServiceImpl} and {@link VersionCtrlWriteServiceImpl}
  */
 @Deprecated
 @Singleton

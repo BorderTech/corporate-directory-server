@@ -14,7 +14,7 @@ import java.util.List;
  * @param <T> the keyed API object
  * @author Jonathan Austin
  * @since 1.0.0
- * @deprecated split in read and write
+ * @deprecated split in {@link BasicIdReadOnlyService} and {@link BasicIdWriteService}
  */
 @Deprecated
 public interface BasicIdService<T extends ApiIdObject> extends Serializable {

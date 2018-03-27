@@ -13,7 +13,7 @@ import java.util.List;
  * @param <S> the versionable tree service type
  *
  * @author jonathan
- * @deprecated 
+ * @deprecated use {@link com.github.bordertech.corpdir.web.ui.flux.dataapi.DefaultCorpCrudTreeVersionDataApi}
  */
 @Deprecated
 public class DefaultCorpCrudTreeVersionDataApi<T extends ApiTreeable & ApiVersionable, S extends BasicVersionTreeService<T>> extends DefaultCorpCrudTreeDataApi<T, S> implements CorpCrudTreeVersionDataApi<T, S> {

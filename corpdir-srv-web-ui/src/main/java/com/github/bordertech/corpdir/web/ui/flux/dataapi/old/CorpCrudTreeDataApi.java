@@ -9,7 +9,7 @@ import com.github.bordertech.flux.crud.dataapi.CrudTreeApi;
  *
  * @author jonathan
  * @param <T> the Corp API Treeable Object
- * @param <S> the Corp backing Tree Service
+ * @param <S> the Corp backing Tree Service use {@link com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudTreeDataApi}
 
  * @deprecated 
  */

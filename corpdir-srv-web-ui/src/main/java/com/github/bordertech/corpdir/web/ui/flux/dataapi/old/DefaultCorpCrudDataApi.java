@@ -13,7 +13,7 @@ import java.util.List;
  * @param <S> the CorpDir service type
  *
  * @author jonathan
- * @deprecated split in read and write
+ * @deprecated split in read and write use {@link com.github.bordertech.corpdir.web.ui.flux.dataapi.DefaultCorpCrudDataApi}
  */
 @Deprecated
 public class DefaultCorpCrudDataApi<T extends ApiIdObject, S extends BasicIdService<T>> implements CorpCrudDataApi<T, S> {

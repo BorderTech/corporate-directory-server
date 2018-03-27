@@ -8,9 +8,11 @@ import com.github.bordertech.corpdir.jpa.common.map.MapperApi;
 import com.github.bordertech.corpdir.jpa.common.svc.JpaBasicKeyIdService;
 import com.github.bordertech.corpdir.jpa.entity.OrgUnitEntity;
 import com.github.bordertech.corpdir.jpa.entity.UnitTypeEntity;
+import com.github.bordertech.corpdir.jpa.readonly.v1.api.UnitTypeReadOnlyServiceImpl;
 import com.github.bordertech.corpdir.jpa.util.CriteriaUtil;
 import com.github.bordertech.corpdir.jpa.v1.mapper.OrgUnitMapper;
 import com.github.bordertech.corpdir.jpa.v1.mapper.UnitTypeMapper;
+import com.github.bordertech.corpdir.jpa.write.v1.api.UnitTypeWriteServiceImpl;
 import java.util.List;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
@@ -23,7 +25,7 @@ import javax.persistence.criteria.Root;
  *
  * @author Jonathan Austin
  * @since 1.0.0
- * @deprecated split into read and write
+ * @deprecated split into {@link UnitTypeReadOnlyServiceImpl} and {@link UnitTypeWriteServiceImpl}
  */
 @Deprecated
 @Singleton

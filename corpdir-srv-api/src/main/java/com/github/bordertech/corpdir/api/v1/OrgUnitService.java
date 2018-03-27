@@ -5,6 +5,7 @@ import com.github.bordertech.corpdir.api.service.BasicVersionTreeService;
 import com.github.bordertech.corpdir.api.v1.func.PositionFunctions;
 import com.github.bordertech.corpdir.api.v1.model.OrgUnit;
 import com.github.bordertech.corpdir.api.v1.model.Position;
+import com.github.bordertech.corpdir.modify.api.v1.OrgUnitWriteService;
 import com.github.bordertech.corpdir.readonly.api.v1.OrgUnitReadOnlyService;
 
 /**
@@ -13,7 +14,7 @@ import com.github.bordertech.corpdir.readonly.api.v1.OrgUnitReadOnlyService;
  * @author Jonathan Austin
  * @since 1.0.0
  
- * @deprecated split into read and write
+ * @deprecated split into {@link OrgUnitReadOnlyService} and {@link OrgUnitWriteService}
  */
 @Deprecated
 public interface OrgUnitService extends BasicVersionTreeService<OrgUnit>, PositionFunctions<OrgUnit> {

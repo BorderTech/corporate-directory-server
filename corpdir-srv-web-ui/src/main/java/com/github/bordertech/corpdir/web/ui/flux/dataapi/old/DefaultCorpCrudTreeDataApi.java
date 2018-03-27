@@ -12,7 +12,7 @@ import java.util.List;
  * @param <S> the CorpDir tree service type
  *
  * @author jonathan
- * @deprecated 
+ * @deprecated use {@link com.github.bordertech.corpdir.web.ui.flux.dataapi.DefaultCorpCrudTreeDataApi}
  */
 @Deprecated
 public class DefaultCorpCrudTreeDataApi<T extends ApiTreeable, S extends BasicTreeService<T>> extends DefaultCorpCrudDataApi<T, S> implements CorpCrudTreeDataApi<T, S> {

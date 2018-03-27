@@ -12,7 +12,7 @@ import java.util.List;
  * @param <T> the Corp API Treeable &amp; Versionable Object
  * @param <S> the Corp backing Tree Service
  
- * @deprecated 
+ * @deprecated use {@link com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudTreeVersionDataApi}
  */
 @Deprecated
 public interface CorpCrudTreeVersionDataApi<T extends ApiTreeable & ApiVersionable, S extends BasicVersionTreeService<T>> extends CorpCrudTreeDataApi<T, S>, CorpCrudVersionDataApi<T, S> {

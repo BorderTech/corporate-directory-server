@@ -7,6 +7,8 @@ import com.github.bordertech.corpdir.api.service.BasicVersionTreeService;
 import com.github.bordertech.corpdir.jpa.common.feature.PersistVersionableKeyId;
 import com.github.bordertech.corpdir.jpa.common.version.ItemTreeVersion;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
+import com.github.bordertech.corpdir.jpa.modify.common.svc.JpaBasicVersionTreeWriteService;
+import com.github.bordertech.corpdir.jpa.readonly.common.svc.JpaBasicVersionTreeReadOnlyService;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -23,7 +25,7 @@ import javax.persistence.Table;
  * @param <P> the entity type
  * @author Jonathan Austin
  * @since 1.0.0
- * @deprecated split in read and write
+ * @deprecated split in {@link JpaBasicVersionTreeReadOnlyService} and {@link JpaBasicVersionTreeWriteService}
  */
 @Deprecated
 @Singleton

@@ -12,7 +12,7 @@ import java.util.List;
  * @param <T> the tree API object
  * @author Jonathan Austin
  * @since 1.0.0
- * @deprecated split in read and write
+ * @deprecated split in {@link BasicTreeReadOnlyService} and {@link BasicTreeWriteService}
  */
 @Deprecated
 public interface BasicTreeService<T extends ApiTreeable> extends BasicKeyIdService<T> {

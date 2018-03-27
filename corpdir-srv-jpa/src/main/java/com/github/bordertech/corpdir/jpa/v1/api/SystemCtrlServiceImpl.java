@@ -8,7 +8,9 @@ import com.github.bordertech.corpdir.jpa.common.map.MapperApi;
 import com.github.bordertech.corpdir.jpa.common.svc.JpaBasicIdService;
 import com.github.bordertech.corpdir.jpa.entity.SystemCtrlEntity;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
+import com.github.bordertech.corpdir.jpa.readonly.v1.api.SystemCtrlReadOnlyServiceImpl;
 import com.github.bordertech.corpdir.jpa.v1.mapper.SystemCtrlMapper;
+import com.github.bordertech.corpdir.jpa.write.v1.api.SystemCtrlWriteServiceImpl;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import org.slf4j.Logger;
@@ -19,7 +21,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Jonathan Austin
  * @since 1.0.0
- * @deprecated split into read and write
+ * @deprecated split into {@link SystemCtrlReadOnlyServiceImpl} and {@link SystemCtrlWriteServiceImpl}
  */
 @Deprecated
 @Singleton

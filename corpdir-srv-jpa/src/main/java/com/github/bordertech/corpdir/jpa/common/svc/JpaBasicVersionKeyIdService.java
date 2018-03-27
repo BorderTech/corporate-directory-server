@@ -8,6 +8,8 @@ import com.github.bordertech.corpdir.jpa.common.feature.PersistVersionableKeyId;
 import com.github.bordertech.corpdir.jpa.common.map.MapperApiVersion;
 import com.github.bordertech.corpdir.jpa.common.version.ItemVersion;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
+import com.github.bordertech.corpdir.jpa.modify.common.svc.JpaBasicVersionKeyIdWriteService;
+import com.github.bordertech.corpdir.jpa.readonly.common.svc.JpaBasicVersionKeyIdReadOnlyService;
 import java.util.List;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
@@ -21,7 +23,7 @@ import javax.persistence.criteria.CriteriaQuery;
  * @param <P> the entity type
  * @author Jonathan Austin
  * @since 1.0.0
- * @deprecated split in read and write
+ * @deprecated split in {@link JpaBasicVersionKeyIdReadOnlyService} and {@link JpaBasicVersionKeyIdWriteService}
  */
 @Deprecated
 @Singleton
