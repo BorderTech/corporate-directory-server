@@ -2,9 +2,10 @@ package com.github.bordertech.corpdir.web.api.resource.v1;
 
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.v1.UnitTypeService;
 import com.github.bordertech.corpdir.api.v1.model.OrgUnit;
 import com.github.bordertech.corpdir.api.v1.model.UnitType;
+import com.github.bordertech.corpdir.modify.api.v1.UnitTypeWriteService;
+import com.github.bordertech.corpdir.readonly.api.v1.UnitTypeReadOnlyService;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
@@ -24,23 +25,25 @@ import javax.ws.rs.core.MediaType;
  * @since 1.0.0
  */
 @Path(value = "v1/unittypes")
-public class UnitTypeResource implements UnitTypeService {
+public class UnitTypeResource implements UnitTypeReadOnlyService, UnitTypeWriteService {
 
-	private final UnitTypeService impl;
+	private final UnitTypeReadOnlyService readImpl;
+	private final UnitTypeWriteService writeImpl;
 
 	/**
 	 * @param impl the service implementation
 	 */
 	@Inject
-	public UnitTypeResource(final UnitTypeService impl) {
-		this.impl = impl;
+	public UnitTypeResource(final UnitTypeReadOnlyService readImpl, final UnitTypeWriteService writeImpl) {
+		this.readImpl = readImpl;
+		this.writeImpl = writeImpl;
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<List<UnitType>> search(@QueryParam("search") final String search) {
-		return impl.search(search);
+		return readImpl.search(search);
 	}
 
 	@GET
@@ -48,14 +51,14 @@ public class UnitTypeResource implements UnitTypeService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<UnitType> retrieve(@PathParam("key") final String keyId) {
-		return impl.retrieve(keyId);
+		return readImpl.retrieve(keyId);
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<UnitType> create(final UnitType type) {
-		return impl.create(type);
+		return writeImpl.create(type);
 	}
 
 	@PUT
@@ -63,7 +66,7 @@ public class UnitTypeResource implements UnitTypeService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<UnitType> update(@PathParam("key") final String keyId, final UnitType type) {
-		return impl.update(keyId, type);
+		return writeImpl.update(keyId, type);
 	}
 
 	@DELETE
@@ -71,7 +74,7 @@ public class UnitTypeResource implements UnitTypeService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public BasicResponse delete(@PathParam("key") final String keyId) {
-		return impl.delete(keyId);
+		return writeImpl.delete(keyId);
 	}
 
 	@GET
@@ -79,7 +82,7 @@ public class UnitTypeResource implements UnitTypeService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<List<OrgUnit>> getOrgUnits(@PathParam("key") final String keyId) {
-		return impl.getOrgUnits(keyId);
+		return readImpl.getOrgUnits(keyId);
 	}
 
 }
