@@ -1,8 +1,8 @@
-package com.github.bordertech.corpdir.web.ui.flux.store;
+package com.github.bordertech.corpdir.web.ui.flux.store.temp;
 
 import com.github.bordertech.corpdir.api.common.ApiTreeable;
 import com.github.bordertech.corpdir.web.ui.CorpEntityType;
-import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudTreeDataApi;
+import com.github.bordertech.corpdir.web.ui.flux.dataapi.temp.CorpCrudTreeDataApiTemp;
 import com.github.bordertech.flux.crud.store.impl.DefaultDataApiCrudTreeStore;
 
 /**
@@ -10,18 +10,16 @@ import com.github.bordertech.flux.crud.store.impl.DefaultDataApiCrudTreeStore;
  *
  * @param <T> the CorpDir API Object
  * @param <D> the CorpDir data API type
- * @author jonathan
- * @deprecated 
+ * @author Jonathan Austin
+ * @author Aswin Kandula
  */
-@Deprecated
-public class DefaultCorpCrudTreeStore<T extends ApiTreeable, D extends CorpCrudTreeDataApi<T, ?>> extends DefaultDataApiCrudTreeStore<String, String, T, D> implements CorpCrudTreeStore<T, D> {
+public class DefaultCorpCrudTreeStoreTemp<T extends ApiTreeable, D extends CorpCrudTreeDataApiTemp<T, ?, ?>> extends DefaultDataApiCrudTreeStore<String, String, T, D> implements CorpCrudTreeStoreTemp<T, D> {
 
 	/**
 	 * @param type the corp entity type
 	 * @param api the backing API
 	 */
-	public DefaultCorpCrudTreeStore(final CorpEntityType type, final D api) {
+	public DefaultCorpCrudTreeStoreTemp(final CorpEntityType type, final D api) {
 		super(type.getStoreKey(), CorpEntityType.getLinkedCreators(type), api);
 	}
-
 }

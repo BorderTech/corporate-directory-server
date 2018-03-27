@@ -1,8 +1,9 @@
 package com.github.bordertech.corpdir.web.ui.flux.dataapi.impl;
 
-import com.github.bordertech.corpdir.api.v1.LocationService;
 import com.github.bordertech.corpdir.api.v1.model.Location;
-import com.github.bordertech.corpdir.web.ui.flux.dataapi.DefaultCorpCrudTreeDataApi;
+import com.github.bordertech.corpdir.modify.api.v1.LocationWriteService;
+import com.github.bordertech.corpdir.readonly.api.v1.LocationReadOnlyService;
+import com.github.bordertech.corpdir.web.ui.flux.dataapi.temp.DefaultCorpCrudTreeDataApiTemp;
 import javax.inject.Inject;
 
 /**
@@ -10,11 +11,11 @@ import javax.inject.Inject;
  *
  * @author jonathan
  */
-public class LocationApi extends DefaultCorpCrudTreeDataApi<Location, LocationService> {
+public class LocationApi extends DefaultCorpCrudTreeDataApiTemp<Location, LocationReadOnlyService, LocationWriteService> {
 
 	@Inject
-	public LocationApi(final LocationService service) {
-		super(Location.class, service);
+	public LocationApi(final LocationReadOnlyService readService, final LocationWriteService writeService) {
+		super(Location.class, readService, writeService);
 	}
 
 }

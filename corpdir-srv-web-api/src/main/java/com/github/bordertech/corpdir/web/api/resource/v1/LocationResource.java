@@ -2,8 +2,9 @@ package com.github.bordertech.corpdir.web.api.resource.v1;
 
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.v1.LocationService;
 import com.github.bordertech.corpdir.api.v1.model.Location;
+import com.github.bordertech.corpdir.modify.api.v1.LocationWriteService;
+import com.github.bordertech.corpdir.readonly.api.v1.LocationReadOnlyService;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
@@ -23,23 +24,25 @@ import javax.ws.rs.core.MediaType;
  * @since 1.0.0
  */
 @Path(value = "v1/locations")
-public class LocationResource implements LocationService {
+public class LocationResource implements LocationReadOnlyService, LocationWriteService {
 
-	private final LocationService impl;
+	private final LocationReadOnlyService readImpl;
+	private final LocationWriteService writeImpl;
 
 	/**
 	 * @param impl the service implementation
 	 */
 	@Inject
-	public LocationResource(final LocationService impl) {
-		this.impl = impl;
+	public LocationResource(final LocationReadOnlyService readImpl, final LocationWriteService writeImpl) {
+		this.readImpl = readImpl;
+		this.writeImpl = writeImpl;
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<List<Location>> search(@QueryParam("search") final String search) {
-		return impl.search(search);
+		return readImpl.search(search);
 	}
 
 	@GET
@@ -47,14 +50,14 @@ public class LocationResource implements LocationService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Location> retrieve(@PathParam("key") final String keyId) {
-		return impl.retrieve(keyId);
+		return readImpl.retrieve(keyId);
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Location> create(final Location location) {
-		return impl.create(location);
+		return writeImpl.create(location);
 	}
 
 	@PUT
@@ -62,7 +65,7 @@ public class LocationResource implements LocationService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Location> update(@PathParam("key") final String keyId, final Location location) {
-		return impl.update(keyId, location);
+		return writeImpl.update(keyId, location);
 	}
 
 	@DELETE
@@ -70,7 +73,7 @@ public class LocationResource implements LocationService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public BasicResponse delete(@PathParam("key") final String keyId) {
-		return impl.delete(keyId);
+		return writeImpl.delete(keyId);
 	}
 
 	@GET
@@ -78,7 +81,7 @@ public class LocationResource implements LocationService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<List<Location>> getSubs(@PathParam("key") final String keyId) {
-		return impl.getSubs(keyId);
+		return readImpl.getSubs(keyId);
 	}
 
 	@PUT
@@ -86,7 +89,7 @@ public class LocationResource implements LocationService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Location> addSub(@PathParam("key") final String keyId, @PathParam("subKey") final String subKeyId) {
-		return impl.addSub(keyId, subKeyId);
+		return writeImpl.addSub(keyId, subKeyId);
 	}
 
 	@DELETE
@@ -94,7 +97,7 @@ public class LocationResource implements LocationService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Location> removeSub(@PathParam("key") final String keyId, @PathParam("subKey") final String subKeyId) {
-		return impl.removeSub(keyId, subKeyId);
+		return writeImpl.removeSub(keyId, subKeyId);
 	}
 
 	@Override
