@@ -1,8 +1,8 @@
-package com.github.bordertech.corpdir.web.ui.flux.actioncreator;
+package com.github.bordertech.corpdir.web.ui.flux.actioncreator.old;
 
 import com.github.bordertech.corpdir.api.common.ApiIdObject;
 import com.github.bordertech.corpdir.web.ui.CorpEntityType;
-import com.github.bordertech.corpdir.web.ui.flux.dataapi.temp.CorpCrudDataApiTemp;
+import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudDataApi;
 import com.github.bordertech.flux.crud.actioncreator.impl.DefaultDataApiCrudActionCreator;
 
 /**
@@ -11,10 +11,11 @@ import com.github.bordertech.flux.crud.actioncreator.impl.DefaultDataApiCrudActi
  * @param <T> the Corp API object type
  * @param <D> the backing Corp API
  *
- * @author Jonathan Austin
- * @author Aswin Kandula
+ * @author jonathan
+ * @deprecated 
  */
-public class DefaultCorpCrudActionCreator<T extends ApiIdObject, D extends CorpCrudDataApiTemp<T, ?, ?>> extends DefaultDataApiCrudActionCreator<String, T, D> implements CorpCrudActionCreator<T, D> {
+@Deprecated
+public class DefaultCorpCrudActionCreator<T extends ApiIdObject, D extends CorpCrudDataApi<T, ?>> extends DefaultDataApiCrudActionCreator<String, T, D> implements CorpCrudActionCreator<T, D> {
 
 	/**
 	 * @param type the entity type
