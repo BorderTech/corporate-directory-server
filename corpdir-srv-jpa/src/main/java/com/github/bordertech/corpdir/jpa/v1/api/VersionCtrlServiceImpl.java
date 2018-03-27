@@ -18,7 +18,9 @@ import org.slf4j.LoggerFactory;
  *
  * @author Jonathan Austin
  * @since 1.0.0
+ * @deprecated split into read and write
  */
+@Deprecated
 @Singleton
 public class VersionCtrlServiceImpl extends JpaBasicIdService<VersionCtrl, VersionCtrlEntity> implements VersionCtrlService {
 
