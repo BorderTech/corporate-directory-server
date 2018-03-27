@@ -31,8 +31,8 @@ public class OrgUnitResource implements OrgUnitReadOnlyService, OrgUnitWriteServ
 	private final OrgUnitWriteService writeImpl;
 
 	/**
-	 * @param readImpl
-	 * @param writeImpl
+         * @param readImpl the read service implementation
+	 * @param writeImpl the write service implementation
 	 */
 	@Inject
 	public OrgUnitResource(final OrgUnitReadOnlyService readImpl, final OrgUnitWriteService writeImpl) {

@@ -30,7 +30,8 @@ public class LocationResource implements LocationReadOnlyService, LocationWriteS
 	private final LocationWriteService writeImpl;
 
 	/**
-	 * @param impl the service implementation
+         * @param readImpl the read service implementation
+	 * @param writeImpl the write service implementation
 	 */
 	@Inject
 	public LocationResource(final LocationReadOnlyService readImpl, final LocationWriteService writeImpl) {

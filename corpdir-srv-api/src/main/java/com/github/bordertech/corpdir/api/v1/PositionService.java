@@ -19,22 +19,9 @@ import java.util.List;
 @Deprecated
 public interface PositionService extends BasicVersionTreeService<Position>, ContactFunctions<Position> {
 
-	/**
-	 * 
-	 * @param keyId
-	 * @return 
-	 * @deprecated use {@link PositionReadOnlyService#getManages(java.lang.String) } instead.
-	 */
 	@Deprecated
 	DataResponse<List<OrgUnit>> getManages(final String keyId);
 
-	/**
-	 * 
-	 * @param versionId
-	 * @param keyId
-	 * @return 
-	 * @deprecated use {@link PositionReadOnlyService#getManages(java.lang.Long, java.lang.String) } instead.
-	 */
 	@Deprecated
 	DataResponse<List<OrgUnit>> getManages(final Long versionId, final String keyId);
 

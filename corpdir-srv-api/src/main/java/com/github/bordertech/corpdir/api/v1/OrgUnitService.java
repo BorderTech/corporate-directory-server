@@ -19,22 +19,9 @@ import com.github.bordertech.corpdir.readonly.api.v1.OrgUnitReadOnlyService;
 @Deprecated
 public interface OrgUnitService extends BasicVersionTreeService<OrgUnit>, PositionFunctions<OrgUnit> {
 
-	/**
-	 * 
-	 * @param keyId
-	 * @return 
-	 * @deprecated use {@link OrgUnitReadOnlyService#getManagerPosition(java.lang.String) } instead.
-	 */
 	@Deprecated
 	DataResponse<Position> getManagerPosition(final String keyId);
 
-	/**
-	 * 
-	 * @param versionId
-	 * @param keyId
-	 * @return 
-	 * @deprecated use {@link OrgUnitReadOnlyService#getManagerPosition(java.lang.Long, java.lang.String) } instead.
-	 */
 	@Deprecated
 	DataResponse<Position> getManagerPosition(final Long versionId, final String keyId);
 

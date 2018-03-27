@@ -18,12 +18,6 @@ import java.util.List;
 @Deprecated
 public interface PositionTypeService extends BasicKeyIdService<PositionType> {
 
-	/**
-	 * 
-	 * @param keyId
-	 * @return 
-	 * @deprecated use {@link PositionTypeReadOnlyService#getPositions(java.lang.String) } instead.
-	 */
 	@Deprecated
 	DataResponse<List<Position>> getPositions(final String keyId);
 

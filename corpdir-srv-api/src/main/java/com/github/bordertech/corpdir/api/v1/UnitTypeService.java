@@ -18,12 +18,6 @@ import java.util.List;
 @Deprecated
 public interface UnitTypeService extends BasicKeyIdService<UnitType> {
 
-	/**
-	 * 
-	 * @param keyId
-	 * @return 
-	 * @deprecated use {@link UnitTypeReadOnlyService#getOrgUnits(java.lang.String) } instead.
-	 */
 	@Deprecated
 	DataResponse<List<OrgUnit>> getOrgUnits(final String keyId);
 

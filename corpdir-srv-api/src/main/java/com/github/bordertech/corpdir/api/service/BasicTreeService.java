@@ -17,40 +17,15 @@ import java.util.List;
 @Deprecated
 public interface BasicTreeService<T extends ApiTreeable> extends BasicKeyIdService<T> {
 
-	/**
-	 *
-	 * @param keyId
-	 * @return 
-	 * @deprecated use {@link BasicTreeReadOnlyService#getSubs(java.lang.String) } instead.  
-	 */
 	@Deprecated
 	DataResponse<List<T>> getSubs(final String keyId);
 
-	/**
-	 *
-	 * @param keyId
-	 * @param subKeyId
-	 * @return 
-	 * @deprecated use {@link BasicTreeWriteService#addSub(java.lang.String, java.lang.String)  instead.  
-	 */
 	@Deprecated
 	DataResponse<T> addSub(final String keyId, final String subKeyId);
 
-	/**
-	 *
-	 * @param keyId
-	 * @param subKeyId
-	 * @return 
-	 * @deprecated use {@link BasicTreeWriteService#removeSub(java.lang.String, java.lang.String) } instead.  
-	 */
 	@Deprecated
 	DataResponse<T> removeSub(final String keyId, final String subKeyId);
 
-	/**
-	 *
-	 * @return 
-	 * @deprecated use {@link BasicTreeReadOnlyService#getRootItems() } instead.  
-	 */
 	@Deprecated
 	DataResponse<List<T>> getRootItems();
 

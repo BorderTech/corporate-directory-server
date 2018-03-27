@@ -5,6 +5,7 @@ import com.github.bordertech.corpdir.api.response.DataResponse;
 import com.github.bordertech.corpdir.api.service.BasicIdService;
 import com.github.bordertech.corpdir.api.v1.model.VersionCtrl;
 import com.github.bordertech.corpdir.modify.api.v1.VersionCtrlWriteService;
+import com.github.bordertech.corpdir.readonly.api.v1.VersionCtrlReadOnlyService;
 
 /**
  * Version Control Service Interface.

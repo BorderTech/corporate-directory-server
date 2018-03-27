@@ -31,7 +31,8 @@ public class UnitTypeResource implements UnitTypeReadOnlyService, UnitTypeWriteS
 	private final UnitTypeWriteService writeImpl;
 
 	/**
-	 * @param impl the service implementation
+         * @param readImpl the read service implementation
+	 * @param writeImpl the write service implementation
 	 */
 	@Inject
 	public UnitTypeResource(final UnitTypeReadOnlyService readImpl, final UnitTypeWriteService writeImpl) {

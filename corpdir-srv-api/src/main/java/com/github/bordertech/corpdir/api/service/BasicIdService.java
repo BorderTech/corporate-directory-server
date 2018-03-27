@@ -19,49 +19,18 @@ import java.util.List;
 @Deprecated
 public interface BasicIdService<T extends ApiIdObject> extends Serializable {
 
-	/**
-	 *
-	 * @param search
-	 * @return 
-	 * @deprecated use {@link BasicIdReadOnlyService#search(java.lang.String) } instead.
-	 */
 	@Deprecated
 	DataResponse<List<T>> search(final String search);
 
-	/**
-	 *
-	 * @param id
-	 * @return 
-	 * @deprecated use {@link BasicIdReadOnlyService#retrieve(java.lang.String) } instead.
-	 */
 	@Deprecated
 	DataResponse<T> retrieve(final String id);
 
-	/**
-	 *
-	 * @param apiObject
-	 * @return 
-	 * @deprecated use {@link BasicIdWriteService#create(com.github.bordertech.corpdir.api.common.ApiIdObject) } instead.
-	 */
 	@Deprecated
 	DataResponse<T> create(final T apiObject);
 
-	/**
-	 *
-	 * @param id
-	 * @param apiObject
-	 * @return 
-	 * @deprecated use {@link BasicIdWriteService#update(java.lang.String, com.github.bordertech.corpdir.api.common.ApiIdObject) } instead.
-	 */
 	@Deprecated
 	DataResponse<T> update(final String id, final T apiObject);
 
-	/**
-	 *
-	 * @param id
-	 * @return 
-	 * @deprecated use {@link BasicIdWriteService#delete(java.lang.String) } instead.
-	 */
 	@Deprecated
 	BasicResponse delete(final String id);
 

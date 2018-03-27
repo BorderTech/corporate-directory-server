@@ -17,23 +17,9 @@ import java.util.List;
 @Deprecated
 public interface BasicVersionKeyIdService<T extends ApiVersionable> extends BasicKeyIdService<T> {
 
-	/**
-	 *
-	 * @param versionId
-	 * @param search
-	 * @return 
-	 * @deprecated use {@link BasicVersionKeyIdReadOnlyService#search(java.lang.Long, java.lang.String) } instead.  
-	 */
 	@Deprecated
 	DataResponse<List<T>> search(final Long versionId, final String search);
 
-	/**
-	 *
-	 * @param versionId
-	 * @param keyId
-	 * @return 
-	 * @deprecated use {@link BasicVersionKeyIdReadOnlyService#retrieve(java.lang.Long, java.lang.String) } instead.  
-	 */
 	@Deprecated
 	DataResponse<T> retrieve(final Long versionId, final String keyId);
 

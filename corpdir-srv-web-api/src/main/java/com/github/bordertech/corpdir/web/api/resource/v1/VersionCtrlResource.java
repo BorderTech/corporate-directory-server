@@ -30,7 +30,8 @@ public class VersionCtrlResource implements VersionCtrlReadOnlyService, VersionC
 	private final VersionCtrlWriteService writeImpl;
 
 	/**
-	 * @param impl the service implementation
+         * @param readImpl the read service implementation
+	 * @param writeImpl the write service implementation
 	 */
 	@Inject
 	public VersionCtrlResource(final VersionCtrlReadOnlyService readImpl, final VersionCtrlWriteService writeImpl) {

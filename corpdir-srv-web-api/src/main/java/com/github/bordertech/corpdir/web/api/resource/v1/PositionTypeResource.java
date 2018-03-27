@@ -31,8 +31,8 @@ public class PositionTypeResource implements PositionTypeReadOnlyService, Positi
 	private final PositionTypeWriteService writeImpl;
 
 	/**
-	 * @param readImpl
-	 * @param writeImpl
+         * @param readImpl the read service implementation
+	 * @param writeImpl the write service implementation
 	 */
 	@Inject
 	public PositionTypeResource(final PositionTypeReadOnlyService readImpl, final PositionTypeWriteService writeImpl) {

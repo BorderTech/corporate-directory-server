@@ -18,45 +18,16 @@ import java.util.List;
 @Deprecated
 public interface BasicVersionTreeService<T extends ApiTreeable & ApiVersionable> extends BasicVersionKeyIdService<T>, BasicTreeService<T> {
 
-	/**
-	 *
-	 * @param versionId
-	 * @param keyId
-	 * @return 
-	 * @deprecated use {@link BasicVersionTreeReadOnlyService#getSubs(java.lang.Long, java.lang.String) } instead.  
-	 */
 	@Deprecated
 	DataResponse<List<T>> getSubs(final Long versionId, final String keyId);
 
-	/**
-	 *
-	 * @param versionId
-	 * @param keyId
-	 * @param subKeyId
-	 * @return 
-	 * @deprecated use {@link BasicVersionTreeWriteService#addSub(java.lang.Long, java.lang.String, java.lang.String) } instead.  
-	 */
 	@Deprecated
 	DataResponse<T> addSub(final Long versionId, final String keyId, final String subKeyId);
 
 
-	/**
-	 *
-	 * @param versionId
-	 * @param keyId
-	 * @param subKeyId
-	 * @return 
-	 * @deprecated use {@link BasicVersionTreeWriteService#removeSub(java.lang.Long, java.lang.String, java.lang.String) } instead.  
-	 */
 	@Deprecated
 	DataResponse<T> removeSub(final Long versionId, final String keyId, final String subKeyId);
 
-	/**
-	 *
-	 * @param versionId
-	 * @return 
-	 * @deprecated use {@link BasicVersionTreeReadOnlyService#getRootItems(java.lang.Long) } instead.  
-	 */
 	@Deprecated
 	DataResponse<List<T>> getRootItems(final Long versionId);
 

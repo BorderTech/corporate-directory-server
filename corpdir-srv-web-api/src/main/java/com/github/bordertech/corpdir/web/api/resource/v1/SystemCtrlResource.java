@@ -30,8 +30,8 @@ public class SystemCtrlResource implements SystemCtrlReadOnlyService, SystemCtrl
 	private final SystemCtrlWriteService writeImpl;
 
 	/**
-	 * @param readImpl
-	 * @param writeImpl
+         * @param readImpl the read service implementation
+	 * @param writeImpl the write service implementation
 	 */
 	@Inject
 	public SystemCtrlResource(final SystemCtrlReadOnlyService readImpl, final SystemCtrlWriteService writeImpl) {

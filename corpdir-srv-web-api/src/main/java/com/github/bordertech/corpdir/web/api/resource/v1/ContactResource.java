@@ -32,8 +32,8 @@ public class ContactResource implements ContactReadOnlyService, ContactWriteServ
 	private final ContactWriteService writeImpl;
 
 	/**
-         * @param readImpl
-	 * @param writeImpl
+         * @param readImpl the read service implementation
+	 * @param writeImpl the write service implementation
 	 */
 	@Inject
 	public ContactResource(final ContactReadOnlyService readImpl, final ContactWriteService writeImpl) {
