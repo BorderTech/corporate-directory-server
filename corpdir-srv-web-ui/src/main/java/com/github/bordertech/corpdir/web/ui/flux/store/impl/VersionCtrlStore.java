@@ -3,7 +3,7 @@ package com.github.bordertech.corpdir.web.ui.flux.store.impl;
 import com.github.bordertech.corpdir.api.v1.model.VersionCtrl;
 import com.github.bordertech.corpdir.web.ui.CorpEntityType;
 import com.github.bordertech.corpdir.web.ui.flux.dataapi.impl.VersionCtrlApi;
-import com.github.bordertech.corpdir.web.ui.flux.store.DefaultCorpCrudStore;
+import com.github.bordertech.corpdir.web.ui.flux.store.temp.DefaultCorpCrudStoreTemp;
 import javax.inject.Inject;
 
 /**
@@ -11,7 +11,7 @@ import javax.inject.Inject;
  *
  * @author jonathan
  */
-public class VersionCtrlStore extends DefaultCorpCrudStore<VersionCtrl, VersionCtrlApi> {
+public class VersionCtrlStore extends DefaultCorpCrudStoreTemp<VersionCtrl, VersionCtrlApi> {
 
 	/**
 	 * @param api the backing API

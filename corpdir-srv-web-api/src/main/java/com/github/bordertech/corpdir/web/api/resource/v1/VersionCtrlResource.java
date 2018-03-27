@@ -2,8 +2,9 @@ package com.github.bordertech.corpdir.web.api.resource.v1;
 
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.v1.VersionCtrlService;
 import com.github.bordertech.corpdir.api.v1.model.VersionCtrl;
+import com.github.bordertech.corpdir.modify.api.v1.VersionCtrlWriteService;
+import com.github.bordertech.corpdir.readonly.api.v1.VersionCtrlReadOnlyService;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
@@ -23,23 +24,25 @@ import javax.ws.rs.core.MediaType;
  * @since 1.0.0
  */
 @Path(value = "v1/version")
-public class VersionCtrlResource implements VersionCtrlService {
+public class VersionCtrlResource implements VersionCtrlReadOnlyService, VersionCtrlWriteService {
 
-	private final VersionCtrlService impl;
+	private final VersionCtrlReadOnlyService readImpl;
+	private final VersionCtrlWriteService writeImpl;
 
 	/**
 	 * @param impl the service implementation
 	 */
 	@Inject
-	public VersionCtrlResource(final VersionCtrlService impl) {
-		this.impl = impl;
+	public VersionCtrlResource(final VersionCtrlReadOnlyService readImpl, final VersionCtrlWriteService writeImpl) {
+		this.readImpl = readImpl;
+		this.writeImpl = writeImpl;
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<List<VersionCtrl>> search(@QueryParam("search") final String search) {
-		return impl.search(search);
+		return readImpl.search(search);
 	}
 
 	@GET
@@ -47,14 +50,14 @@ public class VersionCtrlResource implements VersionCtrlService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<VersionCtrl> retrieve(@PathParam("key") final String keyId) {
-		return impl.retrieve(keyId);
+		return readImpl.retrieve(keyId);
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<VersionCtrl> create(final VersionCtrl type) {
-		return impl.create(type);
+		return writeImpl.create(type);
 	}
 
 	@PUT
@@ -62,7 +65,7 @@ public class VersionCtrlResource implements VersionCtrlService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<VersionCtrl> update(@PathParam("key") final String keyId, final VersionCtrl type) {
-		return impl.update(keyId, type);
+		return writeImpl.update(keyId, type);
 	}
 
 	@DELETE
@@ -70,7 +73,7 @@ public class VersionCtrlResource implements VersionCtrlService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public BasicResponse delete(@PathParam("key") final String keyId) {
-		return impl.delete(keyId);
+		return writeImpl.delete(keyId);
 	}
 
 	@POST
@@ -78,14 +81,14 @@ public class VersionCtrlResource implements VersionCtrlService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Long> createVersion(@QueryParam("description") final String description) {
-		return impl.createVersion(description);
+		return writeImpl.createVersion(description);
 	}
 
 	@PUT
 	@Path("/copy/{fromVers}/to/{toVers}")
 	@Override
 	public BasicResponse copyVersion(@PathParam("fromVers") final Long fromId, @PathParam("toVers") final Long toId, @QueryParam("system") final boolean copySystem, @QueryParam("custom") final boolean copyCustom) {
-		return impl.copyVersion(fromId, toId, copySystem, copyCustom);
+		return writeImpl.copyVersion(fromId, toId, copySystem, copyCustom);
 	}
 
 }
