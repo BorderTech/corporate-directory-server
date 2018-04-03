@@ -5,16 +5,12 @@ import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
 import com.github.bordertech.corpdir.api.v1.model.Channel;
 import com.github.bordertech.corpdir.api.v1.model.Contact;
-import com.github.bordertech.corpdir.jpa.common.map.MapperApiVersion;
 import com.github.bordertech.corpdir.jpa.entity.ChannelEntity;
 import com.github.bordertech.corpdir.jpa.entity.ContactEntity;
 import com.github.bordertech.corpdir.jpa.entity.PositionEntity;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
-import com.github.bordertech.corpdir.jpa.entity.version.ContactVersionEntity;
-import com.github.bordertech.corpdir.jpa.modify.common.svc.JpaBasicVersionKeyIdWriteService;
 import com.github.bordertech.corpdir.jpa.util.MapperUtil;
-import com.github.bordertech.corpdir.jpa.v1.mapper.ChannelMapper;
-import com.github.bordertech.corpdir.jpa.v1.mapper.ContactMapper;
+import com.github.bordertech.corpdir.jpa.v1.api.ContactServiceImpl;
 import com.github.bordertech.corpdir.modify.api.v1.ContactWriteService;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +24,8 @@ import javax.persistence.EntityManager;
  * @since 1.0.0
  */
 @Singleton
-public class ContactWriteServiceImpl extends JpaBasicVersionKeyIdWriteService<Contact, ContactVersionEntity, ContactEntity> implements ContactWriteService {
+public class ContactWriteServiceImpl extends ContactServiceImpl implements ContactWriteService {
 
-	private static final ContactMapper CONTACT_MAPPER = new ContactMapper();
-	private static final ChannelMapper CHANNEL_MAPPER = new ChannelMapper();
 
 	@Override
 	public BasicResponse deleteImage(final String keyId) {
@@ -194,16 +188,6 @@ public class ContactWriteServiceImpl extends JpaBasicVersionKeyIdWriteService<Co
 			throw new NotFoundException("Entity [" + keyId + "] not found.");
 		}
 		return entity;
-	}
-
-	@Override
-	protected MapperApiVersion<Contact, ContactVersionEntity, ContactEntity> getMapper() {
-		return CONTACT_MAPPER;
-	}
-	
-	@Override
-	protected Class<ContactEntity> getEntityClass() {
-		return ContactEntity.class;
 	}
 
 }

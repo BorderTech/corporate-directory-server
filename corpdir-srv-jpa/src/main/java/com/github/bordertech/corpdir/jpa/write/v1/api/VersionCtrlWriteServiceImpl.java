@@ -2,11 +2,8 @@ package com.github.bordertech.corpdir.jpa.write.v1.api;
 
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.v1.model.VersionCtrl;
-import com.github.bordertech.corpdir.jpa.common.map.MapperApi;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
-import com.github.bordertech.corpdir.jpa.modify.common.svc.JpaBasicIdWriteService;
-import com.github.bordertech.corpdir.jpa.v1.mapper.VersionCtrlMapper;
+import com.github.bordertech.corpdir.jpa.v1.api.VersionCtrlServiceImpl;
 import com.github.bordertech.corpdir.modify.api.v1.VersionCtrlWriteService;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
@@ -21,11 +18,9 @@ import org.slf4j.LoggerFactory;
  * @since 1.0.0
  */
 @Singleton
-public class VersionCtrlWriteServiceImpl extends JpaBasicIdWriteService<VersionCtrl, VersionCtrlEntity> implements VersionCtrlWriteService {
+public class VersionCtrlWriteServiceImpl extends VersionCtrlServiceImpl implements VersionCtrlWriteService {
 
 	private static final Logger LOG = LoggerFactory.getLogger(VersionCtrlWriteServiceImpl.class);
-
-	private static final VersionCtrlMapper MAPPER = new VersionCtrlMapper();
 
 	@Override
 	public DataResponse<Long> createVersion(final String description) {
@@ -46,16 +41,6 @@ public class VersionCtrlWriteServiceImpl extends JpaBasicIdWriteService<VersionC
 	@Override
 	public BasicResponse copyVersion(final Long fromId, final Long toId, final boolean copySystem, final boolean copyCustom) {
 		throw new UnsupportedOperationException("Not supported yet.");
-	}
-
-	@Override
-	protected MapperApi<VersionCtrl, VersionCtrlEntity> getMapper() {
-		return MAPPER;
-	}
-
-	@Override
-	protected Class<VersionCtrlEntity> getEntityClass() {
-		return VersionCtrlEntity.class;
 	}
 
 }

@@ -2,12 +2,9 @@ package com.github.bordertech.corpdir.jpa.write.v1.api;
 
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.v1.model.SystemCtrl;
-import com.github.bordertech.corpdir.jpa.common.map.MapperApi;
 import com.github.bordertech.corpdir.jpa.entity.SystemCtrlEntity;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
-import com.github.bordertech.corpdir.jpa.modify.common.svc.JpaBasicIdWriteService;
-import com.github.bordertech.corpdir.jpa.v1.mapper.SystemCtrlMapper;
+import com.github.bordertech.corpdir.jpa.v1.api.SystemCtrlServiceImpl;
 import com.github.bordertech.corpdir.modify.api.v1.SystemCtrlWriteService;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
@@ -22,11 +19,9 @@ import org.slf4j.LoggerFactory;
  * @since 1.0.0
  */
 @Singleton
-public class SystemCtrlWriteServiceImpl extends JpaBasicIdWriteService<SystemCtrl, SystemCtrlEntity> implements SystemCtrlWriteService {
+public class SystemCtrlWriteServiceImpl extends SystemCtrlServiceImpl implements SystemCtrlWriteService {
 
 	private static final Logger LOG = LoggerFactory.getLogger(SystemCtrlWriteServiceImpl.class);
-
-	private static final SystemCtrlMapper MAPPER = new SystemCtrlMapper();
 
 	@Override
 	public DataResponse<Long> setCurrentVersion(final Long versionId) {
@@ -64,15 +59,5 @@ public class SystemCtrlWriteServiceImpl extends JpaBasicIdWriteService<SystemCtr
 	@Override
 	public BasicResponse delete(final String id) {
 		throw new UnsupportedOperationException("Delete not supported.");
-	}
-
-	@Override
-	protected Class<SystemCtrlEntity> getEntityClass() {
-		return SystemCtrlEntity.class;
-	}
-
-	@Override
-	protected MapperApi<SystemCtrl, SystemCtrlEntity> getMapper() {
-		return MAPPER;
 	}
 }

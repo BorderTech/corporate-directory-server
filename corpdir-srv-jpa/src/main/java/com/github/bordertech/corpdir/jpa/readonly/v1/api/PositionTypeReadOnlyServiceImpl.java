@@ -2,14 +2,10 @@ package com.github.bordertech.corpdir.jpa.readonly.v1.api;
 
 import com.github.bordertech.corpdir.api.response.DataResponse;
 import com.github.bordertech.corpdir.api.v1.model.Position;
-import com.github.bordertech.corpdir.api.v1.model.PositionType;
-import com.github.bordertech.corpdir.jpa.common.map.MapperApi;
 import com.github.bordertech.corpdir.jpa.entity.PositionEntity;
 import com.github.bordertech.corpdir.jpa.entity.PositionTypeEntity;
-import com.github.bordertech.corpdir.jpa.readonly.common.svc.JpaBasicKeyIdReadOnlyService;
 import com.github.bordertech.corpdir.jpa.util.CriteriaUtil;
-import com.github.bordertech.corpdir.jpa.v1.mapper.PositionMapper;
-import com.github.bordertech.corpdir.jpa.v1.mapper.PositionTypeMapper;
+import com.github.bordertech.corpdir.jpa.v1.api.PositionTypeServiceImpl;
 import com.github.bordertech.corpdir.readonly.api.v1.PositionTypeReadOnlyService;
 import java.util.List;
 import javax.inject.Singleton;
@@ -26,10 +22,7 @@ import javax.persistence.criteria.Root;
  * @since 1.0.0
  */
 @Singleton
-public class PositionTypeReadOnlyServiceImpl extends JpaBasicKeyIdReadOnlyService<PositionType, PositionTypeEntity> implements PositionTypeReadOnlyService {
-
-	private static final PositionTypeMapper POSITIONTYPE_MAPPER = new PositionTypeMapper();
-	private static final PositionMapper POSITION_MAPPER = new PositionMapper();
+public class PositionTypeReadOnlyServiceImpl extends PositionTypeServiceImpl implements PositionTypeReadOnlyService {
 
 	@Override
 	public DataResponse<List<Position>> getPositions(final String keyId) {
@@ -52,15 +45,5 @@ public class PositionTypeReadOnlyServiceImpl extends JpaBasicKeyIdReadOnlyServic
 		} finally {
 			em.close();
 		}
-	}
-
-	@Override
-	protected Class<PositionTypeEntity> getEntityClass() {
-		return PositionTypeEntity.class;
-	}
-
-	@Override
-	protected MapperApi<PositionType, PositionTypeEntity> getMapper() {
-		return POSITIONTYPE_MAPPER;
 	}
 }

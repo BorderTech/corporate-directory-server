@@ -2,14 +2,10 @@ package com.github.bordertech.corpdir.jpa.readonly.v1.api;
 
 import com.github.bordertech.corpdir.api.response.DataResponse;
 import com.github.bordertech.corpdir.api.v1.model.OrgUnit;
-import com.github.bordertech.corpdir.api.v1.model.UnitType;
-import com.github.bordertech.corpdir.jpa.common.map.MapperApi;
 import com.github.bordertech.corpdir.jpa.entity.OrgUnitEntity;
 import com.github.bordertech.corpdir.jpa.entity.UnitTypeEntity;
-import com.github.bordertech.corpdir.jpa.readonly.common.svc.JpaBasicKeyIdReadOnlyService;
 import com.github.bordertech.corpdir.jpa.util.CriteriaUtil;
-import com.github.bordertech.corpdir.jpa.v1.mapper.OrgUnitMapper;
-import com.github.bordertech.corpdir.jpa.v1.mapper.UnitTypeMapper;
+import com.github.bordertech.corpdir.jpa.v1.api.UnitTypeServiceImpl;
 import com.github.bordertech.corpdir.readonly.api.v1.UnitTypeReadOnlyService;
 import java.util.List;
 import javax.inject.Singleton;
@@ -26,10 +22,7 @@ import javax.persistence.criteria.Root;
  * @since 1.0.0
  */
 @Singleton
-public class UnitTypeReadOnlyServiceImpl extends JpaBasicKeyIdReadOnlyService<UnitType, UnitTypeEntity> implements UnitTypeReadOnlyService {
-
-	private static final OrgUnitMapper ORGUNIT_MAPPER = new OrgUnitMapper();
-	private static final UnitTypeMapper UNITTYPE_MAPPER = new UnitTypeMapper();
+public class UnitTypeReadOnlyServiceImpl extends UnitTypeServiceImpl implements UnitTypeReadOnlyService {
 
 	@Override
 	public DataResponse<List<OrgUnit>> getOrgUnits(final String keyId) {
@@ -52,15 +45,5 @@ public class UnitTypeReadOnlyServiceImpl extends JpaBasicKeyIdReadOnlyService<Un
 		} finally {
 			em.close();
 		}
-	}
-
-	@Override
-	protected Class<UnitTypeEntity> getEntityClass() {
-		return UnitTypeEntity.class;
-	}
-
-	@Override
-	protected MapperApi<UnitType, UnitTypeEntity> getMapper() {
-		return UNITTYPE_MAPPER;
 	}
 }

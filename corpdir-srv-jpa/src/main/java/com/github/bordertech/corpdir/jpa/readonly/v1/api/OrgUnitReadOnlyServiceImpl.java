@@ -2,14 +2,10 @@ package com.github.bordertech.corpdir.jpa.readonly.v1.api;
 
 import com.github.bordertech.corpdir.api.exception.NotFoundException;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.v1.model.OrgUnit;
 import com.github.bordertech.corpdir.api.v1.model.Position;
-import com.github.bordertech.corpdir.jpa.common.map.MapperApiVersion;
 import com.github.bordertech.corpdir.jpa.entity.OrgUnitEntity;
 import com.github.bordertech.corpdir.jpa.entity.version.OrgUnitVersionEntity;
-import com.github.bordertech.corpdir.jpa.readonly.common.svc.JpaBasicVersionTreeReadOnlyService;
-import com.github.bordertech.corpdir.jpa.v1.mapper.OrgUnitMapper;
-import com.github.bordertech.corpdir.jpa.v1.mapper.PositionMapper;
+import com.github.bordertech.corpdir.jpa.v1.api.OrgUniteServiceImpl;
 import com.github.bordertech.corpdir.readonly.api.v1.OrgUnitReadOnlyService;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +20,7 @@ import javax.persistence.EntityManager;
  * @since 1.0.0
  */
 @Singleton
-public class OrgUnitReadOnlyServiceImpl extends JpaBasicVersionTreeReadOnlyService<OrgUnit, OrgUnitVersionEntity, OrgUnitEntity> implements OrgUnitReadOnlyService {
-
-	private static final PositionMapper POSITION_MAPPER = new PositionMapper();
-	private static final OrgUnitMapper ORGUNIT_MAPPER = new OrgUnitMapper();
+public class OrgUnitReadOnlyServiceImpl extends OrgUniteServiceImpl implements OrgUnitReadOnlyService {
 
 	@Override
 	public DataResponse<List<Position>> getPositions(final String keyId) {
@@ -71,20 +64,5 @@ public class OrgUnitReadOnlyServiceImpl extends JpaBasicVersionTreeReadOnlyServi
 		} finally {
 			em.close();
 		}
-	}
-
-	@Override
-	protected Class<OrgUnitEntity> getEntityClass() {
-		return OrgUnitEntity.class;
-	}
-
-	@Override
-	protected Class<OrgUnitVersionEntity> getVersionEntityClass() {
-		return OrgUnitVersionEntity.class;
-	}
-
-	@Override
-	protected MapperApiVersion<OrgUnit, OrgUnitVersionEntity, OrgUnitEntity> getMapper() {
-		return ORGUNIT_MAPPER;
 	}
 }

@@ -1,14 +1,10 @@
 package com.github.bordertech.corpdir.jpa.readonly.v1.api;
 
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.v1.model.Contact;
 import com.github.bordertech.corpdir.api.v1.model.Position;
-import com.github.bordertech.corpdir.jpa.common.map.MapperApiVersion;
 import com.github.bordertech.corpdir.jpa.entity.ContactEntity;
 import com.github.bordertech.corpdir.jpa.entity.version.ContactVersionEntity;
-import com.github.bordertech.corpdir.jpa.readonly.common.svc.JpaBasicVersionKeyIdReadOnlyService;
-import com.github.bordertech.corpdir.jpa.v1.mapper.ContactMapper;
-import com.github.bordertech.corpdir.jpa.v1.mapper.PositionMapper;
+import com.github.bordertech.corpdir.jpa.v1.api.ContactServiceImpl;
 import com.github.bordertech.corpdir.readonly.api.v1.ContactReadOnlyService;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +19,7 @@ import javax.persistence.EntityManager;
  * @since 1.0.0
  */
 @Singleton
-public class ContactReadOnlyServiceImpl extends JpaBasicVersionKeyIdReadOnlyService<Contact, ContactVersionEntity, ContactEntity> implements ContactReadOnlyService {
-
-	private static final ContactMapper CONTACT_MAPPER = new ContactMapper();
-	private static final PositionMapper POSITION_MAPPER = new PositionMapper();
+public class ContactReadOnlyServiceImpl extends ContactServiceImpl implements ContactReadOnlyService {
 
 	@Override
 	public DataResponse<byte[]> getImage(final String keyId) {
@@ -59,21 +52,6 @@ public class ContactReadOnlyServiceImpl extends JpaBasicVersionKeyIdReadOnlyServ
 		} finally {
 			em.close();
 		}
-	}
-	
-	@Override
-	protected Class<ContactEntity> getEntityClass() {
-		return ContactEntity.class;
-	}
-
-	@Override
-	protected Class<ContactVersionEntity> getVersionEntityClass() {
-		return ContactVersionEntity.class;
-	}
-
-	@Override
-	protected MapperApiVersion<Contact, ContactVersionEntity, ContactEntity> getMapper() {
-		return CONTACT_MAPPER;
 	}
     
 }

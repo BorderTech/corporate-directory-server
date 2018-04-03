@@ -3,14 +3,12 @@ package com.github.bordertech.corpdir.jpa.write.v1.api;
 import com.github.bordertech.corpdir.api.exception.NotFoundException;
 import com.github.bordertech.corpdir.api.response.DataResponse;
 import com.github.bordertech.corpdir.api.v1.model.OrgUnit;
-import com.github.bordertech.corpdir.jpa.common.map.MapperApiVersion;
 import com.github.bordertech.corpdir.jpa.entity.OrgUnitEntity;
 import com.github.bordertech.corpdir.jpa.entity.PositionEntity;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
-import com.github.bordertech.corpdir.jpa.entity.version.OrgUnitVersionEntity;
 import com.github.bordertech.corpdir.jpa.entity.version.PositionVersionEntity;
-import com.github.bordertech.corpdir.jpa.modify.common.svc.JpaBasicVersionTreeWriteService;
 import com.github.bordertech.corpdir.jpa.util.MapperUtil;
+import com.github.bordertech.corpdir.jpa.v1.api.OrgUniteServiceImpl;
 import com.github.bordertech.corpdir.jpa.v1.mapper.OrgUnitMapper;
 import com.github.bordertech.corpdir.modify.api.v1.OrgUnitWriteService;
 import javax.inject.Singleton;
@@ -24,7 +22,7 @@ import javax.persistence.EntityManager;
  * @since 1.0.0
  */
 @Singleton
-public class OrgUnitWriteServiceImpl extends JpaBasicVersionTreeWriteService<OrgUnit, OrgUnitVersionEntity, OrgUnitEntity> implements OrgUnitWriteService {
+public class OrgUnitWriteServiceImpl extends OrgUniteServiceImpl implements OrgUnitWriteService {
 
 	private static final OrgUnitMapper ORGUNIT_MAPPER = new OrgUnitMapper();
 
@@ -95,15 +93,5 @@ public class OrgUnitWriteServiceImpl extends JpaBasicVersionTreeWriteService<Org
 			throw new NotFoundException("Position [" + keyId + "] not found.");
 		}
 		return entity;
-	}
-
-	@Override
-	protected MapperApiVersion<OrgUnit, OrgUnitVersionEntity, OrgUnitEntity> getMapper() {
-		return ORGUNIT_MAPPER;
-	}
-
-	@Override
-	protected Class<OrgUnitEntity> getEntityClass() {
-		return OrgUnitEntity.class;
 	}
 }

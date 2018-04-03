@@ -3,14 +3,11 @@ package com.github.bordertech.corpdir.jpa.write.v1.api;
 import com.github.bordertech.corpdir.api.exception.NotFoundException;
 import com.github.bordertech.corpdir.api.response.DataResponse;
 import com.github.bordertech.corpdir.api.v1.model.Position;
-import com.github.bordertech.corpdir.jpa.common.map.MapperApiVersion;
 import com.github.bordertech.corpdir.jpa.entity.ContactEntity;
 import com.github.bordertech.corpdir.jpa.entity.PositionEntity;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
-import com.github.bordertech.corpdir.jpa.entity.version.PositionVersionEntity;
-import com.github.bordertech.corpdir.jpa.modify.common.svc.JpaBasicVersionTreeWriteService;
 import com.github.bordertech.corpdir.jpa.util.MapperUtil;
-import com.github.bordertech.corpdir.jpa.v1.mapper.PositionMapper;
+import com.github.bordertech.corpdir.jpa.v1.api.PositionServiceImpl;
 import com.github.bordertech.corpdir.modify.api.v1.PositionWriteService;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
@@ -23,9 +20,7 @@ import javax.persistence.EntityManager;
  * @since 1.0.0
  */
 @Singleton
-public class PositionWriteServiceImpl extends JpaBasicVersionTreeWriteService<Position, PositionVersionEntity, PositionEntity> implements PositionWriteService {
-
-	private static final PositionMapper POSITION_MAPPER = new PositionMapper();
+public class PositionWriteServiceImpl extends PositionServiceImpl implements PositionWriteService {
 
 	@Override
 	public DataResponse<Position> addContact(final String keyId, final String contactKeyId) {
@@ -83,15 +78,5 @@ public class PositionWriteServiceImpl extends JpaBasicVersionTreeWriteService<Po
 			throw new NotFoundException("Contact [" + keyId + "] not found.");
 		}
 		return entity;
-	}
-
-	@Override
-	protected Class<PositionEntity> getEntityClass() {
-		return PositionEntity.class;
-	}
-
-	@Override
-	protected MapperApiVersion<Position, PositionVersionEntity, PositionEntity> getMapper() {
-		return POSITION_MAPPER;
 	}
 }
