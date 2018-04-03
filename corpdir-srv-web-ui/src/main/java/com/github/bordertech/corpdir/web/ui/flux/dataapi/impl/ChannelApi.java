@@ -1,8 +1,8 @@
 package com.github.bordertech.corpdir.web.ui.flux.dataapi.impl;
 
 import com.github.bordertech.corpdir.api.common.ApiIdObject;
-import com.github.bordertech.corpdir.api.service.modify.BasicIdWriteService;
-import com.github.bordertech.corpdir.api.service.readonly.BasicIdReadOnlyService;
+import com.github.bordertech.corpdir.api.modify.service.BasicIdWriteService;
+import com.github.bordertech.corpdir.api.readonly.service.BasicIdReadOnlyService;
 import com.github.bordertech.corpdir.api.v1.model.Channel;
 import java.util.List;
 import java.util.UUID;

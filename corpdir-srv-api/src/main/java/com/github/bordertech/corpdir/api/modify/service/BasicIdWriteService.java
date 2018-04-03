@@ -1,4 +1,4 @@
-package com.github.bordertech.corpdir.api.service.modify;
+package com.github.bordertech.corpdir.api.modify.service;
 
 import com.github.bordertech.corpdir.api.common.ApiIdObject;
 import com.github.bordertech.corpdir.api.response.BasicResponse;

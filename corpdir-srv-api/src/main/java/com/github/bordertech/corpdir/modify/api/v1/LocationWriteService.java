@@ -1,6 +1,6 @@
 package com.github.bordertech.corpdir.modify.api.v1;
 
-import com.github.bordertech.corpdir.api.service.modify.BasicTreeWriteService;
+import com.github.bordertech.corpdir.api.modify.service.BasicTreeWriteService;
 import com.github.bordertech.corpdir.api.v1.model.Location;
 
 /**

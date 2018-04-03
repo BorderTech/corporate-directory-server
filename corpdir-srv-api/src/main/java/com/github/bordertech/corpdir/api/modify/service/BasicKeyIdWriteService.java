@@ -1,9 +1,9 @@
-package com.github.bordertech.corpdir.api.service.readonly;
+package com.github.bordertech.corpdir.api.modify.service;
 
 import com.github.bordertech.corpdir.api.common.ApiKeyIdObject;
 
 /**
- * Basic read-only service for keyed API object.
+ * Basic write (modifiable) service for keyed API object.
  * <p>
  * The ID maybe a record ID or a BusinessKey.
  * </p>
@@ -13,6 +13,6 @@ import com.github.bordertech.corpdir.api.common.ApiKeyIdObject;
  * @author Aswin Kandula
  * @since 1.0.0
  */
-public interface BasicKeyIdReadOnlyService<T extends ApiKeyIdObject> extends BasicIdReadOnlyService<T> {
+public interface BasicKeyIdWriteService<T extends ApiKeyIdObject> extends BasicIdWriteService<T> {
     
 }

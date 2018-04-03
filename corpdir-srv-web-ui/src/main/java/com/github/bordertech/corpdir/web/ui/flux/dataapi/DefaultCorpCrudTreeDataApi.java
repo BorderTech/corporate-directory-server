@@ -2,8 +2,8 @@ package com.github.bordertech.corpdir.web.ui.flux.dataapi;
 
 import com.github.bordertech.corpdir.api.common.ApiTreeable;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.service.modify.BasicTreeWriteService;
-import com.github.bordertech.corpdir.api.service.readonly.BasicTreeReadOnlyService;
+import com.github.bordertech.corpdir.api.modify.service.BasicTreeWriteService;
+import com.github.bordertech.corpdir.api.readonly.service.BasicTreeReadOnlyService;
 import java.util.List;
 
 /**

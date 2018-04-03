@@ -1,6 +1,6 @@
 package com.github.bordertech.corpdir.readonly.api.v1;
 
-import com.github.bordertech.corpdir.api.service.readonly.BasicTreeReadOnlyService;
+import com.github.bordertech.corpdir.api.readonly.service.BasicTreeReadOnlyService;
 import com.github.bordertech.corpdir.api.v1.model.Location;
 
 /**

@@ -1,8 +1,8 @@
 package com.github.bordertech.corpdir.jpa.common.svc;
 
 import com.github.bordertech.corpdir.api.common.ApiKeyIdObject;
-import com.github.bordertech.corpdir.api.service.modify.BasicKeyIdWriteService;
-import com.github.bordertech.corpdir.api.service.readonly.BasicKeyIdReadOnlyService;
+import com.github.bordertech.corpdir.api.modify.service.BasicKeyIdWriteService;
+import com.github.bordertech.corpdir.api.readonly.service.BasicKeyIdReadOnlyService;
 import com.github.bordertech.corpdir.jpa.common.feature.PersistKeyIdObject;
 import javax.inject.Singleton;
 

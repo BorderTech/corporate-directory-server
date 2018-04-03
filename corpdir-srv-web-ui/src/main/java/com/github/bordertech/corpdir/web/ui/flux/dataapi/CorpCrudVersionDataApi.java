@@ -1,8 +1,8 @@
 package com.github.bordertech.corpdir.web.ui.flux.dataapi;
 
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
-import com.github.bordertech.corpdir.api.service.modify.BasicVersionKeyIdWriteService;
-import com.github.bordertech.corpdir.api.service.readonly.BasicVersionKeyIdReadOnlyService;
+import com.github.bordertech.corpdir.api.modify.service.BasicVersionKeyIdWriteService;
+import com.github.bordertech.corpdir.api.readonly.service.BasicVersionKeyIdReadOnlyService;
 import java.util.List;
 
 /**

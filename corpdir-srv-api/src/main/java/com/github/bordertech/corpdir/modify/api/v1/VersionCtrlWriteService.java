@@ -2,7 +2,7 @@ package com.github.bordertech.corpdir.modify.api.v1;
 
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.service.modify.BasicIdWriteService;
+import com.github.bordertech.corpdir.api.modify.service.BasicIdWriteService;
 import com.github.bordertech.corpdir.api.v1.model.VersionCtrl;
 
 /**

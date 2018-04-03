@@ -1,6 +1,6 @@
 package com.github.bordertech.corpdir.modify.api.v1;
 
-import com.github.bordertech.corpdir.api.service.modify.BasicKeyIdWriteService;
+import com.github.bordertech.corpdir.api.modify.service.BasicKeyIdWriteService;
 import com.github.bordertech.corpdir.api.v1.model.UnitType;
 
 /**

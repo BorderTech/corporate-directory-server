@@ -1,6 +1,6 @@
 package com.github.bordertech.corpdir.readonly.api.v1;
 
-import com.github.bordertech.corpdir.api.service.readonly.BasicIdReadOnlyService;
+import com.github.bordertech.corpdir.api.readonly.service.BasicIdReadOnlyService;
 import com.github.bordertech.corpdir.api.v1.model.VersionCtrl;
 
 /**

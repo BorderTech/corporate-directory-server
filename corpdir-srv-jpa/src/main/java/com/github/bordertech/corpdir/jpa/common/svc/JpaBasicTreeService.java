@@ -2,8 +2,8 @@ package com.github.bordertech.corpdir.jpa.common.svc;
 
 import com.github.bordertech.corpdir.api.common.ApiTreeable;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.service.modify.BasicTreeWriteService;
-import com.github.bordertech.corpdir.api.service.readonly.BasicTreeReadOnlyService;
+import com.github.bordertech.corpdir.api.modify.service.BasicTreeWriteService;
+import com.github.bordertech.corpdir.api.readonly.service.BasicTreeReadOnlyService;
 import com.github.bordertech.corpdir.jpa.common.feature.PersistKeyIdTree;
 import com.github.bordertech.corpdir.jpa.util.CriteriaUtil;
 import java.util.List;
