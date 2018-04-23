@@ -24,13 +24,13 @@ public class ApplicationServicesBinder extends AbstractBinder {
 	@Override
 	protected void configure() {
 		// Services
-		bind(ContactServiceImpl.class).to(ContactService.class).in(Singleton.class);
-		bind(PositionServiceImpl.class).to(PositionService.class).in(Singleton.class);
-		bind(OrgUnitServiceImpl.class).to(OrgUnitService.class).in(Singleton.class);
 		bind(LocationServiceImpl.class).to(LocationService.class).in(Singleton.class);
-		bind(PositionTypeServiceImpl.class).to(PositionTypeService.class).in(Singleton.class);
 		bind(UnitTypeServiceImpl.class).to(UnitTypeService.class).in(Singleton.class);
-		bind(VersionCtrlServiceImpl.class).to(VersionCtrlService.class).in(Singleton.class);
+		bind(OrgUnitServiceImpl.class).to(OrgUnitService.class).in(Singleton.class);
+		bind(PositionTypeServiceImpl.class).to(PositionTypeService.class).in(Singleton.class);
+		bind(PositionServiceImpl.class).to(PositionService.class).in(Singleton.class);
+		bind(ContactServiceImpl.class).to(ContactService.class).in(Singleton.class);
 		bind(SystemCtrlServiceImpl.class).to(SystemCtrlService.class).in(Singleton.class);
+		bind(VersionCtrlServiceImpl.class).to(VersionCtrlService.class).in(Singleton.class);
 	}
 }

@@ -25,11 +25,11 @@ import javax.ws.rs.core.MediaType;
  */
 @Path(value = "v1/contacts")
 public class ContactResource implements ContactService {
-	
+
 	private final ContactService impl;
 
 	/**
-	 * @param impl the write service implementation
+	 * @param impl the service implementation
 	 */
 	@Inject
 	public ContactResource(final ContactService impl) {

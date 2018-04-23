@@ -28,7 +28,7 @@ public class LocationResource implements LocationService {
 	private final LocationService impl;
 
 	/**
-	 * @param impl the write service implementation
+	 * @param impl the service implementation
 	 */
 	@Inject
 	public LocationResource(final LocationService impl) {

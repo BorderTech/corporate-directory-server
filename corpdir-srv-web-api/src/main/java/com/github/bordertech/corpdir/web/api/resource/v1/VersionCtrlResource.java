@@ -23,16 +23,16 @@ import javax.ws.rs.core.MediaType;
  * @since 1.0.0
  */
 @Path(value = "v1/version")
-public class VersionCtrlResource implements  VersionCtrlService {
+public class VersionCtrlResource implements VersionCtrlService {
 
 	private final VersionCtrlService impl;
 
 	/**
-	 * @param writeImpl the write service implementation
+	 * @param impl the service implementation
 	 */
 	@Inject
-	public VersionCtrlResource(final VersionCtrlService writeImpl) {
-		this.impl = writeImpl;
+	public VersionCtrlResource(final VersionCtrlService impl) {
+		this.impl = impl;
 	}
 
 	@GET

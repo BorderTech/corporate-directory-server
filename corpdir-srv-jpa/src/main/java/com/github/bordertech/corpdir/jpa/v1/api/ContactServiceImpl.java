@@ -20,22 +20,34 @@ import com.github.bordertech.corpdir.jpa.v1.mapper.ContactMapper;
 import com.github.bordertech.corpdir.jpa.v1.mapper.PositionMapper;
 import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 
 /**
- * Abstract contact service implementation.
- * 
+ * Contact JPA service implementation.
+ *
  * @author Jonathan Austin
  * @since 1.0.0
  */
+@Singleton
 public class ContactServiceImpl extends JpaBasicVersionKeyIdService<Contact, ContactVersionEntity, ContactEntity> implements ContactService {
 
-	protected static final ContactMapper CONTACT_MAPPER = new ContactMapper();
-	protected static final PositionMapper POSITION_MAPPER = new PositionMapper();
-	protected static final ChannelMapper CHANNEL_MAPPER = new ChannelMapper();
+	private static final ContactMapper CONTACT_MAPPER = new ContactMapper();
+	private static final PositionMapper POSITION_MAPPER = new PositionMapper();
+	private static final ChannelMapper CHANNEL_MAPPER = new ChannelMapper();
 
 	@Override
 	public DataResponse<byte[]> getImage(final String keyId) {
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
+
+	@Override
+	public BasicResponse deleteImage(final String keyId) {
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
+
+	@Override
+	public BasicResponse setImage(final String keyId, final byte[] image) {
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 
@@ -45,8 +57,36 @@ public class ContactServiceImpl extends JpaBasicVersionKeyIdService<Contact, Con
 	}
 
 	@Override
+	public BasicResponse deleteThumbnail(final String keyId) {
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
+
+	@Override
+	public BasicResponse setThumbnail(final String keyId, final byte[] image) {
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
+
+	protected PositionEntity getPositionEntity(final EntityManager em, final String keyId) {
+		PositionEntity entity = MapperUtil.getEntityByKeyId(em, keyId, PositionEntity.class);
+		if (entity == null) {
+			throw new NotFoundException("Position [" + keyId + "] not found.");
+		}
+		return entity;
+	}
+
+	@Override
 	public DataResponse<List<Position>> getPositions(final String keyId) {
 		return getPositions(getCurrentVersionId(), keyId);
+	}
+
+	@Override
+	public DataResponse<Contact> addPosition(final String keyId, final String positionKeyId) {
+		return addPosition(getCurrentVersionId(), keyId, positionKeyId);
+	}
+
+	@Override
+	public DataResponse<Contact> removePosition(final String keyId, final String positionKeyId) {
+		return removePosition(getCurrentVersionId(), keyId, positionKeyId);
 	}
 
 	@Override
@@ -65,36 +105,6 @@ public class ContactServiceImpl extends JpaBasicVersionKeyIdService<Contact, Con
 		} finally {
 			em.close();
 		}
-	}
-
-	@Override
-	public BasicResponse deleteImage(final String keyId) {
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
-
-	@Override
-	public BasicResponse setImage(final String keyId, final byte[] image) {
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
-
-	@Override
-	public BasicResponse deleteThumbnail(final String keyId) {
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
-
-	@Override
-	public BasicResponse setThumbnail(final String keyId, final byte[] image) {
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
-
-	@Override
-	public DataResponse<Contact> addPosition(final String keyId, final String positionKeyId) {
-		return addPosition(getCurrentVersionId(), keyId, positionKeyId);
-	}
-
-	@Override
-	public DataResponse<Contact> removePosition(final String keyId, final String positionKeyId) {
-		return removePosition(getCurrentVersionId(), keyId, positionKeyId);
 	}
 
 	@Override
@@ -135,14 +145,6 @@ public class ContactServiceImpl extends JpaBasicVersionKeyIdService<Contact, Con
 		} finally {
 			em.close();
 		}
-	}
-
-	protected PositionEntity getPositionEntity(final EntityManager em, final String keyId) {
-		PositionEntity entity = MapperUtil.getEntityByKeyId(em, keyId, PositionEntity.class);
-		if (entity == null) {
-			throw new NotFoundException("Position [" + keyId + "] not found.");
-		}
-		return entity;
 	}
 
 	@Override
@@ -229,12 +231,7 @@ public class ContactServiceImpl extends JpaBasicVersionKeyIdService<Contact, Con
 		}
 		return entity;
 	}
-	
-	@Override
-	protected MapperApiVersion<Contact, ContactVersionEntity, ContactEntity> getMapper() {
-		return CONTACT_MAPPER;
-	}
-	
+
 	@Override
 	protected Class<ContactEntity> getEntityClass() {
 		return ContactEntity.class;
@@ -244,4 +241,10 @@ public class ContactServiceImpl extends JpaBasicVersionKeyIdService<Contact, Con
 	protected Class<ContactVersionEntity> getVersionEntityClass() {
 		return ContactVersionEntity.class;
 	}
+
+	@Override
+	protected MapperApiVersion<Contact, ContactVersionEntity, ContactEntity> getMapper() {
+		return CONTACT_MAPPER;
+	}
+
 }

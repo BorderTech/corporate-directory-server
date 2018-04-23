@@ -29,7 +29,7 @@ public class OrgUnitResource implements OrgUnitService {
 	private final OrgUnitService impl;
 
 	/**
-	 * @param impl the write service implementation
+	 * @param impl the service implementation
 	 */
 	@Inject
 	public OrgUnitResource(final OrgUnitService impl) {

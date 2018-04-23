@@ -10,10 +10,8 @@ import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudTreeVersionData
  * @author jonathan
  * @param <T> the CorpDir API Object
  * @param <D> the CorpDir data API type
- * 
- * @author Jonathan Austin
  */
 public interface CorpCrudTreeVersionStore<T extends ApiTreeable & ApiVersionable, D extends CorpCrudTreeVersionDataApi<T, ?>>
 		extends CorpCrudTreeStore<T, D>, CorpCrudVersionStore<T, D> {
-    
+
 }

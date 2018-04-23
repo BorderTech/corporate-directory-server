@@ -10,9 +10,9 @@ import java.util.List;
  * CRUD Tree Version API calling CorpDir Services.
  *
  * @param <T> the treeable API type
- * @param <S> the versionable tree read and write service type
- * 
- * @author Jonathan Austin
+ * @param <S> the versionable tree service type
+ *
+ * @author jonathan
  */
 public class DefaultCorpCrudTreeVersionDataApi<T extends ApiTreeable & ApiVersionable, S extends BasicVersionTreeService<T>> extends DefaultCorpCrudTreeDataApi<T, S> implements CorpCrudTreeVersionDataApi<T, S> {
 

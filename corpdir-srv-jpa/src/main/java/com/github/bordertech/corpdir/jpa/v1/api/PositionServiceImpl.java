@@ -18,35 +18,22 @@ import com.github.bordertech.corpdir.jpa.v1.mapper.OrgUnitMapper;
 import com.github.bordertech.corpdir.jpa.v1.mapper.PositionMapper;
 import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 
 /**
- * Abstract position service implementation.
- * 
+ * Position JPA service implementation.
+ *
  * @author Jonathan Austin
  * @since 1.0.0
  */
+@Singleton
 public class PositionServiceImpl extends JpaBasicVersionTreeService<Position, PositionVersionEntity, PositionEntity> implements PositionService {
 
-	protected static final ContactMapper CONTACT_MAPPER = new ContactMapper();
-	protected static final OrgUnitMapper ORGUNIT_MAPPER = new OrgUnitMapper();
-	protected static final PositionMapper POSITION_MAPPER = new PositionMapper();
+	private static final ContactMapper CONTACT_MAPPER = new ContactMapper();
+	private static final OrgUnitMapper ORGUNIT_MAPPER = new OrgUnitMapper();
+	private static final PositionMapper POSITION_MAPPER = new PositionMapper();
 
-	@Override
-	protected Class<PositionEntity> getEntityClass() {
-		return PositionEntity.class;
-	}
-
-	@Override
-	protected Class<PositionVersionEntity> getVersionEntityClass() {
-		return PositionVersionEntity.class;
-	}
-
-	@Override
-	protected MapperApiVersion<Position, PositionVersionEntity, PositionEntity> getMapper() {
-		return POSITION_MAPPER;
-	}
-	
 	@Override
 	public DataResponse<List<OrgUnit>> getManages(final String keyId) {
 		return getManages(getCurrentVersionId(), keyId);
@@ -58,21 +45,13 @@ public class PositionServiceImpl extends JpaBasicVersionTreeService<Position, Po
 	}
 
 	@Override
-	public DataResponse<List<OrgUnit>> getManages(final Long versionId, final String keyId) {
-		EntityManager em = getEntityManager();
-		try {
-			PositionEntity entity = getEntity(em, keyId);
-			PositionVersionEntity links = entity.getVersion(versionId);
-			List<OrgUnit> list;
-			if (links == null) {
-				list = new ArrayList<>();
-			} else {
-				list = ORGUNIT_MAPPER.convertEntitiesToApis(em, links.getManageOrgUnits(), versionId);
-			}
-			return new DataResponse<>(list);
-		} finally {
-			em.close();
-		}
+	public DataResponse<Position> addContact(final String keyId, final String contactKeyId) {
+		return addContact(getCurrentVersionId(), keyId, contactKeyId);
+	}
+
+	@Override
+	public DataResponse<Position> removeContact(final String keyId, final String contactKeyId) {
+		return removeContact(getCurrentVersionId(), keyId, contactKeyId);
 	}
 
 	@Override
@@ -91,16 +70,6 @@ public class PositionServiceImpl extends JpaBasicVersionTreeService<Position, Po
 		} finally {
 			em.close();
 		}
-	}
-	
-	@Override
-	public DataResponse<Position> addContact(final String keyId, final String contactKeyId) {
-		return addContact(getCurrentVersionId(), keyId, contactKeyId);
-	}
-
-	@Override
-	public DataResponse<Position> removeContact(final String keyId, final String contactKeyId) {
-		return removeContact(getCurrentVersionId(), keyId, contactKeyId);
 	}
 
 	@Override
@@ -143,6 +112,24 @@ public class PositionServiceImpl extends JpaBasicVersionTreeService<Position, Po
 		}
 	}
 
+	@Override
+	public DataResponse<List<OrgUnit>> getManages(final Long versionId, final String keyId) {
+		EntityManager em = getEntityManager();
+		try {
+			PositionEntity entity = getEntity(em, keyId);
+			PositionVersionEntity links = entity.getVersion(versionId);
+			List<OrgUnit> list;
+			if (links == null) {
+				list = new ArrayList<>();
+			} else {
+				list = ORGUNIT_MAPPER.convertEntitiesToApis(em, links.getManageOrgUnits(), versionId);
+			}
+			return new DataResponse<>(list);
+		} finally {
+			em.close();
+		}
+	}
+
 	protected ContactEntity getContactEntity(final EntityManager em, final String keyId) {
 		ContactEntity entity = MapperUtil.getEntityByKeyId(em, keyId, ContactEntity.class);
 		if (entity == null) {
@@ -150,4 +137,20 @@ public class PositionServiceImpl extends JpaBasicVersionTreeService<Position, Po
 		}
 		return entity;
 	}
+
+	@Override
+	protected Class<PositionEntity> getEntityClass() {
+		return PositionEntity.class;
+	}
+
+	@Override
+	protected Class<PositionVersionEntity> getVersionEntityClass() {
+		return PositionVersionEntity.class;
+	}
+
+	@Override
+	protected MapperApiVersion<Position, PositionVersionEntity, PositionEntity> getMapper() {
+		return POSITION_MAPPER;
+	}
+
 }

@@ -10,9 +10,9 @@ import java.util.List;
  * CRUD API calling CorpDir Services.
  *
  * @param <T> the CorpDir API object type
- * @param <S> the CorpDir read and write service type
+ * @param <S> the CorpDir service type
  *
- * @author Jonathan Austin
+ * @author jonathan
  */
 public class DefaultCorpCrudDataApi<T extends ApiIdObject, S extends BasicIdService<T>> implements CorpCrudDataApi<T, S> {
 
@@ -76,4 +76,5 @@ public class DefaultCorpCrudDataApi<T extends ApiIdObject, S extends BasicIdServ
 			throw new IllegalStateException("Could not create API class. " + e.getMessage(), e);
 		}
 	}
+
 }

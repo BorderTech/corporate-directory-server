@@ -29,7 +29,7 @@ public class PositionTypeResource implements PositionTypeService {
 	private final PositionTypeService impl;
 
 	/**
-	 * @param impl the write service implementation
+	 * @param impl the service implementation
 	 */
 	@Inject
 	public PositionTypeResource(final PositionTypeService impl) {

@@ -30,7 +30,7 @@ public class PositionResource implements PositionService {
 	private final PositionService impl;
 
 	/**
-	 * @param impl the write service implementation
+	 * @param impl the service implementation
 	 */
 	@Inject
 	public PositionResource(final PositionService impl) {

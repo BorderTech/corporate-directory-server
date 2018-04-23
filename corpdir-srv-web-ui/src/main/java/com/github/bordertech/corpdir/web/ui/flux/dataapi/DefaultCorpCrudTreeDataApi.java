@@ -9,9 +9,9 @@ import java.util.List;
  * CRUD Tree API calling CorpDir Services.
  *
  * @param <T> the CorpDir Treeable API object
- * @param <S> the CorpDir tree read and write service type
- * 
- * @author Jonathan Austin
+ * @param <S> the CorpDir tree service type
+ *
+ * @author jonathan
  */
 public class DefaultCorpCrudTreeDataApi<T extends ApiTreeable, S extends BasicTreeService<T>> extends DefaultCorpCrudDataApi<T, S> implements CorpCrudTreeDataApi<T, S> {
 
@@ -32,6 +32,21 @@ public class DefaultCorpCrudTreeDataApi<T extends ApiTreeable, S extends BasicTr
 	}
 
 	@Override
+	public boolean hasChildren(final T entity) {
+		return !entity.getSubIds().isEmpty();
+	}
+
+	@Override
+	public String getItemLabel(final T entity) {
+		return entity.getDescription() + " [" + entity.getBusinessKey() + "]";
+	}
+
+	@Override
+	public String getItemId(final T entity) {
+		return entity.getId();
+	}
+
+	@Override
 	public List<T> getRootItems() {
 		DataResponse<List<T>> resp = getService().getRootItems();
 		return resp.getData();
@@ -47,21 +62,6 @@ public class DefaultCorpCrudTreeDataApi<T extends ApiTreeable, S extends BasicTr
 	public T removeChild(final T parent, final T child) {
 		DataResponse<T> resp = getService().removeSub(parent.getId(), child.getId());
 		return resp.getData();
-	}
-
-	@Override
-	public boolean hasChildren(final T entity) {
-		return !entity.getSubIds().isEmpty();
-	}
-
-	@Override
-	public String getItemLabel(final T entity) {
-		return entity.getDescription() + " [" + entity.getBusinessKey() + "]";
-	}
-
-	@Override
-	public String getItemId(final T entity) {
-		return entity.getId();
 	}
 
 }

@@ -9,20 +9,23 @@ import com.github.bordertech.corpdir.jpa.common.svc.JpaBasicIdService;
 import com.github.bordertech.corpdir.jpa.entity.SystemCtrlEntity;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
 import com.github.bordertech.corpdir.jpa.v1.mapper.SystemCtrlMapper;
+import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Abstract system control service implementation.
- * 
+ * System Control JPA service implementation.
+ *
  * @author Jonathan Austin
  * @since 1.0.0
  */
+@Singleton
 public class SystemCtrlServiceImpl extends JpaBasicIdService<SystemCtrl, SystemCtrlEntity> implements SystemCtrlService {
 
-	protected static final SystemCtrlMapper MAPPER = new SystemCtrlMapper();
 	private static final Logger LOG = LoggerFactory.getLogger(SystemCtrlServiceImpl.class);
+
+	private static final SystemCtrlMapper MAPPER = new SystemCtrlMapper();
 
 	@Override
 	public DataResponse<Long> getCurrentVersion() {
@@ -36,14 +39,6 @@ public class SystemCtrlServiceImpl extends JpaBasicIdService<SystemCtrl, SystemC
 		} finally {
 			em.close();
 		}
-	}
-
-	protected SystemCtrlEntity getSystemCtrlEntity() {
-		SystemCtrlEntity ctrl = getEntityManager().find(SystemCtrlEntity.class, Long.valueOf("1"));
-		if (ctrl == null) {
-			throw new IllegalStateException("No System Control Record Available.");
-		}
-		return ctrl;
 	}
 
 	@Override
@@ -71,9 +66,23 @@ public class SystemCtrlServiceImpl extends JpaBasicIdService<SystemCtrl, SystemC
 		}
 	}
 
+	protected SystemCtrlEntity getSystemCtrlEntity() {
+		SystemCtrlEntity ctrl = getEntityManager().find(SystemCtrlEntity.class, Long.valueOf("1"));
+		if (ctrl == null) {
+			throw new IllegalStateException("No System Control Record Available.");
+		}
+		return ctrl;
+	}
+
 	@Override
 	public BasicResponse delete(final String id) {
 		throw new UnsupportedOperationException("Delete not supported.");
+	}
+
+	@Override
+	public DataResponse<SystemCtrl> create(final SystemCtrl apiObject) {
+		return super.create(apiObject);
+//		throw new UnsupportedOperationException("Create not supported. Record auto generated.");
 	}
 
 	@Override
@@ -85,4 +94,5 @@ public class SystemCtrlServiceImpl extends JpaBasicIdService<SystemCtrl, SystemC
 	protected MapperApi<SystemCtrl, SystemCtrlEntity> getMapper() {
 		return MAPPER;
 	}
+
 }

@@ -7,14 +7,14 @@ import com.github.bordertech.flux.crud.dataapi.CrudApi;
 /**
  * Corp CRUD API with defined types.
  *
+ * @author jonathan
  * @param <T> the Corp API Object
- * @param <S> the Corp backing read and write Service
- * 
- * @author Jonathan Austin
+ * @param <S> the Corp backing Service
  */
 public interface CorpCrudDataApi<T extends ApiIdObject, S extends BasicIdService<T>> extends CrudApi<String, String, T> {
 
 	Class<T> getApiClass();
 
 	S getService();
+
 }

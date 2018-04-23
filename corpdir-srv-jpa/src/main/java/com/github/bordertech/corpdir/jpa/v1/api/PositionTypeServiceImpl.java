@@ -12,21 +12,23 @@ import com.github.bordertech.corpdir.jpa.util.CriteriaUtil;
 import com.github.bordertech.corpdir.jpa.v1.mapper.PositionMapper;
 import com.github.bordertech.corpdir.jpa.v1.mapper.PositionTypeMapper;
 import java.util.List;
+import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 /**
- * Abstract position type service implementation.
- * 
+ * Position type JPA service implementation.
+ *
  * @author Jonathan Austin
  * @since 1.0.0
  */
+@Singleton
 public class PositionTypeServiceImpl extends JpaBasicKeyIdService<PositionType, PositionTypeEntity> implements PositionTypeService {
 
-	protected static final PositionTypeMapper POSITIONTYPE_MAPPER = new PositionTypeMapper();
-	protected static final PositionMapper POSITION_MAPPER = new PositionMapper();
+	private static final PositionTypeMapper POSITIONTYPE_MAPPER = new PositionTypeMapper();
+	private static final PositionMapper POSITION_MAPPER = new PositionMapper();
 
 	@Override
 	public DataResponse<List<Position>> getPositions(final String keyId) {
@@ -60,4 +62,5 @@ public class PositionTypeServiceImpl extends JpaBasicKeyIdService<PositionType, 
 	protected MapperApi<PositionType, PositionTypeEntity> getMapper() {
 		return POSITIONTYPE_MAPPER;
 	}
+
 }

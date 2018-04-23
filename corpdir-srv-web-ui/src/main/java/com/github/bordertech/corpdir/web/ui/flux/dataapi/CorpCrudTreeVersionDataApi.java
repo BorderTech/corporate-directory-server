@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author jonathan
  * @param <T> the Corp API Treeable &amp; Versionable Object
- * @param <S> the Corp backing Tree read and write Service
+ * @param <S> the Corp backing Tree Service
  */
 public interface CorpCrudTreeVersionDataApi<T extends ApiTreeable & ApiVersionable, S extends BasicVersionTreeService<T>> extends CorpCrudTreeDataApi<T, S>, CorpCrudVersionDataApi<T, S> {
 
@@ -23,4 +23,5 @@ public interface CorpCrudTreeVersionDataApi<T extends ApiTreeable & ApiVersionab
 	T addChild(final Long versionId, final T parent, final T child);
 
 	T removeChild(final Long versionId, final T parent, final T child);
+
 }

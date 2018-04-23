@@ -28,7 +28,7 @@ public class SystemCtrlResource implements SystemCtrlService {
 	private final SystemCtrlService impl;
 
 	/**
-	 * @param impl the write service implementation
+	 * @param impl the service implementation
 	 */
 	@Inject
 	public SystemCtrlResource(final SystemCtrlService impl) {

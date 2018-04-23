@@ -11,7 +11,7 @@ import com.github.bordertech.flux.crud.actioncreator.impl.DefaultDataApiCrudActi
  * @param <T> the Corp API object type
  * @param <D> the backing Corp API
  *
- * @author Jonathan Austin
+ * @author jonathan
  */
 public class DefaultCorpCrudActionCreator<T extends ApiIdObject, D extends CorpCrudDataApi<T, ?>> extends DefaultDataApiCrudActionCreator<String, T, D> implements CorpCrudActionCreator<T, D> {
 

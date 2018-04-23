@@ -29,7 +29,7 @@ public class UnitTypeResource implements UnitTypeService {
 	private final UnitTypeService impl;
 
 	/**
-	 * @param impl the write service implementation
+	 * @param impl the service implementation
 	 */
 	@Inject
 	public UnitTypeResource(final UnitTypeService impl) {

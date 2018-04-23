@@ -9,9 +9,8 @@ import com.github.bordertech.flux.crud.actioncreator.DataApiCrudActionCreator;
  *
  * @param <T> the API type
  * @param <D> the backing data API
- * 
- * @author Jonathan Austin
+ * @author jonathan
  */
 public interface CorpCrudActionCreator<T extends ApiIdObject, D extends CorpCrudDataApi<T, ?>> extends DataApiCrudActionCreator<String, T, D> {
-    
+
 }

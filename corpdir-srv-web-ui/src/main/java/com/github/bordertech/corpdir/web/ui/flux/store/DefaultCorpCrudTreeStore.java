@@ -10,7 +10,7 @@ import com.github.bordertech.flux.crud.store.impl.DefaultDataApiCrudTreeStore;
  *
  * @param <T> the CorpDir API Object
  * @param <D> the CorpDir data API type
- * @author Jonathan Austin
+ * @author jonathan
  */
 public class DefaultCorpCrudTreeStore<T extends ApiTreeable, D extends CorpCrudTreeDataApi<T, ?>> extends DefaultDataApiCrudTreeStore<String, String, T, D> implements CorpCrudTreeStore<T, D> {
 
@@ -21,4 +21,5 @@ public class DefaultCorpCrudTreeStore<T extends ApiTreeable, D extends CorpCrudT
 	public DefaultCorpCrudTreeStore(final CorpEntityType type, final D api) {
 		super(type.getStoreKey(), CorpEntityType.getLinkedCreators(type), api);
 	}
+
 }

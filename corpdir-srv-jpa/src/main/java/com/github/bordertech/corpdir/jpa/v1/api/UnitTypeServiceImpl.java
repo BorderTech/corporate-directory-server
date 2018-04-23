@@ -12,21 +12,23 @@ import com.github.bordertech.corpdir.jpa.util.CriteriaUtil;
 import com.github.bordertech.corpdir.jpa.v1.mapper.OrgUnitMapper;
 import com.github.bordertech.corpdir.jpa.v1.mapper.UnitTypeMapper;
 import java.util.List;
+import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 /**
- * Abstract unit type service implementation.
- * 
+ * Organization unit type JPA service implementation.
+ *
  * @author Jonathan Austin
  * @since 1.0.0
  */
+@Singleton
 public class UnitTypeServiceImpl extends JpaBasicKeyIdService<UnitType, UnitTypeEntity> implements UnitTypeService {
 
-	protected static final OrgUnitMapper ORGUNIT_MAPPER = new OrgUnitMapper();
-	protected static final UnitTypeMapper UNITTYPE_MAPPER = new UnitTypeMapper();
+	private static final OrgUnitMapper ORGUNIT_MAPPER = new OrgUnitMapper();
+	private static final UnitTypeMapper UNITTYPE_MAPPER = new UnitTypeMapper();
 
 	@Override
 	public DataResponse<List<OrgUnit>> getOrgUnits(final String keyId) {
@@ -60,4 +62,5 @@ public class UnitTypeServiceImpl extends JpaBasicKeyIdService<UnitType, UnitType
 	protected MapperApi<UnitType, UnitTypeEntity> getMapper() {
 		return UNITTYPE_MAPPER;
 	}
+
 }

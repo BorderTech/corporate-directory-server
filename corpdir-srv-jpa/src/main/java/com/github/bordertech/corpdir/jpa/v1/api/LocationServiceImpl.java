@@ -6,14 +6,16 @@ import com.github.bordertech.corpdir.jpa.common.map.MapperApi;
 import com.github.bordertech.corpdir.jpa.common.svc.JpaBasicTreeService;
 import com.github.bordertech.corpdir.jpa.entity.LocationEntity;
 import com.github.bordertech.corpdir.jpa.v1.mapper.LocationMapper;
+import javax.inject.Singleton;
 
 /**
- * Abstract location service implementation.
- * 
+ * Location JPA service implementation.
+ *
  * @author Jonathan Austin
  * @since 1.0.0
  */
-public class LocationServiceImpl extends JpaBasicTreeService<Location, LocationEntity> implements LocationService{
+@Singleton
+public class LocationServiceImpl extends JpaBasicTreeService<Location, LocationEntity> implements LocationService {
 
 	private static final LocationMapper LOCATION_MAPPER = new LocationMapper();
 
@@ -26,5 +28,5 @@ public class LocationServiceImpl extends JpaBasicTreeService<Location, LocationE
 	protected MapperApi<Location, LocationEntity> getMapper() {
 		return LOCATION_MAPPER;
 	}
-    
+
 }

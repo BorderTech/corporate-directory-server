@@ -11,8 +11,7 @@ import com.github.bordertech.didums.Didums;
  *
  * @param <T> the CorpDir API Object
  * @param <D> the CorpDir data API type
- * 
- * @author Jonathan Austin
+ * @author jonathan
  */
 public class DefaultCorpCrudVersionStore<T extends ApiVersionable, D extends CorpCrudVersionDataApi<T, ?>> extends DefaultCorpCrudStore<T, D> implements CorpCrudVersionStore<T, D> {
 
@@ -37,4 +36,5 @@ public class DefaultCorpCrudVersionStore<T extends ApiVersionable, D extends Cor
 		// Append the version id
 		return super.getCacheKey(action, criteria) + "-" + getCurrentVersionId();
 	}
+
 }
