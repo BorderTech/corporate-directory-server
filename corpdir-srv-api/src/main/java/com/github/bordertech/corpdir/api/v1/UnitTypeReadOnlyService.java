@@ -1,7 +1,7 @@
-package com.github.bordertech.corpdir.readonly.api.v1;
+package com.github.bordertech.corpdir.api.v1;
 
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.readonly.service.BasicKeyIdReadOnlyService;
+import com.github.bordertech.corpdir.api.service.BasicKeyIdReadOnlyService;
 import com.github.bordertech.corpdir.api.v1.model.OrgUnit;
 import com.github.bordertech.corpdir.api.v1.model.UnitType;
 import java.util.List;

@@ -10,13 +10,12 @@ import com.github.bordertech.corpdir.jpa.entity.UnitTypeEntity;
 import com.github.bordertech.corpdir.jpa.util.CriteriaUtil;
 import com.github.bordertech.corpdir.jpa.v1.mapper.OrgUnitMapper;
 import com.github.bordertech.corpdir.jpa.v1.mapper.UnitTypeMapper;
-import com.github.bordertech.corpdir.modify.api.v1.UnitTypeWriteService;
-import com.github.bordertech.corpdir.readonly.api.v1.UnitTypeReadOnlyService;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import com.github.bordertech.corpdir.api.v1.UnitTypeService;
 
 /**
  * Abstract unit type service implementation.
@@ -24,7 +23,7 @@ import javax.persistence.criteria.Root;
  * @author Jonathan Austin
  * @since 1.0.0
  */
-public class UnitTypeServiceImpl extends JpaBasicKeyIdService<UnitType, UnitTypeEntity> implements UnitTypeReadOnlyService, UnitTypeWriteService {
+public class UnitTypeServiceImpl extends JpaBasicKeyIdService<UnitType, UnitTypeEntity> implements UnitTypeService {
 
 	protected static final OrgUnitMapper ORGUNIT_MAPPER = new OrgUnitMapper();
 	protected static final UnitTypeMapper UNITTYPE_MAPPER = new UnitTypeMapper();

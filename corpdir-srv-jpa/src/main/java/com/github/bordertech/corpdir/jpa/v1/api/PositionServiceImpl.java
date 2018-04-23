@@ -15,11 +15,10 @@ import com.github.bordertech.corpdir.jpa.util.MapperUtil;
 import com.github.bordertech.corpdir.jpa.v1.mapper.ContactMapper;
 import com.github.bordertech.corpdir.jpa.v1.mapper.OrgUnitMapper;
 import com.github.bordertech.corpdir.jpa.v1.mapper.PositionMapper;
-import com.github.bordertech.corpdir.modify.api.v1.PositionWriteService;
-import com.github.bordertech.corpdir.readonly.api.v1.PositionReadOnlyService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
+import com.github.bordertech.corpdir.api.v1.PositionService;
 
 /**
  * Abstract position service implementation.
@@ -27,7 +26,7 @@ import javax.persistence.EntityManager;
  * @author Jonathan Austin
  * @since 1.0.0
  */
-public class PositionServiceImpl extends JpaBasicVersionTreeService<Position, PositionVersionEntity, PositionEntity> implements PositionReadOnlyService, PositionWriteService {
+public class PositionServiceImpl extends JpaBasicVersionTreeService<Position, PositionVersionEntity, PositionEntity> implements PositionService {
 
 	protected static final ContactMapper CONTACT_MAPPER = new ContactMapper();
 	protected static final OrgUnitMapper ORGUNIT_MAPPER = new OrgUnitMapper();

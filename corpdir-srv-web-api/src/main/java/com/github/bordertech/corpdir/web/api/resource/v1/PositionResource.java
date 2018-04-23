@@ -2,11 +2,10 @@ package com.github.bordertech.corpdir.web.api.resource.v1;
 
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
+import com.github.bordertech.corpdir.api.v1.PositionService;
 import com.github.bordertech.corpdir.api.v1.model.Contact;
 import com.github.bordertech.corpdir.api.v1.model.OrgUnit;
 import com.github.bordertech.corpdir.api.v1.model.Position;
-import com.github.bordertech.corpdir.modify.api.v1.PositionWriteService;
-import com.github.bordertech.corpdir.readonly.api.v1.PositionReadOnlyService;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
@@ -26,26 +25,23 @@ import javax.ws.rs.core.MediaType;
  * @since 1.0.0
  */
 @Path(value = "v1/positions")
-public class PositionResource implements PositionReadOnlyService, PositionWriteService {
+public class PositionResource implements PositionService {
 
-	private final PositionReadOnlyService readImpl;
-	private final PositionWriteService writeImpl;
+	private final PositionService impl;
 
 	/**
-         * @param readImpl the read service implementation
-	 * @param writeImpl the write service implementation
+	 * @param impl the write service implementation
 	 */
 	@Inject
-	public PositionResource(final PositionReadOnlyService readImpl, final PositionWriteService writeImpl) {
-		this.readImpl = readImpl;
-		this.writeImpl = writeImpl;
+	public PositionResource(final PositionService impl) {
+		this.impl = impl;
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<List<Position>> search(@QueryParam("search") final String search) {
-		return readImpl.search(search);
+		return impl.search(search);
 	}
 
 	@GET
@@ -53,14 +49,14 @@ public class PositionResource implements PositionReadOnlyService, PositionWriteS
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Position> retrieve(@PathParam("key") final String keyId) {
-		return readImpl.retrieve(keyId);
+		return impl.retrieve(keyId);
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Position> create(final Position position) {
-		return writeImpl.create(position);
+		return impl.create(position);
 	}
 
 	@PUT
@@ -68,7 +64,7 @@ public class PositionResource implements PositionReadOnlyService, PositionWriteS
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Position> update(@PathParam("key") final String keyId, final Position position) {
-		return writeImpl.update(keyId, position);
+		return impl.update(keyId, position);
 	}
 
 	@DELETE
@@ -76,7 +72,7 @@ public class PositionResource implements PositionReadOnlyService, PositionWriteS
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public BasicResponse delete(@PathParam("key") final String keyId) {
-		return writeImpl.delete(keyId);
+		return impl.delete(keyId);
 	}
 
 	@GET
@@ -84,7 +80,7 @@ public class PositionResource implements PositionReadOnlyService, PositionWriteS
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<List<Position>> getSubs(@PathParam("key") final String keyId) {
-		return readImpl.getSubs(keyId);
+		return impl.getSubs(keyId);
 	}
 
 	@PUT
@@ -92,7 +88,7 @@ public class PositionResource implements PositionReadOnlyService, PositionWriteS
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Position> addSub(@PathParam("key") final String keyId, @PathParam("subKey") final String subKeyId) {
-		return writeImpl.addSub(keyId, subKeyId);
+		return impl.addSub(keyId, subKeyId);
 	}
 
 	@DELETE
@@ -100,7 +96,7 @@ public class PositionResource implements PositionReadOnlyService, PositionWriteS
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Position> removeSub(@PathParam("key") final String keyId, @PathParam("subKey") final String subKeyId) {
-		return writeImpl.removeSub(keyId, subKeyId);
+		return impl.removeSub(keyId, subKeyId);
 	}
 
 	@GET
@@ -108,7 +104,7 @@ public class PositionResource implements PositionReadOnlyService, PositionWriteS
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<List<Contact>> getContacts(@PathParam("key") final String keyId) {
-		return readImpl.getContacts(keyId);
+		return impl.getContacts(keyId);
 	}
 
 	@PUT
@@ -116,7 +112,7 @@ public class PositionResource implements PositionReadOnlyService, PositionWriteS
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Position> addContact(@PathParam("key") final String keyId, @PathParam("subKey") final String contactKeyId) {
-		return writeImpl.addContact(keyId, contactKeyId);
+		return impl.addContact(keyId, contactKeyId);
 	}
 
 	@DELETE
@@ -124,7 +120,7 @@ public class PositionResource implements PositionReadOnlyService, PositionWriteS
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Position> removeContact(@PathParam("key") final String keyId, @PathParam("subKey") final String contactKeyId) {
-		return writeImpl.removeContact(keyId, contactKeyId);
+		return impl.removeContact(keyId, contactKeyId);
 	}
 
 	@GET
@@ -132,7 +128,7 @@ public class PositionResource implements PositionReadOnlyService, PositionWriteS
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<List<OrgUnit>> getManages(@PathParam("key") final String keyId) {
-		return readImpl.getManages(keyId);
+		return impl.getManages(keyId);
 	}
 
 	@Override

@@ -12,9 +12,8 @@ import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudTreeVersionData
  * @param <D> the CorpDir data API type
  * 
  * @author Jonathan Austin
- * @author Aswin Kandula
  */
-public interface CorpCrudTreeVersionStore<T extends ApiTreeable & ApiVersionable, D extends CorpCrudTreeVersionDataApi<T, ?, ?>>
+public interface CorpCrudTreeVersionStore<T extends ApiTreeable & ApiVersionable, D extends CorpCrudTreeVersionDataApi<T, ?>>
 		extends CorpCrudTreeStore<T, D>, CorpCrudVersionStore<T, D> {
     
 }

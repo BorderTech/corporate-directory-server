@@ -14,18 +14,17 @@ import com.github.bordertech.corpdir.jpa.entity.version.PositionVersionEntity;
 import com.github.bordertech.corpdir.jpa.util.MapperUtil;
 import com.github.bordertech.corpdir.jpa.v1.mapper.OrgUnitMapper;
 import com.github.bordertech.corpdir.jpa.v1.mapper.PositionMapper;
-import com.github.bordertech.corpdir.modify.api.v1.OrgUnitWriteService;
-import com.github.bordertech.corpdir.readonly.api.v1.OrgUnitReadOnlyService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
+import com.github.bordertech.corpdir.api.v1.OrgUnitService;
 
 /**
  * Abstract organization unit service implementation.
  * 
  * @author Jonathan Austin
  * @since 1.0.0
- */public class OrgUnitServiceImpl extends JpaBasicVersionTreeService<OrgUnit, OrgUnitVersionEntity, OrgUnitEntity> implements OrgUnitReadOnlyService, OrgUnitWriteService {
+ */public class OrgUnitServiceImpl extends JpaBasicVersionTreeService<OrgUnit, OrgUnitVersionEntity, OrgUnitEntity> implements OrgUnitService {
 
 	protected static final PositionMapper POSITION_MAPPER = new PositionMapper();
 	protected static final OrgUnitMapper ORGUNIT_MAPPER = new OrgUnitMapper();

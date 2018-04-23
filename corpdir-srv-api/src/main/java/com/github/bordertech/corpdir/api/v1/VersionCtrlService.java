@@ -1,18 +1,17 @@
-package com.github.bordertech.corpdir.modify.api.v1;
+package com.github.bordertech.corpdir.api.v1;
 
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.modify.service.BasicIdWriteService;
+import com.github.bordertech.corpdir.api.service.BasicIdService;
 import com.github.bordertech.corpdir.api.v1.model.VersionCtrl;
 
 /**
- * Version Control write (modifiable) Service Interface.
+ * Version Control read and write Service Interface.
  *
  * @author Jonathan Austin
- * @author Aswin Kandula
  * @since 1.0.0
  */
-public interface VersionCtrlWriteService extends BasicIdWriteService<VersionCtrl> {
+public interface VersionCtrlService extends VersionCtrlReadOnlyService, BasicIdService<VersionCtrl> {
 
 	/**
 	 * Short hand create function.

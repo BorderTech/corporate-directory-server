@@ -1,9 +1,9 @@
-package com.github.bordertech.corpdir.readonly.api.v1;
+package com.github.bordertech.corpdir.api.v1;
 
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.readonly.service.BasicVersionKeyIdReadOnlyService;
+import com.github.bordertech.corpdir.api.service.BasicVersionKeyIdReadOnlyService;
 import com.github.bordertech.corpdir.api.v1.model.Contact;
-import com.github.bordertech.corpdir.readonly.api.v1.func.PositionReadOnlyFunctions;
+import com.github.bordertech.corpdir.api.v1.func.PositionReadOnlyFunctions;
 
 /**
  * Contact read-only Service Interface.

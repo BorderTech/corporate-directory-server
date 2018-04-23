@@ -7,11 +7,10 @@ import com.github.bordertech.corpdir.jpa.common.map.MapperApi;
 import com.github.bordertech.corpdir.jpa.common.svc.JpaBasicIdService;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
 import com.github.bordertech.corpdir.jpa.v1.mapper.VersionCtrlMapper;
-import com.github.bordertech.corpdir.modify.api.v1.VersionCtrlWriteService;
-import com.github.bordertech.corpdir.readonly.api.v1.VersionCtrlReadOnlyService;
 import javax.persistence.EntityManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.github.bordertech.corpdir.api.v1.VersionCtrlService;
 
 /**
  * Abstract version control service implementation.
@@ -19,7 +18,7 @@ import org.slf4j.LoggerFactory;
  * @author Jonathan Austin
  * @since 1.0.0
  */
-public class VersionCtrlServiceImpl extends JpaBasicIdService<VersionCtrl, VersionCtrlEntity> implements VersionCtrlReadOnlyService, VersionCtrlWriteService {
+public class VersionCtrlServiceImpl extends JpaBasicIdService<VersionCtrl, VersionCtrlEntity> implements VersionCtrlService {
 
 	protected static final VersionCtrlMapper MAPPER = new VersionCtrlMapper();
 	private static final Logger LOG = LoggerFactory.getLogger(VersionCtrlServiceImpl.class);

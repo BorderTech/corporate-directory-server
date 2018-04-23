@@ -5,8 +5,7 @@ import com.github.bordertech.corpdir.jpa.common.map.MapperApi;
 import com.github.bordertech.corpdir.jpa.common.svc.JpaBasicTreeService;
 import com.github.bordertech.corpdir.jpa.entity.LocationEntity;
 import com.github.bordertech.corpdir.jpa.v1.mapper.LocationMapper;
-import com.github.bordertech.corpdir.modify.api.v1.LocationWriteService;
-import com.github.bordertech.corpdir.readonly.api.v1.LocationReadOnlyService;
+import com.github.bordertech.corpdir.api.v1.LocationService;
 
 /**
  * Abstract location service implementation.
@@ -14,7 +13,7 @@ import com.github.bordertech.corpdir.readonly.api.v1.LocationReadOnlyService;
  * @author Jonathan Austin
  * @since 1.0.0
  */
-public class LocationServiceImpl extends JpaBasicTreeService<Location, LocationEntity> implements LocationReadOnlyService, LocationWriteService{
+public class LocationServiceImpl extends JpaBasicTreeService<Location, LocationEntity> implements LocationService{
 
 	private static final LocationMapper LOCATION_MAPPER = new LocationMapper();
 

@@ -1,19 +1,18 @@
-package com.github.bordertech.corpdir.api.modify.service;
+package com.github.bordertech.corpdir.api.service;
 
 import com.github.bordertech.corpdir.api.common.ApiIdObject;
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import java.io.Serializable;
 
 /**
- * Basic write (modifiable) service for ID API object.
+ * Basic read and write service for ID API object.
  *
  * @param <T> the keyed API object
  * @author Jonathan Austin
- * @author Aswin Kandula
+ * 
  * @since 1.0.0
  */
-public interface BasicIdWriteService<T extends ApiIdObject> extends Serializable {
+public interface BasicIdService<T extends ApiIdObject> extends BasicIdReadOnlyService<T> {
 
 	DataResponse<T> create(final T apiObject);
 

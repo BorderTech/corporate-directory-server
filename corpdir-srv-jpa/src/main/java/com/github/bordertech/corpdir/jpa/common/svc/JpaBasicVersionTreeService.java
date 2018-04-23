@@ -3,8 +3,6 @@ package com.github.bordertech.corpdir.jpa.common.svc;
 import com.github.bordertech.corpdir.api.common.ApiTreeable;
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.modify.service.BasicVersionTreeWriteService;
-import com.github.bordertech.corpdir.api.readonly.service.BasicVersionTreeReadOnlyService;
 import com.github.bordertech.corpdir.jpa.common.feature.PersistVersionableKeyId;
 import com.github.bordertech.corpdir.jpa.common.version.ItemTreeVersion;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
@@ -15,6 +13,7 @@ import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.Table;
+import com.github.bordertech.corpdir.api.service.BasicVersionTreeService;
 
 /**
  * Tree Entity service.
@@ -26,7 +25,7 @@ import javax.persistence.Table;
  * @since 1.0.0
  */
 @Singleton
-public abstract class JpaBasicVersionTreeService<A extends ApiTreeable & ApiVersionable, U extends ItemTreeVersion<P, U>, P extends PersistVersionableKeyId<P, U>> extends JpaBasicVersionKeyIdService<A, U, P> implements BasicVersionTreeReadOnlyService<A>, BasicVersionTreeWriteService<A> {
+public abstract class JpaBasicVersionTreeService<A extends ApiTreeable & ApiVersionable, U extends ItemTreeVersion<P, U>, P extends PersistVersionableKeyId<P, U>> extends JpaBasicVersionKeyIdService<A, U, P> implements BasicVersionTreeService<A> {
 
 	@Override
 	public DataResponse<List<A>> getRootItems() {

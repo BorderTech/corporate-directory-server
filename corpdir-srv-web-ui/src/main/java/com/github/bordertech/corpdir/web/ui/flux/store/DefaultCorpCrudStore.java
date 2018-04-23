@@ -2,8 +2,8 @@ package com.github.bordertech.corpdir.web.ui.flux.store;
 
 import com.github.bordertech.corpdir.api.common.ApiIdObject;
 import com.github.bordertech.corpdir.web.ui.CorpEntityType;
-import com.github.bordertech.flux.crud.store.impl.DefaultDataApiCrudStore;
 import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudDataApi;
+import com.github.bordertech.flux.crud.store.impl.DefaultDataApiCrudStore;
 
 /**
  * Default Corp Store with backing API.
@@ -12,9 +12,8 @@ import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudDataApi;
  * @param <D> the CorpDir data API type
  * 
  * @author Jonathan Austin
- * @author Aswin Kandula
  */
-public class DefaultCorpCrudStore<T extends ApiIdObject, D extends CorpCrudDataApi<T, ?, ?>> extends DefaultDataApiCrudStore<String, String, T, D> implements CorpCrudStore<T, D> {
+public class DefaultCorpCrudStore<T extends ApiIdObject, D extends CorpCrudDataApi<T, ?>> extends DefaultDataApiCrudStore<String, String, T, D> implements CorpCrudStore<T, D> {
 
 
 	/**

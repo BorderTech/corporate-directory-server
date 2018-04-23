@@ -1,18 +1,17 @@
-package com.github.bordertech.corpdir.modify.api.v1;
+package com.github.bordertech.corpdir.api.v1;
 
 import com.github.bordertech.corpdir.api.response.BasicResponse;
-import com.github.bordertech.corpdir.api.modify.service.BasicVersionKeyIdWriteService;
+import com.github.bordertech.corpdir.api.service.BasicVersionKeyIdService;
 import com.github.bordertech.corpdir.api.v1.model.Contact;
-import com.github.bordertech.corpdir.modify.api.v1.func.PositionWriteFunctions;
+import com.github.bordertech.corpdir.api.v1.func.PositionFunctions;
 
 /**
- * Contact write (modifiable) Service Interface.
+ * Contact read and write Service Interface.
  *
  * @author Jonathan Austin
- * @author Aswin Kandula
  * @since 1.0.0
  */
-public interface ContactWriteService extends BasicVersionKeyIdWriteService<Contact>, PositionWriteFunctions<Contact> {
+public interface ContactService extends ContactReadOnlyService, BasicVersionKeyIdService<Contact>, PositionFunctions<Contact> {
 
 	BasicResponse deleteImage(final String keyId);
 

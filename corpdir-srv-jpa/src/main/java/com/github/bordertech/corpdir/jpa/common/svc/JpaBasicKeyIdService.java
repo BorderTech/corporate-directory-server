@@ -1,10 +1,9 @@
 package com.github.bordertech.corpdir.jpa.common.svc;
 
 import com.github.bordertech.corpdir.api.common.ApiKeyIdObject;
-import com.github.bordertech.corpdir.api.modify.service.BasicKeyIdWriteService;
-import com.github.bordertech.corpdir.api.readonly.service.BasicKeyIdReadOnlyService;
 import com.github.bordertech.corpdir.jpa.common.feature.PersistKeyIdObject;
 import javax.inject.Singleton;
+import com.github.bordertech.corpdir.api.service.BasicKeyIdService;
 
 /**
  * Keyed Entity JPA service implementation.
@@ -15,6 +14,6 @@ import javax.inject.Singleton;
  * @since 1.0.0
  */
 @Singleton
-public abstract class JpaBasicKeyIdService<A extends ApiKeyIdObject, P extends PersistKeyIdObject> extends JpaBasicIdService<A, P> implements BasicKeyIdReadOnlyService<A>, BasicKeyIdWriteService<A> {
+public abstract class JpaBasicKeyIdService<A extends ApiKeyIdObject, P extends PersistKeyIdObject> extends JpaBasicIdService<A, P> implements BasicKeyIdService<A> {
 
 }

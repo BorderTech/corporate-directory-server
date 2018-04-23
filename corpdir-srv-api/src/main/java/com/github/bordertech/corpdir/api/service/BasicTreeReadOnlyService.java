@@ -1,4 +1,4 @@
-package com.github.bordertech.corpdir.api.readonly.service;
+package com.github.bordertech.corpdir.api.service;
 
 import com.github.bordertech.corpdir.api.common.ApiTreeable;
 import com.github.bordertech.corpdir.api.response.DataResponse;

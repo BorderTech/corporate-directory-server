@@ -4,8 +4,6 @@ import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
 import com.github.bordertech.corpdir.api.v1.model.OrgUnit;
 import com.github.bordertech.corpdir.api.v1.model.Position;
-import com.github.bordertech.corpdir.modify.api.v1.OrgUnitWriteService;
-import com.github.bordertech.corpdir.readonly.api.v1.OrgUnitReadOnlyService;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
@@ -17,6 +15,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import com.github.bordertech.corpdir.api.v1.OrgUnitService;
 
 /**
  * Organisation Unit REST Resource.
@@ -25,26 +24,23 @@ import javax.ws.rs.core.MediaType;
  * @since 1.0.0
  */
 @Path(value = "v1/orgunits")
-public class OrgUnitResource implements OrgUnitReadOnlyService, OrgUnitWriteService {
+public class OrgUnitResource implements OrgUnitService {
 
-	private final OrgUnitReadOnlyService readImpl;
-	private final OrgUnitWriteService writeImpl;
+	private final OrgUnitService impl;
 
 	/**
-         * @param readImpl the read service implementation
-	 * @param writeImpl the write service implementation
+	 * @param impl the write service implementation
 	 */
 	@Inject
-	public OrgUnitResource(final OrgUnitReadOnlyService readImpl, final OrgUnitWriteService writeImpl) {
-		this.readImpl = readImpl;
-		this.writeImpl = writeImpl;
+	public OrgUnitResource(final OrgUnitService impl) {
+		this.impl = impl;
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<List<OrgUnit>> search(@QueryParam("search") final String search) {
-		return readImpl.search(search);
+		return impl.search(search);
 	}
 
 	@GET
@@ -52,14 +48,14 @@ public class OrgUnitResource implements OrgUnitReadOnlyService, OrgUnitWriteServ
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<OrgUnit> retrieve(@PathParam("key") final String keyId) {
-		return readImpl.retrieve(keyId);
+		return impl.retrieve(keyId);
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<OrgUnit> create(final OrgUnit orgUnit) {
-		return writeImpl.create(orgUnit);
+		return impl.create(orgUnit);
 	}
 
 	@PUT
@@ -67,7 +63,7 @@ public class OrgUnitResource implements OrgUnitReadOnlyService, OrgUnitWriteServ
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<OrgUnit> update(@PathParam("key") final String keyId, final OrgUnit orgUnit) {
-		return writeImpl.update(keyId, orgUnit);
+		return impl.update(keyId, orgUnit);
 	}
 
 	@DELETE
@@ -75,7 +71,7 @@ public class OrgUnitResource implements OrgUnitReadOnlyService, OrgUnitWriteServ
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public BasicResponse delete(@PathParam("key") final String keyId) {
-		return writeImpl.delete(keyId);
+		return impl.delete(keyId);
 	}
 
 	@GET
@@ -83,7 +79,7 @@ public class OrgUnitResource implements OrgUnitReadOnlyService, OrgUnitWriteServ
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<List<OrgUnit>> getSubs(@PathParam("key") final String keyId) {
-		return readImpl.getSubs(keyId);
+		return impl.getSubs(keyId);
 	}
 
 	@PUT
@@ -91,7 +87,7 @@ public class OrgUnitResource implements OrgUnitReadOnlyService, OrgUnitWriteServ
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<OrgUnit> addSub(@PathParam("key") final String keyId, @PathParam("subKey") final String subKeyId) {
-		return writeImpl.addSub(keyId, subKeyId);
+		return impl.addSub(keyId, subKeyId);
 	}
 
 	@DELETE
@@ -99,7 +95,7 @@ public class OrgUnitResource implements OrgUnitReadOnlyService, OrgUnitWriteServ
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<OrgUnit> removeSub(@PathParam("key") final String keyId, @PathParam("subKey") final String subKeyId) {
-		return writeImpl.removeSub(keyId, subKeyId);
+		return impl.removeSub(keyId, subKeyId);
 	}
 
 	@GET
@@ -107,7 +103,7 @@ public class OrgUnitResource implements OrgUnitReadOnlyService, OrgUnitWriteServ
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<List<Position>> getPositions(@PathParam("key") final String keyId) {
-		return readImpl.getPositions(keyId);
+		return impl.getPositions(keyId);
 	}
 
 	@PUT
@@ -115,7 +111,7 @@ public class OrgUnitResource implements OrgUnitReadOnlyService, OrgUnitWriteServ
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<OrgUnit> addPosition(@PathParam("key") final String keyId, @PathParam("positionKey") final String positionKeyId) {
-		return writeImpl.addPosition(keyId, positionKeyId);
+		return impl.addPosition(keyId, positionKeyId);
 	}
 
 	@DELETE
@@ -123,7 +119,7 @@ public class OrgUnitResource implements OrgUnitReadOnlyService, OrgUnitWriteServ
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<OrgUnit> removePosition(@PathParam("key") final String keyId, @PathParam("positionKey") final String positionKeyId) {
-		return writeImpl.removePosition(keyId, positionKeyId);
+		return impl.removePosition(keyId, positionKeyId);
 	}
 
 	@GET
@@ -131,7 +127,7 @@ public class OrgUnitResource implements OrgUnitReadOnlyService, OrgUnitWriteServ
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public DataResponse<Position> getManagerPosition(@PathParam("key") final String keyId) {
-		return readImpl.getManagerPosition(keyId);
+		return impl.getManagerPosition(keyId);
 	}
 
 	@Override

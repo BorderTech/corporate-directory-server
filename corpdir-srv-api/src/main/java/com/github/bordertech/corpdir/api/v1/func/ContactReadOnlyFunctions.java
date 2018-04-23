@@ -1,4 +1,4 @@
-package com.github.bordertech.corpdir.readonly.api.v1.func;
+package com.github.bordertech.corpdir.api.v1.func;
 
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
 import com.github.bordertech.corpdir.api.response.DataResponse;

@@ -3,14 +3,13 @@ package com.github.bordertech.corpdir.jpa.common.svc;
 import com.github.bordertech.corpdir.api.common.ApiIdObject;
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.modify.service.BasicIdWriteService;
-import com.github.bordertech.corpdir.api.readonly.service.BasicIdReadOnlyService;
 import com.github.bordertech.corpdir.jpa.common.feature.PersistIdObject;
 import com.github.bordertech.corpdir.jpa.common.map.MapperApi;
 import java.util.List;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
+import com.github.bordertech.corpdir.api.service.BasicIdService;
 
 /**
  * Keyed Entity JPA service implementation.
@@ -21,7 +20,7 @@ import javax.persistence.criteria.CriteriaQuery;
  * @since 1.0.0
  */
 @Singleton
-public abstract class JpaBasicIdService<A extends ApiIdObject, P extends PersistIdObject> extends AbstractJpaIdService<A, P> implements BasicIdReadOnlyService<A>, BasicIdWriteService<A> {
+public abstract class JpaBasicIdService<A extends ApiIdObject, P extends PersistIdObject> extends AbstractJpaIdService<A, P> implements BasicIdService<A> {
 
 	@Override
 	public DataResponse<List<A>> search(final String search) {

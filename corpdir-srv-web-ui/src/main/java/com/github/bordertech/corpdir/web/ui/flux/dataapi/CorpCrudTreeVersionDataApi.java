@@ -2,8 +2,7 @@ package com.github.bordertech.corpdir.web.ui.flux.dataapi;
 
 import com.github.bordertech.corpdir.api.common.ApiTreeable;
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
-import com.github.bordertech.corpdir.api.modify.service.BasicVersionTreeWriteService;
-import com.github.bordertech.corpdir.api.readonly.service.BasicVersionTreeReadOnlyService;
+import com.github.bordertech.corpdir.api.service.BasicVersionTreeService;
 import java.util.List;
 
 /**
@@ -11,10 +10,9 @@ import java.util.List;
  *
  * @author jonathan
  * @param <T> the Corp API Treeable &amp; Versionable Object
- * @param <R> the Corp backing Tree read-only Service
- * @param <W> the Corp backing Tree write Service
+ * @param <S> the Corp backing Tree read and write Service
  */
-public interface CorpCrudTreeVersionDataApi<T extends ApiTreeable & ApiVersionable, R extends BasicVersionTreeReadOnlyService<T>, W extends BasicVersionTreeWriteService<T>> extends CorpCrudTreeDataApi<T, R, W>, CorpCrudVersionDataApi<T, R, W> {
+public interface CorpCrudTreeVersionDataApi<T extends ApiTreeable & ApiVersionable, S extends BasicVersionTreeService<T>> extends CorpCrudTreeDataApi<T, S>, CorpCrudVersionDataApi<T, S> {
 
 	boolean hasChildren(final Long versionId, final T item);
 

@@ -3,10 +3,10 @@ package com.github.bordertech.corpdir.web.ui.flux.store;
 import com.github.bordertech.corpdir.api.common.ApiTreeable;
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
 import com.github.bordertech.corpdir.web.ui.CorpEntityType;
+import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudTreeVersionDataApi;
 import com.github.bordertech.corpdir.web.ui.flux.dataapi.impl.SystemCtrlApi;
 import com.github.bordertech.didums.Didums;
 import com.github.bordertech.flux.crud.store.impl.DefaultDataApiCrudTreeStore;
-import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudTreeVersionDataApi;
 
 /**
  * Default Corp Tree Store with backing API.
@@ -15,9 +15,8 @@ import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudTreeVersionData
  * @param <D> the CorpDir data API type
  * 
  * @author Jonathan Austin
- * @author Aswin Kandula
  */
-public class DefaultCorpCrudTreeVersionStore<T extends ApiTreeable & ApiVersionable, D extends CorpCrudTreeVersionDataApi<T, ?, ?>> extends DefaultDataApiCrudTreeStore<String, String, T, D> implements CorpCrudTreeVersionStore<T, D> {
+public class DefaultCorpCrudTreeVersionStore<T extends ApiTreeable & ApiVersionable, D extends CorpCrudTreeVersionDataApi<T, ?>> extends DefaultDataApiCrudTreeStore<String, String, T, D> implements CorpCrudTreeVersionStore<T, D> {
 
 	private static final SystemCtrlApi CTRL = Didums.getService(SystemCtrlApi.class);
 

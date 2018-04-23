@@ -1,19 +1,18 @@
 package com.github.bordertech.corpdir.web.ui.flux.dataapi.impl;
 
 import com.github.bordertech.corpdir.api.common.ApiIdObject;
-import com.github.bordertech.corpdir.api.modify.service.BasicIdWriteService;
-import com.github.bordertech.corpdir.api.readonly.service.BasicIdReadOnlyService;
+import com.github.bordertech.corpdir.api.service.BasicIdService;
 import com.github.bordertech.corpdir.api.v1.model.Channel;
+import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudDataApi;
 import java.util.List;
 import java.util.UUID;
-import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudDataApi;
 
 /**
  * Channel CRUD API implementation. Only used for creating a new instance.
  *
  * @author jonathan
  */
-public class ChannelApi implements CorpCrudDataApi<Channel, BasicIdReadOnlyService<Channel>, BasicIdWriteService<Channel>> {
+public class ChannelApi implements CorpCrudDataApi<Channel, BasicIdService<Channel>> {
 
 	@Override
 	public Channel createInstance() {
@@ -56,12 +55,7 @@ public class ChannelApi implements CorpCrudDataApi<Channel, BasicIdReadOnlyServi
 	}
 
 	@Override
-	public BasicIdReadOnlyService<Channel> getReadService() {
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
-
-	@Override
-	public BasicIdWriteService<Channel> getWriteService() {
+	public BasicIdService<Channel> getService() {
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 

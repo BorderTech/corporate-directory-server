@@ -2,8 +2,6 @@ package com.github.bordertech.corpdir.jpa.common.svc;
 
 import com.github.bordertech.corpdir.api.common.ApiTreeable;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.modify.service.BasicTreeWriteService;
-import com.github.bordertech.corpdir.api.readonly.service.BasicTreeReadOnlyService;
 import com.github.bordertech.corpdir.jpa.common.feature.PersistKeyIdTree;
 import com.github.bordertech.corpdir.jpa.util.CriteriaUtil;
 import java.util.List;
@@ -13,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import com.github.bordertech.corpdir.api.service.BasicTreeService;
 
 /**
  * Tree Entity service.
@@ -23,7 +22,7 @@ import javax.persistence.criteria.Root;
  * @since 1.0.0
  */
 @Singleton
-public abstract class JpaBasicTreeService<A extends ApiTreeable, P extends PersistKeyIdTree<P>> extends JpaBasicKeyIdService<A, P> implements BasicTreeReadOnlyService<A>, BasicTreeWriteService<A> {
+public abstract class JpaBasicTreeService<A extends ApiTreeable, P extends PersistKeyIdTree<P>> extends JpaBasicKeyIdService<A, P> implements BasicTreeService<A> {
 
 	@Override
 	protected void handleUpdateVerify(final EntityManager em, final A api, final P entity) {

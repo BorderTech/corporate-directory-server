@@ -8,11 +8,10 @@ import com.github.bordertech.corpdir.jpa.common.svc.JpaBasicIdService;
 import com.github.bordertech.corpdir.jpa.entity.SystemCtrlEntity;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
 import com.github.bordertech.corpdir.jpa.v1.mapper.SystemCtrlMapper;
-import com.github.bordertech.corpdir.modify.api.v1.SystemCtrlWriteService;
-import com.github.bordertech.corpdir.readonly.api.v1.SystemCtrlReadOnlyService;
 import javax.persistence.EntityManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.github.bordertech.corpdir.api.v1.SystemCtrlService;
 
 /**
  * Abstract system control service implementation.
@@ -20,7 +19,7 @@ import org.slf4j.LoggerFactory;
  * @author Jonathan Austin
  * @since 1.0.0
  */
-public class SystemCtrlServiceImpl extends JpaBasicIdService<SystemCtrl, SystemCtrlEntity> implements SystemCtrlReadOnlyService, SystemCtrlWriteService {
+public class SystemCtrlServiceImpl extends JpaBasicIdService<SystemCtrl, SystemCtrlEntity> implements SystemCtrlService {
 
 	protected static final SystemCtrlMapper MAPPER = new SystemCtrlMapper();
 	private static final Logger LOG = LoggerFactory.getLogger(SystemCtrlServiceImpl.class);

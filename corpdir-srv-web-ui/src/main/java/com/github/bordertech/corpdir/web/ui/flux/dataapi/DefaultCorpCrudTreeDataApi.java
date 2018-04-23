@@ -2,53 +2,50 @@ package com.github.bordertech.corpdir.web.ui.flux.dataapi;
 
 import com.github.bordertech.corpdir.api.common.ApiTreeable;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.modify.service.BasicTreeWriteService;
-import com.github.bordertech.corpdir.api.readonly.service.BasicTreeReadOnlyService;
+import com.github.bordertech.corpdir.api.service.BasicTreeService;
 import java.util.List;
 
 /**
  * CRUD Tree API calling CorpDir Services.
  *
  * @param <T> the CorpDir Treeable API object
- * @param <R> the CorpDir tree read-only service type
- * @param <W> the CorpDir tree write service type
+ * @param <S> the CorpDir tree read and write service type
  * 
  * @author Jonathan Austin
- * @author Aswin Kandula
  */
-public class DefaultCorpCrudTreeDataApi<T extends ApiTreeable, R extends BasicTreeReadOnlyService<T>, W extends BasicTreeWriteService<T>> extends DefaultCorpCrudDataApi<T, R, W> implements CorpCrudTreeDataApi<T, R, W> {
+public class DefaultCorpCrudTreeDataApi<T extends ApiTreeable, S extends BasicTreeService<T>> extends DefaultCorpCrudDataApi<T, S> implements CorpCrudTreeDataApi<T, S> {
 
-	public DefaultCorpCrudTreeDataApi(final Class<T> apiClass, final R readService, final W writeService) {
-		super(apiClass, readService, writeService);
+	public DefaultCorpCrudTreeDataApi(final Class<T> apiClass, final S service) {
+		super(apiClass, service);
 	}
 
 	@Override
 	public List<T> search(final String criteria) {
-		DataResponse<List<T>> resp = getReadService().search(criteria);
+		DataResponse<List<T>> resp = getService().search(criteria);
 		return resp.getData();
 	}
 
 	@Override
 	public List<T> getChildren(final T entity) {
-		DataResponse<List<T>> resp = getReadService().getSubs(entity.getId());
+		DataResponse<List<T>> resp = getService().getSubs(entity.getId());
 		return resp.getData();
 	}
 
 	@Override
 	public List<T> getRootItems() {
-		DataResponse<List<T>> resp = getReadService().getRootItems();
+		DataResponse<List<T>> resp = getService().getRootItems();
 		return resp.getData();
 	}
 
 	@Override
 	public T addChild(final T parent, final T child) {
-		DataResponse<T> resp = getWriteService().addSub(parent.getId(), child.getId());
+		DataResponse<T> resp = getService().addSub(parent.getId(), child.getId());
 		return resp.getData();
 	}
 
 	@Override
 	public T removeChild(final T parent, final T child) {
-		DataResponse<T> resp = getWriteService().removeSub(parent.getId(), child.getId());
+		DataResponse<T> resp = getService().removeSub(parent.getId(), child.getId());
 		return resp.getData();
 	}
 

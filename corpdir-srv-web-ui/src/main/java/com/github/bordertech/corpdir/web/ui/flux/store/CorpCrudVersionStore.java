@@ -10,9 +10,8 @@ import com.github.bordertech.corpdir.web.ui.flux.dataapi.CorpCrudVersionDataApi;
  * 
  * @param <D> the Corp data API type
  * @author Jonathan Austin
- * @author Aswin Kandula
  */
-public interface CorpCrudVersionStore<T extends ApiVersionable, D extends CorpCrudVersionDataApi<T, ?, ?>> extends CorpCrudStore<T, D> {
+public interface CorpCrudVersionStore<T extends ApiVersionable, D extends CorpCrudVersionDataApi<T, ?>> extends CorpCrudStore<T, D> {
 
 	/**
 	 * @return the current version id

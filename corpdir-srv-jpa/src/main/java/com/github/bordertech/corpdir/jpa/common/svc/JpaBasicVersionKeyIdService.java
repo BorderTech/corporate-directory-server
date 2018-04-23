@@ -3,8 +3,6 @@ package com.github.bordertech.corpdir.jpa.common.svc;
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
-import com.github.bordertech.corpdir.api.modify.service.BasicVersionKeyIdWriteService;
-import com.github.bordertech.corpdir.api.readonly.service.BasicVersionKeyIdReadOnlyService;
 import com.github.bordertech.corpdir.jpa.common.feature.PersistVersionableKeyId;
 import com.github.bordertech.corpdir.jpa.common.map.MapperApiVersion;
 import com.github.bordertech.corpdir.jpa.common.version.ItemVersion;
@@ -13,6 +11,7 @@ import java.util.List;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
+import com.github.bordertech.corpdir.api.service.BasicVersionKeyIdService;
 
 /**
  * Keyed Entity JPA service implementation.
@@ -24,7 +23,7 @@ import javax.persistence.criteria.CriteriaQuery;
  * @since 1.0.0
  */
 @Singleton
-public abstract class JpaBasicVersionKeyIdService<A extends ApiVersionable, U extends ItemVersion<P>, P extends PersistVersionableKeyId<P, U>> extends AbstractJpaKeyIdService<A, P> implements BasicVersionKeyIdReadOnlyService<A>, BasicVersionKeyIdWriteService<A> {
+public abstract class JpaBasicVersionKeyIdService<A extends ApiVersionable, U extends ItemVersion<P>, P extends PersistVersionableKeyId<P, U>> extends AbstractJpaKeyIdService<A, P> implements BasicVersionKeyIdService<A> {
 
 	@Override
 	public DataResponse<List<A>> search(final String search) {
