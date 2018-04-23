@@ -2,6 +2,7 @@ package com.github.bordertech.corpdir.jpa.v1.api;
 
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
+import com.github.bordertech.corpdir.api.v1.VersionCtrlService;
 import com.github.bordertech.corpdir.api.v1.model.VersionCtrl;
 import com.github.bordertech.corpdir.jpa.common.map.MapperApi;
 import com.github.bordertech.corpdir.jpa.common.svc.JpaBasicIdService;
@@ -10,7 +11,6 @@ import com.github.bordertech.corpdir.jpa.v1.mapper.VersionCtrlMapper;
 import javax.persistence.EntityManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.github.bordertech.corpdir.api.v1.VersionCtrlService;
 
 /**
  * Abstract version control service implementation.

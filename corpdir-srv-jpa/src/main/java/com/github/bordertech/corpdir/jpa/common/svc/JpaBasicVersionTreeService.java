@@ -3,6 +3,7 @@ package com.github.bordertech.corpdir.jpa.common.svc;
 import com.github.bordertech.corpdir.api.common.ApiTreeable;
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
 import com.github.bordertech.corpdir.api.response.DataResponse;
+import com.github.bordertech.corpdir.api.service.BasicVersionTreeService;
 import com.github.bordertech.corpdir.jpa.common.feature.PersistVersionableKeyId;
 import com.github.bordertech.corpdir.jpa.common.version.ItemTreeVersion;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
@@ -13,7 +14,6 @@ import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.Table;
-import com.github.bordertech.corpdir.api.service.BasicVersionTreeService;
 
 /**
  * Tree Entity service.

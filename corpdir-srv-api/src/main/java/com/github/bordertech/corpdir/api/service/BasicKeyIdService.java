@@ -10,7 +10,7 @@ import com.github.bordertech.corpdir.api.common.ApiKeyIdObject;
  *
  * @param <T> the keyed API object
  * @author Jonathan Austin
- * @author Aswin Kandula
+ * 
  * @since 1.0.0
  */
 public interface BasicKeyIdService<T extends ApiKeyIdObject> extends BasicKeyIdReadOnlyService<T>, BasicIdService<T> {

@@ -1,9 +1,9 @@
 package com.github.bordertech.corpdir.web.ui.flux.dataapi.impl;
 
+import com.github.bordertech.corpdir.api.v1.VersionCtrlService;
 import com.github.bordertech.corpdir.api.v1.model.VersionCtrl;
 import com.github.bordertech.corpdir.web.ui.flux.dataapi.DefaultCorpCrudDataApi;
 import javax.inject.Inject;
-import com.github.bordertech.corpdir.api.v1.VersionCtrlService;
 
 /**
  * VersionCtrl CRUD API implementation.

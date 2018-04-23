@@ -3,6 +3,7 @@ package com.github.bordertech.corpdir.jpa.v1.api;
 import com.github.bordertech.corpdir.api.exception.NotFoundException;
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
+import com.github.bordertech.corpdir.api.v1.ContactService;
 import com.github.bordertech.corpdir.api.v1.model.Channel;
 import com.github.bordertech.corpdir.api.v1.model.Contact;
 import com.github.bordertech.corpdir.api.v1.model.Position;
@@ -20,7 +21,6 @@ import com.github.bordertech.corpdir.jpa.v1.mapper.PositionMapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
-import com.github.bordertech.corpdir.api.v1.ContactService;
 
 /**
  * Abstract contact service implementation.

@@ -8,7 +8,7 @@ import com.github.bordertech.corpdir.api.response.DataResponse;
  *
  * @param <T> the tree API object
  * @author Jonathan Austin
- * @author Aswin Kandula
+ * 
  * @since 1.0.0
  */
 public interface BasicTreeService<T extends ApiTreeable> extends BasicTreeReadOnlyService<T>, BasicKeyIdService<T> {

@@ -1,9 +1,9 @@
 package com.github.bordertech.corpdir.jpa.common.svc;
 
 import com.github.bordertech.corpdir.api.common.ApiKeyIdObject;
+import com.github.bordertech.corpdir.api.service.BasicKeyIdService;
 import com.github.bordertech.corpdir.jpa.common.feature.PersistKeyIdObject;
 import javax.inject.Singleton;
-import com.github.bordertech.corpdir.api.service.BasicKeyIdService;
 
 /**
  * Keyed Entity JPA service implementation.

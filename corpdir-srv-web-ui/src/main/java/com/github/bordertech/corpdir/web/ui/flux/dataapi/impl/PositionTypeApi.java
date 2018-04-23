@@ -1,9 +1,9 @@
 package com.github.bordertech.corpdir.web.ui.flux.dataapi.impl;
 
+import com.github.bordertech.corpdir.api.v1.PositionTypeService;
 import com.github.bordertech.corpdir.api.v1.model.PositionType;
 import com.github.bordertech.corpdir.web.ui.flux.dataapi.DefaultCorpCrudDataApi;
 import javax.inject.Inject;
-import com.github.bordertech.corpdir.api.v1.PositionTypeService;
 
 /**
  * PositionType CRUD API implementation.

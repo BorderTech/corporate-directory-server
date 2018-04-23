@@ -1,5 +1,13 @@
 package com.github.bordertech.corpdir.jersey.config.hk2;
 
+import com.github.bordertech.corpdir.api.v1.ContactService;
+import com.github.bordertech.corpdir.api.v1.LocationService;
+import com.github.bordertech.corpdir.api.v1.OrgUnitService;
+import com.github.bordertech.corpdir.api.v1.PositionService;
+import com.github.bordertech.corpdir.api.v1.PositionTypeService;
+import com.github.bordertech.corpdir.api.v1.SystemCtrlService;
+import com.github.bordertech.corpdir.api.v1.UnitTypeService;
+import com.github.bordertech.corpdir.api.v1.VersionCtrlService;
 import com.github.bordertech.corpdir.jpa.v1.api.ContactServiceImpl;
 import com.github.bordertech.corpdir.jpa.v1.api.LocationServiceImpl;
 import com.github.bordertech.corpdir.jpa.v1.api.OrgUnitServiceImpl;
@@ -10,14 +18,6 @@ import com.github.bordertech.corpdir.jpa.v1.api.UnitTypeServiceImpl;
 import com.github.bordertech.corpdir.jpa.v1.api.VersionCtrlServiceImpl;
 import javax.inject.Singleton;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
-import com.github.bordertech.corpdir.api.v1.ContactService;
-import com.github.bordertech.corpdir.api.v1.SystemCtrlService;
-import com.github.bordertech.corpdir.api.v1.LocationService;
-import com.github.bordertech.corpdir.api.v1.OrgUnitService;
-import com.github.bordertech.corpdir.api.v1.PositionTypeService;
-import com.github.bordertech.corpdir.api.v1.PositionService;
-import com.github.bordertech.corpdir.api.v1.UnitTypeService;
-import com.github.bordertech.corpdir.api.v1.VersionCtrlService;
 
 public class ApplicationServicesBinder extends AbstractBinder {
 

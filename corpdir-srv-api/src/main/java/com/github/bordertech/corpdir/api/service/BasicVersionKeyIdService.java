@@ -7,7 +7,7 @@ import com.github.bordertech.corpdir.api.common.ApiVersionable;
  *
  * @param <T> the keyed API object
  * @author Jonathan Austin
- * @author Aswin Kandula
+ * 
  * @since 1.0.0
  */
 public interface BasicVersionKeyIdService<T extends ApiVersionable> extends BasicVersionKeyIdReadOnlyService<T>, BasicKeyIdService<T> {

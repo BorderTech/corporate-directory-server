@@ -2,6 +2,7 @@ package com.github.bordertech.corpdir.jpa.v1.api;
 
 import com.github.bordertech.corpdir.api.exception.NotFoundException;
 import com.github.bordertech.corpdir.api.response.DataResponse;
+import com.github.bordertech.corpdir.api.v1.OrgUnitService;
 import com.github.bordertech.corpdir.api.v1.model.OrgUnit;
 import com.github.bordertech.corpdir.api.v1.model.Position;
 import com.github.bordertech.corpdir.jpa.common.map.MapperApiVersion;
@@ -17,7 +18,6 @@ import com.github.bordertech.corpdir.jpa.v1.mapper.PositionMapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
-import com.github.bordertech.corpdir.api.v1.OrgUnitService;
 
 /**
  * Abstract organization unit service implementation.
