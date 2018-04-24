@@ -6,12 +6,12 @@ import com.github.bordertech.corpdir.api.service.BasicIdService;
 import com.github.bordertech.corpdir.api.v1.model.VersionCtrl;
 
 /**
- * Version Control Service Interface.
+ * Version Control read and write Service Interface.
  *
  * @author Jonathan Austin
  * @since 1.0.0
  */
-public interface VersionCtrlService extends BasicIdService<VersionCtrl> {
+public interface VersionCtrlService extends VersionCtrlReadOnlyService, BasicIdService<VersionCtrl> {
 
 	/**
 	 * Short hand create function.
@@ -31,5 +31,4 @@ public interface VersionCtrlService extends BasicIdService<VersionCtrl> {
 	 * @return basic response if successful or error occurred
 	 */
 	BasicResponse copyVersion(final Long fromId, final Long toId, boolean copySystem, boolean copyCustom);
-
 }

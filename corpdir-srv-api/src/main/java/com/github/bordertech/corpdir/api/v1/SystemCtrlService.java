@@ -5,22 +5,16 @@ import com.github.bordertech.corpdir.api.service.BasicIdService;
 import com.github.bordertech.corpdir.api.v1.model.SystemCtrl;
 
 /**
- * System Control record service.
+ * System Control record read and write service.
  *
  * @author Jonathan Austin
  * @since 1.0.0
  */
-public interface SystemCtrlService extends BasicIdService<SystemCtrl> {
-
-	/**
-	 * @return the current version details
-	 */
-	DataResponse<Long> getCurrentVersion();
+public interface SystemCtrlService extends SystemCtrlReadOnlyService, BasicIdService<SystemCtrl> {
 
 	/**
 	 * @param versionId
 	 * @return the current version details
 	 */
 	DataResponse<Long> setCurrentVersion(final Long versionId);
-
 }
