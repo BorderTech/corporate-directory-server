@@ -6,10 +6,8 @@ package com.github.bordertech.corpdir.sync;
  */
 interface DataVersionSynchronisation<S, D, A> extends DataSynchronisation<S, D, A> {
 
-	void syncLinkedData();
+    void syncLinkedData();
 
-	void createOrUpdateData(Long versionId, A fromApiData);
-	
-	String getOrCreateNewVersion();
+    String getOrCreateNewVersion();
 
 }

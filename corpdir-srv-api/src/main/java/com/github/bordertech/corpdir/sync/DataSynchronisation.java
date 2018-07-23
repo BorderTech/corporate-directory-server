@@ -12,14 +12,14 @@ import java.util.List;
  */
 public interface DataSynchronisation<S, D, A> {
 
-	S getSourceService();
+    S getSourceService();
 
-	D getDestinationService();
+    D getDestinationService();
 
-	void syncBaseData();
+    void syncBaseData();
 
-	DataResponse<List<A>> getSourceData();
+    DataResponse<List<A>> getSourceData();
 
-	void createOrUpdateData(A fromApiData);
+    void createOrUpdateData(A fromApiData);
 
 }

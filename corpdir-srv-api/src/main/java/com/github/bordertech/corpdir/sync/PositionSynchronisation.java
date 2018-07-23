@@ -12,27 +12,27 @@ import javax.inject.Inject;
  * @author exiqaj
  */
 public class PositionSynchronisation extends AbstractVersionSynchronisation<PositionReadOnlyService, PositionService, Position> {
-	
-	@Inject
-	public PositionSynchronisation(PositionReadOnlyService sourceService, PositionService destinationService) {
-		super(sourceService, destinationService);
-	}
-	
-	@Override
-	public void syncBaseData() {
-		//TODO getManageOuIds, PositionType
-		DataResponse<List<Position>> sourcePositions = getSourceData();
-		final Long versionId = Long.parseLong(getOrCreateNewVersion());
-		for (Position sourcePosition : sourcePositions.getData()) {
-			createOrUpdateData(versionId, sourcePosition);
 
-		}
-		
+    @Inject
+    public PositionSynchronisation(PositionReadOnlyService sourceService, PositionService destinationService) {
+	super(sourceService, destinationService);
+    }
+
+    @Override
+    public void syncBaseData() {
+	//TODO getManageOuIds, PositionType
+	DataResponse<List<Position>> sourcePositions = getSourceData();
+	final Long versionId = Long.parseLong(getOrCreateNewVersion());
+	for (Position sourcePosition : sourcePositions.getData()) {
+	    createOrUpdateData(versionId, sourcePosition);
+
 	}
-	
-	@Override
+
+    }
+
+    @Override
     public void syncLinkedData() {
-		// TODO
-	}
+	// TODO
+    }
 
 }

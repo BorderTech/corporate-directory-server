@@ -10,12 +10,8 @@ import javax.inject.Inject;
  */
 public class ImportActionCreator extends DefaultActionCreator {
 
-	@Inject
-	public ImportActionCreator() {
-		super(CorpEntityType.IMPORT.getActionCreatorKey());
-	}
-
-	public void doImport() {
-		
-	}
+    @Inject
+    public ImportActionCreator() {
+	super(CorpEntityType.IMPORT.getActionCreatorKey());
+    }
 }

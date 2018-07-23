@@ -13,18 +13,18 @@ import javax.inject.Inject;
  */
 public class PositionTypeSynchronisation extends AbstractSynchronisation<PositionTypeReadOnlyService, PositionTypeService, PositionType> {
 
-	@Inject
-	public PositionTypeSynchronisation(PositionTypeReadOnlyService sourceService, PositionTypeService destinationService) {
-		super(sourceService, destinationService);
-	}
+    @Inject
+    public PositionTypeSynchronisation(PositionTypeReadOnlyService sourceService, PositionTypeService destinationService) {
+	super(sourceService, destinationService);
+    }
 
-	@Override
-	public void syncBaseData() {
-		DataResponse<List<PositionType>> sourcePositionTypes = getSourceData();
-		
-		for (PositionType sourcePositionType : sourcePositionTypes.getData()) {
-			createOrUpdateData(sourcePositionType);
-		}
+    @Override
+    public void syncBaseData() {
+	DataResponse<List<PositionType>> sourcePositionTypes = getSourceData();
+
+	for (PositionType sourcePositionType : sourcePositionTypes.getData()) {
+	    createOrUpdateData(sourcePositionType);
 	}
-	
+    }
+
 }

@@ -9,26 +9,27 @@ import javax.inject.Inject;
 
 /**
  * One-way Organisation Units synchronisation from Source to Destination
+ *
  * @author exiqaj
  */
 public class OrgUnitSynchronisation extends AbstractVersionSynchronisation<OrgUnitReadOnlyService, OrgUnitService, OrgUnit> {
-    
-	@Inject
-	public OrgUnitSynchronisation(OrgUnitReadOnlyService sourceService, OrgUnitService destinationService) {
-		super(sourceService, destinationService);
-	}
-	
-	@Override
-    public void syncBaseData() {
-		DataResponse<List<OrgUnit>> sourceOrgUnits = getSourceData();
-		final Long versionId = Long.parseLong(getOrCreateNewVersion());
-		for (OrgUnit sourceOrgUnit : sourceOrgUnits.getData()) {
-			createOrUpdateData(versionId, sourceOrgUnit);
-		}
+
+    @Inject
+    public OrgUnitSynchronisation(OrgUnitReadOnlyService sourceService, OrgUnitService destinationService) {
+	super(sourceService, destinationService);
     }
-	
-	@Override
-    public void syncLinkedData() {
-		// TODO
+
+    @Override
+    public void syncBaseData() {
+	DataResponse<List<OrgUnit>> sourceOrgUnits = getSourceData();
+	final Long versionId = Long.parseLong(getOrCreateNewVersion());
+	for (OrgUnit sourceOrgUnit : sourceOrgUnits.getData()) {
+	    createOrUpdateData(versionId, sourceOrgUnit);
 	}
+    }
+
+    @Override
+    public void syncLinkedData() {
+	// TODO
+    }
 }

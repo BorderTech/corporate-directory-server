@@ -9,26 +9,27 @@ import javax.inject.Inject;
 
 /**
  * One-way Contacts synchronisation from Source to Destination
+ *
  * @author exiqaj
  */
 public class ContactSynchronisation extends AbstractVersionSynchronisation<ContactReadOnlyService, ContactService, Contact> {
 
-	@Inject
-	public ContactSynchronisation(ContactReadOnlyService sourceService, ContactService destinationService) {
-		super(sourceService, destinationService);
+    @Inject
+    public ContactSynchronisation(ContactReadOnlyService sourceService, ContactService destinationService) {
+	super(sourceService, destinationService);
+    }
+
+    @Override
+    public void syncBaseData() {
+	DataResponse<List<Contact>> sourceContacts = getSourceData();
+	final Long versionId = Long.parseLong(getOrCreateNewVersion());
+	for (Contact sourceContact : sourceContacts.getData()) {
+	    createOrUpdateData(versionId, sourceContact);
 	}
-	
-	@Override
-	public void syncBaseData() {
-		DataResponse<List<Contact>> sourceContacts = getSourceData();
-		final Long versionId = Long.parseLong(getOrCreateNewVersion());
-		for (Contact sourceContact : sourceContacts.getData()) {
-			createOrUpdateData(versionId, sourceContact);
-		}
-	}
-	
-	@Override
-	public void syncLinkedData() {
-		// TODO
-	}
+    }
+
+    @Override
+    public void syncLinkedData() {
+	// TODO
+    }
 }

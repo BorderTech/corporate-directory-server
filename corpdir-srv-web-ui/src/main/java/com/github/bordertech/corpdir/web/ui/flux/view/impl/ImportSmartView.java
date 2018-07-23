@@ -18,47 +18,46 @@ import com.github.bordertech.wcomponents.addons.polling.PollingStartType;
  * @param <T>
  */
 public class ImportSmartView<T> extends DefaultSmartView<T> {
-	
-	private final DefaultToolbarView toolbar = new DefaultToolbarView("vw_toolbar_1");
-	private final PollingServicePanel panel = new PollingServicePanel() {
-	    @Override
-	    protected void handleStoppedPolling() {
-		super.handleStoppedPolling(); 
-		toolbar.getItemImport().setDisabled(false);
-	    }
-	    
-		
-	};
 
-	public ImportSmartView(String viewId) {
-
-		super(viewId, "wclib/hbs/layout/sync-view.hbs");
-
-		// Toolbar Defaults
-		toolbar.addToolbarItem(ToolbarModifyItemType.IMPORT);
-		toolbar.removeToolbarItem(ToolbarNavigationItemType.RESET);
-		
-		// Polling Panel
-		panel.setServiceAction(new ImportServiceAction());
-		panel.setStartType(PollingStartType.MANUAL);
-		panel.setServiceCacheKey("import");
-		panel.getContentResultHolder().add(new WLabel("Imported successfully"));
-
-		// Add (dumb) views
-		addComponentToTemplate(TemplateConstants.TAG_VW_TOOLBAR_TOP, toolbar);
-		addComponentToTemplate("import-poll", panel);
-
-	}
-
+    private final DefaultToolbarView toolbar = new DefaultToolbarView("vw_toolbar_1");
+    private final PollingServicePanel panel = new PollingServicePanel() {
 	@Override
-	protected void handleViewEvent(final String viewId, final ViewEventType event, final Object data) {
-		super.handleViewEvent(viewId, event, data);
-		
-		if (isEvent(ToolbarBaseEventType.IMPORT, event)) {
-			
-			panel.doManualStart();
-			toolbar.getItemImport().setDisabled(true);
-		}
+	protected void handleStoppedPolling() {
+	    super.handleStoppedPolling();
+	    toolbar.getItemImport().setDisabled(false);
 	}
+
+    };
+
+    public ImportSmartView(String viewId) {
+
+	super(viewId, "wclib/hbs/layout/import-view.hbs");
+
+	// Toolbar Defaults
+	toolbar.addToolbarItem(ToolbarModifyItemType.IMPORT);
+	toolbar.removeToolbarItem(ToolbarNavigationItemType.RESET);
+
+	// Polling Panel
+	panel.setServiceAction(new ImportServiceAction());
+	panel.setStartType(PollingStartType.MANUAL);
+	panel.setServiceCacheKey("import");
+	panel.getContentResultHolder().add(new WLabel("Imported successfully"));
+
+	// Add (dumb) views
+	addComponentToTemplate(TemplateConstants.TAG_VW_TOOLBAR_TOP, toolbar);
+	addComponentToTemplate("import-poll", panel);
+
+    }
+
+    @Override
+    protected void handleViewEvent(final String viewId, final ViewEventType event, final Object data) {
+	super.handleViewEvent(viewId, event, data);
+
+	if (isEvent(ToolbarBaseEventType.IMPORT, event)) {
+
+	    panel.doManualStart();
+	    toolbar.getItemImport().setDisabled(true);
+	}
+    }
 
 }

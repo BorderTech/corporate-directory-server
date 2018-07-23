@@ -13,18 +13,18 @@ import javax.inject.Inject;
  */
 public class LocationSynchronisation extends AbstractSynchronisation<LocationReadOnlyService, LocationService, Location> {
 
-	@Inject
-	public LocationSynchronisation(LocationReadOnlyService sourceService, LocationService destinationService) {
-		super(sourceService, destinationService);
-	}
+    @Inject
+    public LocationSynchronisation(LocationReadOnlyService sourceService, LocationService destinationService) {
+	super(sourceService, destinationService);
+    }
 
-	@Override
-	public void syncBaseData() {
-		DataResponse<List<Location>> sourceLocations = getSourceData();
-		
-		for (Location sourceLocation : sourceLocations.getData()) {
-			createOrUpdateData(sourceLocation);
-		}
+    @Override
+    public void syncBaseData() {
+	DataResponse<List<Location>> sourceLocations = getSourceData();
+
+	for (Location sourceLocation : sourceLocations.getData()) {
+	    createOrUpdateData(sourceLocation);
 	}
-	
+    }
+
 }

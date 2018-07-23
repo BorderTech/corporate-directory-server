@@ -18,62 +18,60 @@ import org.apache.commons.lang.time.DateFormatUtils;
 
 /**
  * One-way version synchronisation from Source to Destination
- * 
+ *
  * @author exiqaj
  * @param <S> Read-only Service Api
  * @param <D> Read-Write Service Api
  * @param <A> Data Api
  */
-public abstract class AbstractVersionSynchronisation <S extends BasicKeyIdReadOnlyService & BasicVersionKeyIdReadOnlyService, D extends BasicKeyIdService & BasicVersionKeyIdService, A extends ApiKeyIdObject & ApiVersionable> 
-		extends AbstractSynchronisation<S, D, A>
-		implements DataVersionSynchronisation<S, D, A> {
-	
-	private final String today = DateFormatUtils.ISO_DATE_FORMAT.format(new Date());
-	
-	private final VersionCtrlService versionService;
-	
-	protected AbstractVersionSynchronisation(S sourceService, D destinationService) {
-		super (sourceService, destinationService);
-		versionService = Didums.getService(VersionCtrlService.class);
-	}
+public abstract class AbstractVersionSynchronisation<S extends BasicKeyIdReadOnlyService & BasicVersionKeyIdReadOnlyService, D extends BasicKeyIdService & BasicVersionKeyIdService, A extends ApiKeyIdObject & ApiVersionable>
+	extends AbstractSynchronisation<S, D, A>
+	implements DataVersionSynchronisation<S, D, A> {
 
-	@Override
-	public String getOrCreateNewVersion() {
-		DataResponse<List<VersionCtrl>> result = versionService.search(today);
-		VersionCtrl todayVersion;
-		if (result.getData().isEmpty()) {
-			VersionCtrl newVersion = new VersionCtrl(null);
-			newVersion.setDescription(today);
-			versionService.create(newVersion);
-			result = versionService.search(today);
-			todayVersion = result.getData().get(0);
-		} else {
-			todayVersion = result.getData().get(0);
-		}
-		if (todayVersion.getId().startsWith(ApiIdObject.ID_PREFIX)) {
-			return todayVersion.getId().substring(1);
-		} else {
-			return todayVersion.getId();
-		}
+    private final String today = DateFormatUtils.ISO_DATE_FORMAT.format(new Date());
+
+    private final VersionCtrlService versionService;
+
+    protected AbstractVersionSynchronisation(S sourceService, D destinationService) {
+	super(sourceService, destinationService);
+	versionService = Didums.getService(VersionCtrlService.class);
+    }
+
+    @Override
+    public String getOrCreateNewVersion() {
+	// TODO: should version creation be here? or injected by a view?
+	DataResponse<List<VersionCtrl>> result = versionService.search(today);
+	VersionCtrl todayVersion;
+	if (result.getData().isEmpty()) {
+	    VersionCtrl newVersion = new VersionCtrl(null);
+	    newVersion.setDescription(today);
+	    versionService.create(newVersion);
+	    result = versionService.search(today);
+	    todayVersion = result.getData().get(0);
+	} else {
+	    todayVersion = result.getData().get(0);
 	}
-	
-	@Override
-	public void createOrUpdateData(Long versionId, A fromApiData) {
-		DataResponse<A> retrievedEntity;
-		try {
-			retrievedEntity = getDestinationService().retrieve(versionId, fromApiData.getBusinessKey());
-		} catch (NotFoundException e) {
-			retrievedEntity = new DataResponse<>(null);
-		}
-		if (retrievedEntity.getData() == null) {
-			fromApiData.setVersionId(versionId);
-			getDestinationService().create(fromApiData);
-		} else {
-			fromApiData.setVersionId(retrievedEntity.getData().getVersionId());
-			
-			setId(fromApiData, retrievedEntity);
-			
-			getDestinationService().update(fromApiData.getBusinessKey(), fromApiData);
-		}
+	if (todayVersion.getId().startsWith(ApiIdObject.ID_PREFIX)) {
+	    return todayVersion.getId().substring(1);
+	} else {
+	    return todayVersion.getId();
 	}
+    }
+
+    public void createOrUpdateData(Long versionId, A fromApiData) {
+	DataResponse<A> retrievedEntity;
+	try {
+	    retrievedEntity = getDestinationService().retrieve(versionId, fromApiData.getBusinessKey());
+	} catch (NotFoundException e) {
+	    retrievedEntity = new DataResponse<>(null);
+	}
+	if (retrievedEntity.getData() == null) {
+	    fromApiData.setVersionId(versionId);
+	    getDestinationService().create(fromApiData);
+	} else {
+	    fromApiData.setVersionId(retrievedEntity.getData().getVersionId());
+	    setId(fromApiData, retrievedEntity);
+	    getDestinationService().update(fromApiData.getBusinessKey(), fromApiData);
+	}
+    }
 }
