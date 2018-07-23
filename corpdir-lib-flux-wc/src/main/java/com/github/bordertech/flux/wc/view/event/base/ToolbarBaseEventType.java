@@ -18,5 +18,6 @@ public enum ToolbarBaseEventType implements ToolbarEventType {
 	UPDATE,
 	CREATE,
 	BACK,
-	APPLY
+	APPLY,
+	IMPORT
 }

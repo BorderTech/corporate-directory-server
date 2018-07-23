@@ -1,12 +1,12 @@
 package com.github.bordertech.corpdir.web.ui;
 
-import com.github.bordertech.corpdir.web.ui.flux.actioncreator.CorpCrudActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.ChannelActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.ContactActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.LocationActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.OrgUnitActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.PositionActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.PositionTypeActionCreator;
+import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.ImportActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.SystemCtrlActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.UnitTypeActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.VersionCtrlActionCreator;
@@ -19,6 +19,7 @@ import com.github.bordertech.corpdir.web.ui.flux.store.impl.PositionTypeStore;
 import com.github.bordertech.corpdir.web.ui.flux.store.impl.SystemCtrlStore;
 import com.github.bordertech.corpdir.web.ui.flux.store.impl.UnitTypeStore;
 import com.github.bordertech.corpdir.web.ui.flux.store.impl.VersionCtrlStore;
+import com.github.bordertech.flux.ActionCreator;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,9 +37,10 @@ public enum CorpEntityType {
 	CONTACT("contact", true, ContactActionCreator.class, ContactStore.class),
 	VERSION_CTRL("versionctrl", true, VersionCtrlActionCreator.class, VersionCtrlStore.class),
 	SYSTEM_CTRL("systemctrl", true, SystemCtrlActionCreator.class, SystemCtrlStore.class),
-	CHANNEL("channel", false, ChannelActionCreator.class, null);
+	CHANNEL("channel", false, ChannelActionCreator.class, null),
+	IMPORT("import", false, ImportActionCreator.class, null);
 
-	CorpEntityType(final String key, final boolean linked, final Class<? extends CorpCrudActionCreator> actionCreatorClass, final Class<? extends CorpCrudStore> storeClass) {
+	CorpEntityType(final String key, final boolean linked, final Class<? extends ActionCreator> actionCreatorClass, final Class<? extends CorpCrudStore> storeClass) {
 		this.key = key;
 		this.linked = linked;
 		this.actionCreatorClass = actionCreatorClass;
@@ -47,10 +49,10 @@ public enum CorpEntityType {
 
 	final String key;
 	final boolean linked;
-	final Class<? extends CorpCrudActionCreator> actionCreatorClass;
+	final Class<? extends ActionCreator> actionCreatorClass;
 	final Class<? extends CorpCrudStore> storeClass;
 
-	public Class<? extends CorpCrudActionCreator> getActionCreatorClass() {
+	public Class<? extends ActionCreator> getActionCreatorClass() {
 		return actionCreatorClass;
 	}
 
