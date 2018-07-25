@@ -18,20 +18,4 @@
 		<wc.qa.skip>true</wc.qa.skip>
 	</properties>
 
-	<dependencies>
-		<!-- Injection Interface. -->
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- Taskmaster for ASYNC -->
-		<dependency>
-			<groupId>com.github.bordertech.taskmaster</groupId>
-			<artifactId>taskmaster</artifactId>
-		</dependency>
-
-	</dependencies>
-
 </project>

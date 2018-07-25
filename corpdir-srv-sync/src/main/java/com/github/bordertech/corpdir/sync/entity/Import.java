@@ -1,4 +1,4 @@
-package com.github.bordertech.corpdir.api.v1.model;
+package com.github.bordertech.corpdir.sync.entity;
 
 import com.github.bordertech.corpdir.api.common.ApiObject;
 

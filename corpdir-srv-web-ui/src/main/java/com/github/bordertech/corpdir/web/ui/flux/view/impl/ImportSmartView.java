@@ -1,6 +1,6 @@
 package com.github.bordertech.corpdir.web.ui.flux.view.impl;
 
-import com.github.bordertech.corpdir.sync.ImportServiceAction;
+import com.github.bordertech.corpdir.sync.service.ImportServiceAction;
 import com.github.bordertech.flux.view.ViewEventType;
 import com.github.bordertech.flux.wc.common.TemplateConstants;
 import com.github.bordertech.flux.wc.view.DefaultSmartView;

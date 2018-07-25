@@ -1,4 +1,4 @@
-package com.github.bordertech.corpdir.sync;
+package com.github.bordertech.corpdir.sync.common;
 
 import com.github.bordertech.corpdir.api.response.DataResponse;
 import java.util.List;
@@ -12,14 +12,12 @@ import java.util.List;
  */
 public interface DataSynchronisation<S, D, A> {
 
-    S getSourceService();
+	S getSourceService();
 
-    D getDestinationService();
+	D getDestinationService();
 
-    void syncBaseData();
+	void syncBaseData();
 
-    DataResponse<List<A>> getSourceData();
-
-    void createOrUpdateData(A fromApiData);
+	DataResponse<List<A>> getSourceData();
 
 }

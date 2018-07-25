@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<name>corpdir-srv-web-ui</name>
-	<artifactId>corpdir-srv-web-ui</artifactId>
+	<name>corpdir-srv-sync</name>
+	<artifactId>corpdir-srv-sync</artifactId>
 
 	<parent>
 		<groupId>com.github.bordertech.corpdir</groupId>
@@ -26,18 +25,6 @@
 			<version>${project.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.github.bordertech.corpdir</groupId>
-			<artifactId>corpdir-srv-sync</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.bordertech.corpdir</groupId>
-			<artifactId>corpdir-lib-flux-wc</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
 		<!-- Injection Interface. -->
 		<dependency>
 			<groupId>javax.inject</groupId>
@@ -45,11 +32,10 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- Servlet Interface. -->
+		<!-- Taskmaster for ASYNC -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<scope>provided</scope>
+			<groupId>com.github.bordertech.taskmaster</groupId>
+			<artifactId>taskmaster</artifactId>
 		</dependency>
 
 	</dependencies>

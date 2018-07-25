@@ -1,11 +1,11 @@
 package com.github.bordertech.corpdir.jersey.config.hk2;
 
-import com.github.bordertech.corpdir.sync.ContactSynchronisation;
-import com.github.bordertech.corpdir.sync.LocationSynchronisation;
-import com.github.bordertech.corpdir.sync.OrgUnitSynchronisation;
-import com.github.bordertech.corpdir.sync.PositionSynchronisation;
-import com.github.bordertech.corpdir.sync.PositionTypeSynchronisation;
-import com.github.bordertech.corpdir.sync.UnitLevelSynchronisation;
+import com.github.bordertech.corpdir.sync.impl.ContactSynchronisation;
+import com.github.bordertech.corpdir.sync.impl.LocationSynchronisation;
+import com.github.bordertech.corpdir.sync.impl.OrgUnitSynchronisation;
+import com.github.bordertech.corpdir.sync.impl.PositionSynchronisation;
+import com.github.bordertech.corpdir.sync.impl.PositionTypeSynchronisation;
+import com.github.bordertech.corpdir.sync.impl.UnitLevelSynchronisation;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.ChannelActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.ContactActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.LocationActionCreator;
