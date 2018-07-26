@@ -24,12 +24,11 @@ public class LocationReadOnlyServiceImpl implements LocationReadOnlyService {
 
 	@Override
 	public DataResponse<List<Location>> search(String search) {
-		Location dummy = new Location(null) {{
-			setCustom(false);
-			setActive(true);
-			setBusinessKey("LO-1");
-			setDescription("LO-D");
-		}};
+		Location dummy = new Location(null);
+		dummy.setCustom(false);
+		dummy.setActive(true);
+		dummy.setBusinessKey("LO-1");
+		dummy.setDescription("LO-D");
 		return new DataResponse<>(Arrays.asList(dummy));
 	}
 

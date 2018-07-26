@@ -46,15 +46,14 @@ public class PositionReadOnlyServiceImpl implements PositionReadOnlyService {
 
 	@Override
 	public DataResponse<List<Position>> search(String search) {
-		Position dummy = new Position(null) {{
-			setCustom(false);
-			setActive(true);
-			setBusinessKey("PO-1");
-			setDescription("PO-D");
-			setTypeId("PT-1");
-			setOuId("OU-1");
-			getManageOuIds().add("PU-1");
-		}};
+		Position dummy = new Position(null);
+		dummy.setCustom(false);
+		dummy.setActive(true);
+		dummy.setBusinessKey("PO-1");
+		dummy.setDescription("PO-D");
+		dummy.setTypeId("PT-1");
+		dummy.setOuId("OU-1");
+		dummy.getManageOuIds().add("PU-1");
 		return new DataResponse<>(Arrays.asList(dummy));
 	}
 

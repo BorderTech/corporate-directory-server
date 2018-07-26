@@ -45,13 +45,12 @@ public class OrgUnitReadOnlyServiceImpl implements OrgUnitReadOnlyService {
 
 	@Override
 	public DataResponse<List<OrgUnit>> search(String search) {
-		OrgUnit dummy = new OrgUnit(null) {{
-			setCustom(false);
-			setActive(true);
-			setBusinessKey("OU-1");
-			setDescription("OU-D");
-			setTypeId("UT-1");
-		}};
+		OrgUnit dummy = new OrgUnit(null);
+		dummy.setCustom(false);
+		dummy.setActive(true);
+		dummy.setBusinessKey("OU-1");
+		dummy.setDescription("OU-D");
+		dummy.setTypeId("UT-1");
 		return new DataResponse<>(Arrays.asList(dummy));
 	}
 

@@ -38,25 +38,24 @@ public class ContactReadOnlyServiceImpl implements ContactReadOnlyService {
 
 	@Override
 	public DataResponse<List<Contact>> search(String search) {
-		Contact dummy = new Contact(null) {{
-			setCustom(false);
-			setActive(true);
-			setBusinessKey("CO-1");
-			setDescription("CO-D");
-			setFirstName("Contact-F");
-			setLastName("Contact-L");
-			getChannels().add(new Channel(null) {{
-				setCustom(false);
-				setType(ChannelTypeEnum.MOBILE);
-				setValue("123");
-			}});
-			getPositionIds().add("PO-1");
-			setCompanyTitle("TIE");
-			setAddress(new Address() {{
-				setState("STA");
-			}});
-			setLocationId("LO-1");
-		}};
+		Contact dummy = new Contact(null);
+		dummy.setCustom(false);
+		dummy.setActive(true);
+		dummy.setBusinessKey("CO-1");
+		dummy.setDescription("CO-D");
+		dummy.setFirstName("Contact-F");
+		dummy.setLastName("Contact-L");
+		Channel dummyC = new Channel(null);
+		dummyC.setCustom(false);
+		dummyC.setType(ChannelTypeEnum.MOBILE);
+		dummyC.setValue("123");
+		dummy.getChannels().add(dummyC);
+		dummy.getPositionIds().add("PO-1");
+		dummy.setCompanyTitle("TIE");
+		Address dummyA = new Address();
+		dummyA.setState("STA");
+		dummy.setAddress(dummyA);
+		dummy.setLocationId("LO-1");
 		return new DataResponse<>(Arrays.asList(dummy));
 	}
 

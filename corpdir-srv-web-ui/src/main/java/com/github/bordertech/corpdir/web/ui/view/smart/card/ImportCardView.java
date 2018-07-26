@@ -18,57 +18,54 @@ import com.github.bordertech.wcomponents.addons.cardpath.impl.DefaultAppPath;
  */
 public class ImportCardView<T> extends DefaultSecureCardView implements CrudActionCreatorConsumer<T> {
 
-    private final WSection wrapper;
-    private final ImportSmartView smartView;
+	public ImportCardView() {
+		super("SY", new DefaultAppPath(CardType.IMPORT.getPath()));
 
-    public ImportCardView() {
-	super("SY", new DefaultAppPath(CardType.IMPORT.getPath()));
+		// Title
+		getContent().addParameter(TemplateConstants.PARAM_TITLE, CardType.IMPORT.getDesc());
 
-	// Title
-	getContent().addParameter(TemplateConstants.PARAM_TITLE, CardType.IMPORT.getDesc());
+		WSection wrapper = new WSection(CardType.IMPORT.getDesc());
 
-	this.wrapper = new WSection(CardType.IMPORT.getDesc());
+		ImportSmartView smartView = new ImportSmartView("SN");
 
-	smartView = new ImportSmartView("SN");
+		wrapper.getContent().add(smartView); // <-- inner panel
 
-	wrapper.getContent().add(smartView); // <-- inner panel
+		addComponentToTemplate(TemplateConstants.TAG_VW_CONTENT, wrapper); // <-- outer panel
 
-	addComponentToTemplate(TemplateConstants.TAG_VW_CONTENT, wrapper); // <-- outer panel
+	}
 
-    }
+	@Override
+	public String getActionCreatorKey() {
+		return getComponentModel().entityCreatorKey;
+	}
 
-    @Override
-    public String getActionCreatorKey() {
-	return getComponentModel().entityCreatorKey;
-    }
+	@Override
+	public void setActionCreatorKey(final String entityCreatorKey) {
+		getOrCreateComponentModel().entityCreatorKey = entityCreatorKey;
+	}
 
-    @Override
-    public void setActionCreatorKey(final String entityCreatorKey) {
-	getOrCreateComponentModel().entityCreatorKey = entityCreatorKey;
-    }
+	@Override
+	public CrudActionCreator<T> getActionCreatorByKey() {
+		return StoreUtil.getActionCreator(getActionCreatorKey());
+	}
 
-    @Override
-    public CrudActionCreator<T> getActionCreatorByKey() {
-	return StoreUtil.getActionCreator(getActionCreatorKey());
-    }
+	@Override
+	protected CrudFormModel newComponentModel() {
+		return new CrudFormModel();
+	}
 
-    @Override
-    protected CrudFormModel newComponentModel() {
-	return new CrudFormModel();
-    }
+	@Override
+	protected CrudFormModel getComponentModel() {
+		return (CrudFormModel) super.getComponentModel();
+	}
 
-    @Override
-    protected CrudFormModel getComponentModel() {
-	return (CrudFormModel) super.getComponentModel();
-    }
+	@Override
+	protected CrudFormModel getOrCreateComponentModel() {
+		return (CrudFormModel) super.getOrCreateComponentModel();
+	}
 
-    @Override
-    protected CrudFormModel getOrCreateComponentModel() {
-	return (CrudFormModel) super.getOrCreateComponentModel();
-    }
+	public static class CrudFormModel extends SmartViewModel {
 
-    public static class CrudFormModel extends SmartViewModel {
-
-	private String entityCreatorKey;
-    }
+		private String entityCreatorKey;
+	}
 }

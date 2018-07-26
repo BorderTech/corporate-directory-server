@@ -20,12 +20,11 @@ public class UnitTypeReadOnlyServiceImpl implements UnitTypeReadOnlyService {
 
 	@Override
 	public DataResponse<List<UnitType>> search(String search) {
-		UnitType dummy = new UnitType(null) {{
-			setCustom(false);
-			setActive(true);
-			setBusinessKey("UT-1");
-			setDescription("UT-D");
-		}};
+		UnitType dummy = new UnitType(null);
+		dummy.setCustom(false);
+		dummy.setActive(true);
+		dummy.setBusinessKey("UT-1");
+		dummy.setDescription("UT-D");
 		return new DataResponse<>(Arrays.asList(dummy));
 	}
 
