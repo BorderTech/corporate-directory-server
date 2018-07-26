@@ -1,11 +1,11 @@
 package com.github.bordertech.corpdir.sync.entity;
 
-import com.github.bordertech.corpdir.api.common.ApiObject;
+import java.io.Serializable;
 
 /**
  *
  * @author exiqaj
  */
-public class Import implements ApiObject {
+public class Import implements Serializable {
     // TODO: use it to for ImportServiceAction transport
 }

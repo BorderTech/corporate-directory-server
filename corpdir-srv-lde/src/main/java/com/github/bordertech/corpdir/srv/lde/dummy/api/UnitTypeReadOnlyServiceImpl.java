@@ -1,0 +1,37 @@
+package com.github.bordertech.corpdir.srv.lde.dummy.api;
+
+import com.github.bordertech.corpdir.api.response.DataResponse;
+import com.github.bordertech.corpdir.api.v1.UnitTypeReadOnlyService;
+import com.github.bordertech.corpdir.api.v1.model.OrgUnit;
+import com.github.bordertech.corpdir.api.v1.model.UnitType;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ *
+ * @author aswinkandula
+ */
+public class UnitTypeReadOnlyServiceImpl implements UnitTypeReadOnlyService {
+
+	@Override
+	public DataResponse<List<OrgUnit>> getOrgUnits(String keyId) {
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
+
+	@Override
+	public DataResponse<List<UnitType>> search(String search) {
+		UnitType dummy = new UnitType(null) {{
+			setCustom(false);
+			setActive(true);
+			setBusinessKey("UT-1");
+			setDescription("UT-D");
+		}};
+		return new DataResponse<>(Arrays.asList(dummy));
+	}
+
+	@Override
+	public DataResponse<UnitType> retrieve(String id) {
+		return new DataResponse<>(search(id).getData().get(0));
+	}
+	
+}

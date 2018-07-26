@@ -35,7 +35,6 @@ public abstract class AbstractSynchronisation<S extends BasicKeyIdReadOnlyServic
 	@Override
 	public void syncBaseData() {
 		DataResponse<List<A>> sourceEntities = getSourceData();
-
 		for (A sourceEntity : sourceEntities.getData()) {
 			createOrUpdateData(sourceEntity);
 		}

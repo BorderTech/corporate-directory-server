@@ -40,7 +40,7 @@ public abstract class AbstractVersionSynchronisation<S extends BasicKeyIdReadOnl
 	@Override
 	public void syncBaseData() {
 		DataResponse<List<A>> sourceEntities = getSourceData();
-
+		// Get or create version
 		final Long versionId = Long.parseLong(getOrCreateNewVersion());
 		for (A sourceEntity : sourceEntities.getData()) {
 			createOrUpdateData(versionId, sourceEntity);
