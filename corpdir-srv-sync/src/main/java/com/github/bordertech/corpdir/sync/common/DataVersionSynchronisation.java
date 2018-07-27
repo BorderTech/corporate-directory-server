@@ -6,6 +6,8 @@ package com.github.bordertech.corpdir.sync.common;
  */
 public interface DataVersionSynchronisation<S, D, A> extends DataSynchronisation<S, D, A> {
 
-	void syncLinkedData();
+	void syncBaseData(final Long version);
+
+	void syncLinkedData(final Long version);
 
 }

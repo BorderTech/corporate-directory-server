@@ -1,21 +1,28 @@
 package com.github.bordertech.corpdir.sync.service;
 
+import com.github.bordertech.corpdir.api.common.ApiIdObject;
+import com.github.bordertech.corpdir.api.response.DataResponse;
+import com.github.bordertech.corpdir.api.v1.VersionCtrlService;
+import com.github.bordertech.corpdir.api.v1.model.VersionCtrl;
+import com.github.bordertech.corpdir.sync.common.DataSynchronisation;
+import com.github.bordertech.corpdir.sync.common.DataVersionSynchronisation;
 import com.github.bordertech.corpdir.sync.impl.ContactSynchronisation;
 import com.github.bordertech.corpdir.sync.impl.LocationSynchronisation;
 import com.github.bordertech.corpdir.sync.impl.OrgUnitSynchronisation;
 import com.github.bordertech.corpdir.sync.impl.PositionSynchronisation;
 import com.github.bordertech.corpdir.sync.impl.PositionTypeSynchronisation;
 import com.github.bordertech.corpdir.sync.impl.UnitLevelSynchronisation;
-import com.github.bordertech.corpdir.sync.common.DataSynchronisation;
-import com.github.bordertech.corpdir.sync.common.DataVersionSynchronisation;
 import com.github.bordertech.didums.Didums;
 import com.github.bordertech.taskmaster.service.ServiceAction;
+import java.util.Date;
+import java.util.List;
+import org.apache.commons.lang.time.DateFormatUtils;
 
 /**
  *
  * @author exiqaj
  */
-public class ImportServiceAction implements ServiceAction<String, String> {
+public class ImportServiceAction implements ServiceAction<String, ApiIdObject> {
 
 	/**
 	 * API key object stand-alone entities.
@@ -76,25 +83,51 @@ public class ImportServiceAction implements ServiceAction<String, String> {
 	}
 
 	@Override
-	public String service(String criteria) {
+	public ApiIdObject service(String criteria) {
 		try {
 			// API entities base data
 			for (KeyIdEntities syncEntity : KeyIdEntities.values()) {
 				DataSynchronisation syncInstance = syncEntity.createSyncClazzInstance();
 				syncInstance.syncBaseData();
 			}
-
+	
+			// Get or create version
+			VersionCtrl todayVersion = getOrCreateNewVersion();
+			String versionStr;
+			if (todayVersion.getId().startsWith(ApiIdObject.ID_PREFIX)) {
+				versionStr = todayVersion.getId().substring(1);
+			} else {
+				versionStr = todayVersion.getId();
+			}
 			// API version entities base data, base data needs to exist ahead of linking assosiated data
+			final Long versionId = Long.parseLong(versionStr);
 			for (KeyIdVersionEntities syncEntity : KeyIdVersionEntities.values()) {
 				DataVersionSynchronisation syncInstance = syncEntity.createSyncClazzInstance();
-				syncInstance.syncBaseData();
+				syncInstance.syncBaseData(versionId);
 			}
-			// TODO: return version that was created/updated?
-			return null;
+			return todayVersion;
 		} catch (Exception e) {
 			// TODO: return exception message?
 			throw e;
 		}
+	}
+
+	private VersionCtrl getOrCreateNewVersion() {
+		// TODO: should version creation be here? or injected by a view?
+		final String today = DateFormatUtils.ISO_DATE_FORMAT.format(new Date());
+		final VersionCtrlService versionService = Didums.getService(VersionCtrlService.class);
+		DataResponse<List<VersionCtrl>> result = versionService.search(today);
+		VersionCtrl todayVersion;
+		if (result.getData().isEmpty()) {
+			VersionCtrl newVersion = new VersionCtrl(null);
+			newVersion.setDescription(today);
+			versionService.create(newVersion);
+			result = versionService.search(today);
+			todayVersion = result.getData().get(0);
+		} else {
+			todayVersion = result.getData().get(0);
+		}
+		return todayVersion;
 	}
 
 }

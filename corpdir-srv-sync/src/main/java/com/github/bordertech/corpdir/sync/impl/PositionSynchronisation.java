@@ -1,9 +1,9 @@
 package com.github.bordertech.corpdir.sync.impl;
 
-import com.github.bordertech.corpdir.sync.common.AbstractVersionSynchronisation;
 import com.github.bordertech.corpdir.api.v1.PositionReadOnlyService;
 import com.github.bordertech.corpdir.api.v1.PositionService;
 import com.github.bordertech.corpdir.api.v1.model.Position;
+import com.github.bordertech.corpdir.sync.common.AbstractVersionSynchronisation;
 import javax.inject.Inject;
 
 /**
@@ -18,9 +18,5 @@ public class PositionSynchronisation extends AbstractVersionSynchronisation<Posi
 	}
 
 	//TODO getManageOuIds, PositionType
-	@Override
-	public void syncLinkedData() {
-		// TODO
-	}
 
 }
