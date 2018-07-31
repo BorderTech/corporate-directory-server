@@ -1,4 +1,4 @@
-package com.github.bordertech.corpdir.srv.lde.dummy.api;
+package com.github.bordertech.corpdir.corpdir.srv.dummy;
 
 import com.github.bordertech.corpdir.api.response.DataResponse;
 import com.github.bordertech.corpdir.api.v1.UnitTypeReadOnlyService;

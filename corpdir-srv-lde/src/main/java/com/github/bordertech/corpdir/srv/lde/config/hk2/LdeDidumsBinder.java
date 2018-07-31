@@ -6,12 +6,12 @@ import com.github.bordertech.corpdir.api.v1.OrgUnitReadOnlyService;
 import com.github.bordertech.corpdir.api.v1.PositionReadOnlyService;
 import com.github.bordertech.corpdir.api.v1.PositionTypeReadOnlyService;
 import com.github.bordertech.corpdir.api.v1.UnitTypeReadOnlyService;
-import com.github.bordertech.corpdir.srv.lde.dummy.api.ContactReadOnlyServiceImpl;
-import com.github.bordertech.corpdir.srv.lde.dummy.api.LocationReadOnlyServiceImpl;
-import com.github.bordertech.corpdir.srv.lde.dummy.api.OrgUnitReadOnlyServiceImpl;
-import com.github.bordertech.corpdir.srv.lde.dummy.api.PositionReadOnlyServiceImpl;
-import com.github.bordertech.corpdir.srv.lde.dummy.api.PositionTypeReadOnlyServiceImpl;
-import com.github.bordertech.corpdir.srv.lde.dummy.api.UnitTypeReadOnlyServiceImpl;
+import com.github.bordertech.corpdir.corpdir.srv.dummy.ContactReadOnlyServiceImpl;
+import com.github.bordertech.corpdir.corpdir.srv.dummy.LocationReadOnlyServiceImpl;
+import com.github.bordertech.corpdir.corpdir.srv.dummy.OrgUnitReadOnlyServiceImpl;
+import com.github.bordertech.corpdir.corpdir.srv.dummy.PositionReadOnlyServiceImpl;
+import com.github.bordertech.corpdir.corpdir.srv.dummy.PositionTypeReadOnlyServiceImpl;
+import com.github.bordertech.corpdir.corpdir.srv.dummy.UnitTypeReadOnlyServiceImpl;
 import com.github.bordertech.didums.DidumsBinder;
 import com.github.bordertech.didums.DidumsProvider;
 

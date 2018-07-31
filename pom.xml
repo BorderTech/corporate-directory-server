@@ -193,6 +193,7 @@
 		<module>corpdir-srv-api</module>
 		<module>corpdir-srv-jpa</module>
 		<module>corpdir-srv-sync</module>
+		<module>corpdir-srv-dummy</module>
 		<module>corpdir-srv-web-api</module>
 		<module>corpdir-srv-web-ui</module>
 		<module>corpdir-srv-web-bundle</module>

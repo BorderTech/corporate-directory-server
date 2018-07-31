@@ -57,6 +57,12 @@
 			<artifactId>corpdir-srv-web-bundle</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.github.bordertech.corpdir</groupId>
+			<artifactId>corpdir-srv-dummy</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<!-- Jetty for the LDE -->
 		<!--
 		<dependency>
