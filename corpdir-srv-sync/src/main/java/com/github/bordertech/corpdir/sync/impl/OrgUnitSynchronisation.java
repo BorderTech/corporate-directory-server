@@ -9,7 +9,7 @@ import javax.inject.Inject;
 /**
  * One-way Organisation Units synchronisation from Source to Destination
  *
- * @author exiqaj
+ * @author aswinkandula
  */
 public class OrgUnitSynchronisation extends AbstractVersionSynchronisation<OrgUnitReadOnlyService, OrgUnitService, OrgUnit> {
 

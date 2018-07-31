@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * One-way version synchronisation from Source to Destination
  *
- * @author exiqaj
+ * @author aswinkandula
  * @param <S> Read-only Service Api
  * @param <D> Read-Write Service Api
  * @param <A> Data Api

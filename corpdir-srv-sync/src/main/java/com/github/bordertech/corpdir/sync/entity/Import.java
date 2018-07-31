@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author exiqaj
+ * @author aswinkandula
  */
 public class Import implements Serializable {
     // TODO: use it to for ImportServiceAction transport

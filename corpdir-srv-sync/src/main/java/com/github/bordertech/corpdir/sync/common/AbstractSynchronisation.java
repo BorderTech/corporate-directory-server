@@ -11,7 +11,7 @@ import org.apache.commons.lang.reflect.FieldUtils;
 /**
  * One-way synchronisation from Source to Destination
  *
- * @author exiqaj
+ * @author aswinkandula
  * @param <S> Read-only Service Api
  * @param <D> Read-Write Service Api
  * @param <A> Data Api

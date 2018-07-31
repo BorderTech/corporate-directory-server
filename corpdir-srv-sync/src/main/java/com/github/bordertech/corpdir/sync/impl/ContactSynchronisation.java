@@ -9,7 +9,7 @@ import javax.inject.Inject;
 /**
  * One-way Contacts synchronisation from Source to Destination
  *
- * @author exiqaj
+ * @author aswinkandula
  */
 public class ContactSynchronisation extends AbstractVersionSynchronisation<ContactReadOnlyService, ContactService, Contact> {
 

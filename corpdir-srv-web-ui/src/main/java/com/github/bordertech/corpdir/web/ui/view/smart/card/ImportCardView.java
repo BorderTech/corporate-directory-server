@@ -13,7 +13,7 @@ import com.github.bordertech.wcomponents.addons.cardpath.impl.DefaultAppPath;
 /**
  * Sync 'smart' view, to propagates the Action though a Dispatcher
  *
- * @author exiqaj
+ * @author aswinkandula
  * @param <T>
  */
 public class ImportCardView<T> extends DefaultSecureCardView implements CrudActionCreatorConsumer<T> {

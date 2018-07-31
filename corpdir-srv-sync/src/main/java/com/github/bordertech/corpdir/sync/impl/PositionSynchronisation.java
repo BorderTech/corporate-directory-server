@@ -8,7 +8,7 @@ import javax.inject.Inject;
 
 /**
  *
- * @author exiqaj
+ * @author aswinkandula
  */
 public class PositionSynchronisation extends AbstractVersionSynchronisation<PositionReadOnlyService, PositionService, Position> {
 

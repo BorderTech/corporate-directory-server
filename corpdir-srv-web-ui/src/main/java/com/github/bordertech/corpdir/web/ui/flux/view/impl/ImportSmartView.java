@@ -18,7 +18,7 @@ import com.github.bordertech.wcomponents.addons.polling.PollingStartType;
 
 /**
  *
- * @author exiqaj
+ * @author aswinkandula
  * @param <T>
  */
 public class ImportSmartView<T> extends DefaultSmartView<T> {

@@ -2,7 +2,7 @@ package com.github.bordertech.corpdir.sync.common;
 
 /**
  *
- * @author exiqaj
+ * @author aswinkandula
  */
 public interface DataVersionSynchronisation<S, D, A> extends DataSynchronisation<S, D, A> {
 
