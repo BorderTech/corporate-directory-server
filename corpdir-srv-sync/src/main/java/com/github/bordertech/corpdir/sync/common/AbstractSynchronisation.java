@@ -11,10 +11,12 @@ import org.apache.commons.lang.reflect.FieldUtils;
 /**
  * One-way synchronisation from Source to Destination
  *
- * @author aswinkandula
  * @param <S> Read-only Service Api
  * @param <D> Read-Write Service Api
- * @param <A> Data Api
+ * @param <A> the keyed API version object
+ * 
+ * @author aswinkandula
+ * @since 1.0.0
  */
 public abstract class AbstractSynchronisation<S extends BasicKeyIdReadOnlyService, D extends BasicKeyIdService, A extends ApiKeyIdObject> implements DataSynchronisation<S, D, A> {
 

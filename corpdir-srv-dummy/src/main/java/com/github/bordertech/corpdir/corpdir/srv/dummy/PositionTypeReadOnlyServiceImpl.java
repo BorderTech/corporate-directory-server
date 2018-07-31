@@ -8,8 +8,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *
+ * Position type read-only dummy service implementation.
+ * 
  * @author aswinkandula
+ * @since 1.0.0
  */
 public class PositionTypeReadOnlyServiceImpl implements PositionTypeReadOnlyService {
 

@@ -13,10 +13,12 @@ import java.util.List;
 /**
  * One-way version synchronisation from Source to Destination
  *
- * @author aswinkandula
  * @param <S> Read-only Service Api
  * @param <D> Read-Write Service Api
- * @param <A> Data Api
+ * @param <A> the keyed API version object
+ * 
+ * @author aswinkandula
+ * @since 1.0.0
  */
 public abstract class AbstractVersionSynchronisation<S extends BasicKeyIdReadOnlyService & BasicVersionKeyIdReadOnlyService, D extends BasicKeyIdService & BasicVersionKeyIdService, A extends ApiKeyIdObject & ApiVersionable>
 	extends AbstractSynchronisation<S, D, A>

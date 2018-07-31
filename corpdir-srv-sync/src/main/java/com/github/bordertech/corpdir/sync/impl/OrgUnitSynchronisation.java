@@ -7,9 +7,10 @@ import com.github.bordertech.corpdir.sync.common.AbstractVersionSynchronisation;
 import javax.inject.Inject;
 
 /**
- * One-way Organisation Units synchronisation from Source to Destination
- *
+ * One-way organisation unit synchronisation
+ * 
  * @author aswinkandula
+ * @since 1.0.0
  */
 public class OrgUnitSynchronisation extends AbstractVersionSynchronisation<OrgUnitReadOnlyService, OrgUnitService, OrgUnit> {
 

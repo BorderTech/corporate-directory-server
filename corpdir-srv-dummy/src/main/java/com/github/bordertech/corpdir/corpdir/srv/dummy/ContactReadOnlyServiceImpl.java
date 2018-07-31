@@ -11,8 +11,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *
+ * Contact read-only dummy service implementation.
+ * 
  * @author aswinkandula
+ * @since 1.0.0
  */
 public class ContactReadOnlyServiceImpl implements ContactReadOnlyService {
 

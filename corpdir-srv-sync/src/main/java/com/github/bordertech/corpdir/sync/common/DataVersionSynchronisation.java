@@ -1,8 +1,14 @@
 package com.github.bordertech.corpdir.sync.common;
 
 /**
- *
+ * Synchronisation service for keyed API object that have version data.
+ * 
+ * @param <S> source service to load data from
+ * @param <D> destination service to write data to
+ * @param <A> the keyed API version object
+ * 
  * @author aswinkandula
+ * @since 1.0.0
  */
 public interface DataVersionSynchronisation<S, D, A> extends DataSynchronisation<S, D, A> {
 

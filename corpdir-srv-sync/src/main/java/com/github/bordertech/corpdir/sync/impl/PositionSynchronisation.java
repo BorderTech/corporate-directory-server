@@ -7,8 +7,10 @@ import com.github.bordertech.corpdir.sync.common.AbstractVersionSynchronisation;
 import javax.inject.Inject;
 
 /**
- *
+ * One-way position synchronisation.
+ * 
  * @author aswinkandula
+ * @since 1.0.0
  */
 public class PositionSynchronisation extends AbstractVersionSynchronisation<PositionReadOnlyService, PositionService, Position> {
 

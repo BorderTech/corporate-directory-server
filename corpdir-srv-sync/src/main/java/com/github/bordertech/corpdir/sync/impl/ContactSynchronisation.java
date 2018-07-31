@@ -7,9 +7,10 @@ import com.github.bordertech.corpdir.sync.common.AbstractVersionSynchronisation;
 import javax.inject.Inject;
 
 /**
- * One-way Contacts synchronisation from Source to Destination
- *
+ * One-way Contact synchronisation.
+ * 
  * @author aswinkandula
+ * @since 1.0.0
  */
 public class ContactSynchronisation extends AbstractVersionSynchronisation<ContactReadOnlyService, ContactService, Contact> {
 

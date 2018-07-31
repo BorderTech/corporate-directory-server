@@ -8,8 +8,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *
+ * Organization unit type read-only dummy service implementation.
+ * 
  * @author aswinkandula
+ * @since 1.0.0
  */
 public class UnitTypeReadOnlyServiceImpl implements UnitTypeReadOnlyService {
 

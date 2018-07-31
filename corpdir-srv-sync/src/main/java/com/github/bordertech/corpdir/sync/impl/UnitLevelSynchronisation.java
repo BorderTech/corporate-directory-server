@@ -7,8 +7,10 @@ import com.github.bordertech.corpdir.sync.common.AbstractSynchronisation;
 import javax.inject.Inject;
 
 /**
- *
+ * One-way organisation unit type synchronisation.
+ * 
  * @author aswinkandula
+ * @since 1.0.0
  */
 public class UnitLevelSynchronisation extends AbstractSynchronisation<UnitTypeReadOnlyService, UnitTypeService, UnitType> {
 
