@@ -20,11 +20,11 @@ import java.util.List;
  * @author aswinkandula
  * @since 1.0.0
  */
-public abstract class AbstractVersionSynchronisation<S extends BasicKeyIdReadOnlyService & BasicVersionKeyIdReadOnlyService, D extends BasicKeyIdService & BasicVersionKeyIdService, A extends ApiKeyIdObject & ApiVersionable>
-	extends AbstractSynchronisation<S, D, A>
-	implements DataVersionSynchronisation<S, D, A> {
+public abstract class AbstractVersionKeyIdSynchronisation<S extends BasicKeyIdReadOnlyService & BasicVersionKeyIdReadOnlyService, D extends BasicKeyIdService & BasicVersionKeyIdService, A extends ApiKeyIdObject & ApiVersionable>
+	extends AbstractKeyIdSynchronisation<S, D, A>
+	implements ApiVersionKeyIdSynchronisation<S, D, A> {
 
-	protected AbstractVersionSynchronisation(S sourceService, D destinationService) {
+	protected AbstractVersionKeyIdSynchronisation(S sourceService, D destinationService) {
 		super(sourceService, destinationService);
 	}
 

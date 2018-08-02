@@ -10,7 +10,7 @@ package com.github.bordertech.corpdir.sync.common;
  * @author aswinkandula
  * @since 1.0.0
  */
-public interface DataVersionSynchronisation<S, D, A> extends DataSynchronisation<S, D, A> {
+public interface ApiVersionKeyIdSynchronisation<S, D, A> extends ApiKeyIdSynchronisation<S, D, A> {
 
 	void syncBaseData(final Long version);
 

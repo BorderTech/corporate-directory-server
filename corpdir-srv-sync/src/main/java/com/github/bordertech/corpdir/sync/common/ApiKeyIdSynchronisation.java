@@ -13,7 +13,7 @@ import java.util.List;
  * @author aswinkandula
  * @since 1.0.0
  */
-public interface DataSynchronisation<S, D, A> {
+public interface ApiKeyIdSynchronisation<S, D, A> {
 
 	S getSourceService();
 

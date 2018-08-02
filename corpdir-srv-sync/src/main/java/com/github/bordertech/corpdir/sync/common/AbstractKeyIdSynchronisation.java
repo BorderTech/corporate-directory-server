@@ -18,13 +18,13 @@ import org.apache.commons.lang.reflect.FieldUtils;
  * @author aswinkandula
  * @since 1.0.0
  */
-public abstract class AbstractSynchronisation<S extends BasicKeyIdReadOnlyService, D extends BasicKeyIdService, A extends ApiKeyIdObject> implements DataSynchronisation<S, D, A> {
+public abstract class AbstractKeyIdSynchronisation<S extends BasicKeyIdReadOnlyService, D extends BasicKeyIdService, A extends ApiKeyIdObject> implements ApiKeyIdSynchronisation<S, D, A> {
 
 	private final S sourceService;
 
 	private final D destinationService;
 
-	protected AbstractSynchronisation(S sourceService, D destinationService) {
+	protected AbstractKeyIdSynchronisation(S sourceService, D destinationService) {
 		this.sourceService = sourceService;
 		this.destinationService = destinationService;
 	}

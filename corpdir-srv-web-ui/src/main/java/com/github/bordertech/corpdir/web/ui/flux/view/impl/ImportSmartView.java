@@ -1,9 +1,10 @@
 package com.github.bordertech.corpdir.web.ui.flux.view.impl;
 
 import com.github.bordertech.corpdir.api.common.ApiIdObject;
-import com.github.bordertech.corpdir.sync.service.ImportServiceAction;
+import com.github.bordertech.corpdir.sync.service.SynchronisationService;
 import com.github.bordertech.corpdir.web.ui.CardType;
 import com.github.bordertech.corpdir.web.ui.common.EntityLink;
+import com.github.bordertech.didums.Didums;
 import com.github.bordertech.flux.view.ViewEventType;
 import com.github.bordertech.flux.wc.common.TemplateConstants;
 import com.github.bordertech.flux.wc.view.DefaultSmartView;
@@ -11,22 +12,25 @@ import com.github.bordertech.flux.wc.view.dumb.toolbar.DefaultToolbarView;
 import com.github.bordertech.flux.wc.view.dumb.toolbar.ToolbarModifyItemType;
 import com.github.bordertech.flux.wc.view.dumb.toolbar.ToolbarNavigationItemType;
 import com.github.bordertech.flux.wc.view.event.base.ToolbarBaseEventType;
+import com.github.bordertech.taskmaster.service.ServiceAction;
 import com.github.bordertech.wcomponents.WLabel;
 import com.github.bordertech.wcomponents.addons.common.WDiv;
 import com.github.bordertech.wcomponents.addons.polling.PollingServicePanel;
 import com.github.bordertech.wcomponents.addons.polling.PollingStartType;
+import java.io.Serializable;
 
 /**
- *
+ * Import smart view.
+ * 
  * @author aswinkandula
  * @param <T>
  */
-public class ImportSmartView<T> extends DefaultSmartView<T> {
+public class ImportSmartView<T extends Serializable> extends DefaultSmartView {
 
 	private final DefaultToolbarView toolbar;
 	private final EntityLink versionLink;
 	
-	private final PollingServicePanel<String, ApiIdObject> panel = new PollingServicePanel<String, ApiIdObject>() {
+	private final PollingServicePanel panel = new PollingServicePanel<T, ApiIdObject>() {
 
 		@Override
 		protected void handleStoppedPolling() {
@@ -59,7 +63,14 @@ public class ImportSmartView<T> extends DefaultSmartView<T> {
 		resultDiv.add(versionLink);
 
 		// Polling Panel
-		panel.setServiceAction(new ImportServiceAction());
+		ServiceAction action = new ServiceAction<T, ApiIdObject> () {
+			@Override
+			public ApiIdObject service(T criteria) {
+				SynchronisationService service = Didums.getService(SynchronisationService.class);
+				return service.sync(criteria);
+			}
+		};
+		panel.setServiceAction(action);
 		panel.setStartType(PollingStartType.MANUAL);
 		panel.setUseCachedResult(false);
 		panel.getContentResultHolder().add(resultDiv);

@@ -25,6 +25,12 @@
 			<version>${project.version}</version>
 		</dependency>
 
+		<!-- Didums HK2 -->
+		<dependency>
+			<groupId>com.github.bordertech.didums</groupId>
+			<artifactId>didums-hk2</artifactId>
+		</dependency>
+
 	</dependencies>
 
 </project>

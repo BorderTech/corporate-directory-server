@@ -6,7 +6,6 @@ import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.LocationActi
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.OrgUnitActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.PositionActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.PositionTypeActionCreator;
-import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.ImportActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.SystemCtrlActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.UnitTypeActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.VersionCtrlActionCreator;
@@ -38,7 +37,7 @@ public enum CorpEntityType {
 	VERSION_CTRL("versionctrl", true, VersionCtrlActionCreator.class, VersionCtrlStore.class),
 	SYSTEM_CTRL("systemctrl", true, SystemCtrlActionCreator.class, SystemCtrlStore.class),
 	CHANNEL("channel", false, ChannelActionCreator.class, null),
-	IMPORT("import", false, ImportActionCreator.class, null);
+	IMPORT("import", false, null, null);
 
 	CorpEntityType(final String key, final boolean linked, final Class<? extends ActionCreator> actionCreatorClass, final Class<? extends CorpCrudStore> storeClass) {
 		this.key = key;

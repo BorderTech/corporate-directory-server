@@ -1,18 +1,19 @@
 package com.github.bordertech.corpdir.jersey.config.hk2;
 
-import com.github.bordertech.corpdir.sync.impl.ContactSynchronisation;
-import com.github.bordertech.corpdir.sync.impl.LocationSynchronisation;
-import com.github.bordertech.corpdir.sync.impl.OrgUnitSynchronisation;
-import com.github.bordertech.corpdir.sync.impl.PositionSynchronisation;
-import com.github.bordertech.corpdir.sync.impl.PositionTypeSynchronisation;
-import com.github.bordertech.corpdir.sync.impl.UnitLevelSynchronisation;
+import com.github.bordertech.corpdir.sync.apis.ContactSynchronisation;
+import com.github.bordertech.corpdir.sync.apis.LocationSynchronisation;
+import com.github.bordertech.corpdir.sync.apis.OrgUnitSynchronisation;
+import com.github.bordertech.corpdir.sync.apis.PositionSynchronisation;
+import com.github.bordertech.corpdir.sync.apis.PositionTypeSynchronisation;
+import com.github.bordertech.corpdir.sync.apis.UnitLevelSynchronisation;
+import com.github.bordertech.corpdir.sync.service.SynchronisationService;
+import com.github.bordertech.corpdir.sync.service.SynchronisationServiceImpl;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.ChannelActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.ContactActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.LocationActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.OrgUnitActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.PositionActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.PositionTypeActionCreator;
-import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.ImportActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.SystemCtrlActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.UnitTypeActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.VersionCtrlActionCreator;
@@ -71,7 +72,6 @@ public class CorpDirDidumsBinder implements DidumsBinder {
 		provider.bind(SystemCtrlActionCreator.class, SystemCtrlActionCreator.class, true);
 		provider.bind(UnitTypeActionCreator.class, UnitTypeActionCreator.class, true);
 		provider.bind(VersionCtrlActionCreator.class, VersionCtrlActionCreator.class, true);
-		provider.bind(ImportActionCreator.class, ImportActionCreator.class, true);
 
 		// Stores
 		provider.bind(ContactStore.class, ContactStore.class, true);
@@ -83,7 +83,7 @@ public class CorpDirDidumsBinder implements DidumsBinder {
 		provider.bind(UnitTypeStore.class, UnitTypeStore.class, true);
 		provider.bind(VersionCtrlStore.class, VersionCtrlStore.class, true);
 		
-		
+		provider.bind(SynchronisationService.class, SynchronisationServiceImpl.class, true);
 		provider.bind(ContactSynchronisation.class, ContactSynchronisation.class, true);
 		provider.bind(PositionSynchronisation.class, PositionSynchronisation.class, true);
 		provider.bind(OrgUnitSynchronisation.class, OrgUnitSynchronisation.class, true);

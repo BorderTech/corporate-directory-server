@@ -1,4 +1,4 @@
-package com.github.bordertech.corpdir.srv.lde.config.hk2;
+package com.github.bordertech.corpdir.dummy.config.hk2;
 
 import com.github.bordertech.corpdir.api.v1.ContactReadOnlyService;
 import com.github.bordertech.corpdir.api.v1.LocationReadOnlyService;
@@ -16,10 +16,11 @@ import com.github.bordertech.didums.DidumsBinder;
 import com.github.bordertech.didums.DidumsProvider;
 
 /**
- *
+ * Didums binders for dummy implementation of read-only service APIs.
+ * 
  * @author aswinkandula
  */
-public class LdeDidumsBinder implements DidumsBinder {
+public class DummyServiceDidumsBinder implements DidumsBinder {
 
 	@Override
 	public void configBindings(final DidumsProvider provider) {
