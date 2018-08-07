@@ -69,7 +69,7 @@ public abstract class AbstractJpaIdService<A extends ApiIdObject, P extends Pers
 	}
 
 	protected P getEntity(final EntityManager em, final String id) {
-		P entity = MapperUtil.getEntityByApiId(em, id, getEntityClass());
+		P entity = MapperUtil.getEntityByKeyId(em, id, getEntityClass());
 		if (entity == null) {
 			throw new NotFoundException("Entity [" + id + "] not found.");
 		}
