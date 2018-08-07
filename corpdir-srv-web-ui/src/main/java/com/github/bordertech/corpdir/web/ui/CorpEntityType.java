@@ -39,17 +39,17 @@ public enum CorpEntityType {
 	CHANNEL("channel", false, ChannelActionCreator.class, null),
 	IMPORT("import", false, null, null);
 
+	final String key;
+	final boolean linked;
+	final Class<? extends ActionCreator> actionCreatorClass;
+	final Class<? extends CorpCrudStore> storeClass;
+
 	CorpEntityType(final String key, final boolean linked, final Class<? extends ActionCreator> actionCreatorClass, final Class<? extends CorpCrudStore> storeClass) {
 		this.key = key;
 		this.linked = linked;
 		this.actionCreatorClass = actionCreatorClass;
 		this.storeClass = storeClass;
 	}
-
-	final String key;
-	final boolean linked;
-	final Class<? extends ActionCreator> actionCreatorClass;
-	final Class<? extends CorpCrudStore> storeClass;
 
 	public Class<? extends ActionCreator> getActionCreatorClass() {
 		return actionCreatorClass;
