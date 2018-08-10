@@ -63,12 +63,9 @@ public class ImportSmartView<T extends Serializable> extends DefaultSmartView {
 		resultDiv.add(versionLink);
 
 		// Polling Panel
-		ServiceAction action = new ServiceAction<T, ApiIdObject> () {
-			@Override
-			public ApiIdObject service(T criteria) {
-				SynchronisationService service = Didums.getService(SynchronisationService.class);
-				return service.sync(criteria);
-			}
+		ServiceAction action = (ServiceAction<T, ApiIdObject>) (T criteria) -> {
+			SynchronisationService service = Didums.getService(SynchronisationService.class);
+			return service.sync();
 		};
 		panel.setServiceAction(action);
 		panel.setStartType(PollingStartType.MANUAL);

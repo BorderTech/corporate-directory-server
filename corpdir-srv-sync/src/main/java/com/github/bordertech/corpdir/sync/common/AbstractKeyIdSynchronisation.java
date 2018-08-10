@@ -5,20 +5,25 @@ import com.github.bordertech.corpdir.api.exception.NotFoundException;
 import com.github.bordertech.corpdir.api.response.DataResponse;
 import com.github.bordertech.corpdir.api.service.BasicKeyIdReadOnlyService;
 import com.github.bordertech.corpdir.api.service.BasicKeyIdService;
+import com.github.bordertech.corpdir.sync.api.mapper.ApiModelMapper;
 import java.util.List;
-import org.apache.commons.lang.reflect.FieldUtils;
 
 /**
- * One-way synchronisation from Source to Destination
+ * Abstract one-way synchronisation from Source to Destination
  *
- * @param <S> Read-only Service Api
- * @param <D> Read-Write Service Api
- * @param <A> the keyed API version object
+ * @param <S> Read-only Service Api to fetch data
+ * @param <D> Read-Write Service Api to save data
+ * @param <A> the keyed API object
+ * @param <M> mapper to copy API data
  * 
  * @author aswinkandula
  * @since 1.0.0
  */
-public abstract class AbstractKeyIdSynchronisation<S extends BasicKeyIdReadOnlyService, D extends BasicKeyIdService, A extends ApiKeyIdObject> implements ApiKeyIdSynchronisation<S, D, A> {
+public abstract class AbstractKeyIdSynchronisation<A extends ApiKeyIdObject,
+						S extends BasicKeyIdReadOnlyService<A>, 
+						D extends BasicKeyIdService<A>, 
+						M extends ApiModelMapper<A>> 
+	implements ApiKeyIdSynchronisation<A, S, D, M> {
 
 	private final S sourceService;
 
@@ -42,7 +47,8 @@ public abstract class AbstractKeyIdSynchronisation<S extends BasicKeyIdReadOnlyS
 		}
 	}
 
-	private void createOrUpdateData(A fromApiData) {
+	@Override
+	public void createOrUpdateData(A fromApiData) {
 		DataResponse<A> retrievedEntity;
 		try {
 			retrievedEntity = getDestinationService().retrieve(fromApiData.getBusinessKey());
@@ -52,17 +58,9 @@ public abstract class AbstractKeyIdSynchronisation<S extends BasicKeyIdReadOnlyS
 		if (retrievedEntity.getData() == null) {
 			getDestinationService().create(fromApiData);
 		} else {
-			setId(fromApiData, retrievedEntity);
-			getDestinationService().update(fromApiData.getBusinessKey(), fromApiData);
-		}
-	}
-
-	protected void setId(A fromApiData, DataResponse<A> retrievedEntity) {
-		try {
-			// TODO can ApiIdObject.setId() be made public?
-			FieldUtils.writeField(fromApiData, "id", retrievedEntity.getData().getId(), true);
-		} catch (IllegalAccessException ex) {
-			// TODO do what?
+			A toDataApi = retrievedEntity.getData();
+			getApiMapper().map(fromApiData, toDataApi);
+			getDestinationService().update(toDataApi.getBusinessKey(), toDataApi);
 		}
 	}
 

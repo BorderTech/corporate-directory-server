@@ -5,7 +5,7 @@ import com.github.bordertech.corpdir.sync.apis.LocationSynchronisation;
 import com.github.bordertech.corpdir.sync.apis.OrgUnitSynchronisation;
 import com.github.bordertech.corpdir.sync.apis.PositionSynchronisation;
 import com.github.bordertech.corpdir.sync.apis.PositionTypeSynchronisation;
-import com.github.bordertech.corpdir.sync.apis.UnitLevelSynchronisation;
+import com.github.bordertech.corpdir.sync.apis.UnitTypeSynchronisation;
 import com.github.bordertech.corpdir.sync.service.SynchronisationService;
 import com.github.bordertech.corpdir.sync.service.SynchronisationServiceImpl;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.ChannelActionCreator;
@@ -87,7 +87,7 @@ public class CorpDirDidumsBinder implements DidumsBinder {
 		provider.bind(ContactSynchronisation.class, ContactSynchronisation.class, true);
 		provider.bind(PositionSynchronisation.class, PositionSynchronisation.class, true);
 		provider.bind(OrgUnitSynchronisation.class, OrgUnitSynchronisation.class, true);
-		provider.bind(UnitLevelSynchronisation.class, UnitLevelSynchronisation.class, true);
+		provider.bind(UnitTypeSynchronisation.class, UnitTypeSynchronisation.class, true);
 		provider.bind(PositionTypeSynchronisation.class, PositionTypeSynchronisation.class, true);
 		provider.bind(LocationSynchronisation.class, LocationSynchronisation.class, true);
 

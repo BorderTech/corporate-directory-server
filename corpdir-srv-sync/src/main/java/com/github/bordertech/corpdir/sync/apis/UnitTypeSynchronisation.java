@@ -3,6 +3,7 @@ package com.github.bordertech.corpdir.sync.apis;
 import com.github.bordertech.corpdir.api.v1.UnitTypeReadOnlyService;
 import com.github.bordertech.corpdir.api.v1.UnitTypeService;
 import com.github.bordertech.corpdir.api.v1.model.UnitType;
+import com.github.bordertech.corpdir.sync.api.mapper.UnitMapper;
 import com.github.bordertech.corpdir.sync.common.AbstractKeyIdSynchronisation;
 import javax.inject.Inject;
 
@@ -12,11 +13,18 @@ import javax.inject.Inject;
  * @author aswinkandula
  * @since 1.0.0
  */
-public class UnitLevelSynchronisation extends AbstractKeyIdSynchronisation<UnitTypeReadOnlyService, UnitTypeService, UnitType> {
+public class UnitTypeSynchronisation extends AbstractKeyIdSynchronisation<UnitType, UnitTypeReadOnlyService, UnitTypeService, UnitMapper> {
+
+	private static final UnitMapper API_MAPPER = new UnitMapper();
 
 	@Inject
-	public UnitLevelSynchronisation(UnitTypeReadOnlyService sourceService, UnitTypeService destinationService) {
+	public UnitTypeSynchronisation(UnitTypeReadOnlyService sourceService, UnitTypeService destinationService) {
 		super(sourceService, destinationService);
+	}
+
+	@Override
+	public UnitMapper getApiMapper() {
+		return API_MAPPER;
 	}
 
 }

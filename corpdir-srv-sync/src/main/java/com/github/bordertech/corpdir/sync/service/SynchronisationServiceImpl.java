@@ -9,11 +9,11 @@ import com.github.bordertech.corpdir.sync.apis.LocationSynchronisation;
 import com.github.bordertech.corpdir.sync.apis.OrgUnitSynchronisation;
 import com.github.bordertech.corpdir.sync.apis.PositionSynchronisation;
 import com.github.bordertech.corpdir.sync.apis.PositionTypeSynchronisation;
-import com.github.bordertech.corpdir.sync.apis.UnitLevelSynchronisation;
+import com.github.bordertech.corpdir.sync.apis.UnitTypeSynchronisation;
 import com.github.bordertech.corpdir.sync.common.ApiKeyIdSynchronisation;
 import com.github.bordertech.corpdir.sync.common.ApiVersionKeyIdSynchronisation;
+import com.github.bordertech.corpdir.sync.service.exception.SynchronisationException;
 import com.github.bordertech.didums.Didums;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import org.apache.commons.lang.time.DateFormatUtils;
@@ -22,17 +22,16 @@ import org.apache.commons.lang.time.DateFormatUtils;
  * Sync service implementation.
  *
  * @author aswinkandula
- * @param <T>
  * @since 1.0.0
  */
 
-public class SynchronisationServiceImpl<T extends Serializable> implements SynchronisationService<T, ApiIdObject> {
+public class SynchronisationServiceImpl implements SynchronisationService<ApiIdObject> {
 
 	/**
 	 * API key object stand-alone entities.
 	 */
 	enum ApiKeyIdEntities {
-		UNITLEVEL(UnitLevelSynchronisation.class),
+		UNITLEVEL(UnitTypeSynchronisation.class),
 		POSITIONTYPE(PositionTypeSynchronisation.class),
 		LOCATION(LocationSynchronisation.class);
 
@@ -87,7 +86,7 @@ public class SynchronisationServiceImpl<T extends Serializable> implements Synch
 	}
 
 	@Override
-	public ApiIdObject sync(T criteria) {
+	public ApiIdObject sync() {
 		try {
 			// API entities base data
 			for (ApiKeyIdEntities syncEntity : ApiKeyIdEntities.values()) {
@@ -111,8 +110,7 @@ public class SynchronisationServiceImpl<T extends Serializable> implements Synch
 			}
 			return todayVersion;
 		} catch (Exception e) {
-			// TODO: return exception message?
-			throw e;
+			throw new SynchronisationException("Error while performing sync", e);
 		}
 	}
 
