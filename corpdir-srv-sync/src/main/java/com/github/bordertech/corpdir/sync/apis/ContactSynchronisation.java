@@ -13,12 +13,12 @@ import javax.inject.Inject;
  * @author aswinkandula
  * @since 1.0.0
  */
-public class ContactSynchronisation extends AbstractVersionKeyIdSynchronisation<Contact, ContactReadOnlyService, ContactService, ContactMapper> {
+public class ContactSynchronisation extends AbstractVersionKeyIdSynchronisation<Contact> {
 	
 	private static final ContactMapper API_MAPPER = new ContactMapper();
 
 	@Inject
-	public ContactSynchronisation(ContactReadOnlyService sourceService, ContactService destinationService) {
+	public ContactSynchronisation(final ContactReadOnlyService sourceService, final ContactService destinationService) {
 		super(sourceService, destinationService);
 	}
 

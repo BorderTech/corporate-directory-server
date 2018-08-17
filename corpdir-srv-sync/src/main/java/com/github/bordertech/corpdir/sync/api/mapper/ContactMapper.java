@@ -16,13 +16,14 @@ public class ContactMapper extends AbstractVersionMapper<Contact> {
 		to.setLastName(to.getLastName());
 
 		from.getChannels().forEach((Channel fromC) -> {
-			
+
 			Channel toC = to.getChannels().stream()
 				.filter((Channel channel) -> channel.getValue().equals(fromC.getValue()))
 				.findAny()
 				.orElse(null);
   
 			if (toC == null) {
+				toC = new Channel(null);
 				toC.setType(fromC.getType());
 				toC.setCustom(fromC.isCustom());
 				toC.setValue(fromC.getValue());

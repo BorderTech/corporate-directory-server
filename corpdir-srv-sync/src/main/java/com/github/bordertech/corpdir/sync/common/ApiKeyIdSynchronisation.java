@@ -10,29 +10,23 @@ import java.util.List;
 /**
  * Synchronisation service for keyed API object.
  * 
- * @param <S> Read-only Service Api to fetch data
- * @param <D> Read-Write Service Api to save data
  * @param <A> the keyed API object
- * @param <M> mapper to copy API data
  * 
  * @author aswinkandula
  * @since 1.0.0
  */
-public interface ApiKeyIdSynchronisation<A extends ApiKeyIdObject,
-					S extends BasicKeyIdReadOnlyService<A>, 
-					D extends BasicKeyIdService<A>, 
-					M extends ApiModelMapper<A>> {
+public interface ApiKeyIdSynchronisation<A extends ApiKeyIdObject> {
 
-	S getSourceService();
+	BasicKeyIdReadOnlyService<A> getSourceService();
 
-	D getDestinationService();
+	BasicKeyIdService<A> getDestinationService();
 
 	void syncBaseData();
 
 	DataResponse<List<A>> getSourceData();
 	
-	void createOrUpdateData(A fromApiData);
+	void createOrUpdateData(final A fromApiData);
 	
-	M getApiMapper();
+	ApiModelMapper<A> getApiMapper();
 
 }

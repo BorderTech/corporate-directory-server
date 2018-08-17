@@ -13,12 +13,12 @@ import javax.inject.Inject;
  * @author aswinkandula
  * @since 1.0.0
  */
-public class LocationSynchronisation extends AbstractKeyIdSynchronisation<Location, LocationReadOnlyService, LocationService, LocationMapper> {
+public class LocationSynchronisation extends AbstractKeyIdSynchronisation<Location> {
 
 	private final static LocationMapper API_MAPPER  = new LocationMapper();
 
 	@Inject
-	public LocationSynchronisation(LocationReadOnlyService sourceService, LocationService destinationService) {
+	public LocationSynchronisation(final LocationReadOnlyService sourceService, final LocationService destinationService) {
 		super(sourceService, destinationService);
 	}
 

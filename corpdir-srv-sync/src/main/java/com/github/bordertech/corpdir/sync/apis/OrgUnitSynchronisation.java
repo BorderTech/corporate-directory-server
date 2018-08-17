@@ -13,12 +13,12 @@ import javax.inject.Inject;
  * @author aswinkandula
  * @since 1.0.0
  */
-public class OrgUnitSynchronisation extends AbstractVersionKeyIdSynchronisation<OrgUnit, OrgUnitReadOnlyService, OrgUnitService, OrgUnitMapper> {
+public class OrgUnitSynchronisation extends AbstractVersionKeyIdSynchronisation<OrgUnit> {
 
 	public static final OrgUnitMapper API_MAPPER = new OrgUnitMapper();
 
 	@Inject
-	public OrgUnitSynchronisation(OrgUnitReadOnlyService sourceService, OrgUnitService destinationService) {
+	public OrgUnitSynchronisation(final OrgUnitReadOnlyService sourceService, final OrgUnitService destinationService) {
 		super(sourceService, destinationService);
 	}
 

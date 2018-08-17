@@ -13,12 +13,12 @@ import javax.inject.Inject;
  * @author aswinkandula
  * @since 1.0.0
  */
-public class UnitTypeSynchronisation extends AbstractKeyIdSynchronisation<UnitType, UnitTypeReadOnlyService, UnitTypeService, UnitMapper> {
+public class UnitTypeSynchronisation extends AbstractKeyIdSynchronisation<UnitType> {
 
 	private static final UnitMapper API_MAPPER = new UnitMapper();
 
 	@Inject
-	public UnitTypeSynchronisation(UnitTypeReadOnlyService sourceService, UnitTypeService destinationService) {
+	public UnitTypeSynchronisation(final UnitTypeReadOnlyService sourceService, final UnitTypeService destinationService) {
 		super(sourceService, destinationService);
 	}
 

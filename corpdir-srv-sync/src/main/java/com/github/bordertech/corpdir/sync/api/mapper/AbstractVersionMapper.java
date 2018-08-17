@@ -1,6 +1,5 @@
 package com.github.bordertech.corpdir.sync.api.mapper;
 
-import com.github.bordertech.corpdir.api.common.ApiKeyIdObject;
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
 
 /**
@@ -8,7 +7,7 @@ import com.github.bordertech.corpdir.api.common.ApiVersionable;
  * @author aswinkandula
  * @param <A>
  */
-public abstract class AbstractVersionMapper<A extends ApiKeyIdObject & ApiVersionable> extends AbstractMapper<A> {
+public abstract class AbstractVersionMapper<A extends ApiVersionable> extends AbstractMapper<A> {
 
 	@Override
 	public void map(A source, A destination) {
@@ -16,6 +15,4 @@ public abstract class AbstractVersionMapper<A extends ApiKeyIdObject & ApiVersio
 		destination.setVersionId(source.getVersionId());
 	}
 
-	
-	
 }

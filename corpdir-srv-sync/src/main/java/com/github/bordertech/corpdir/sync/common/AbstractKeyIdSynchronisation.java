@@ -5,31 +5,25 @@ import com.github.bordertech.corpdir.api.exception.NotFoundException;
 import com.github.bordertech.corpdir.api.response.DataResponse;
 import com.github.bordertech.corpdir.api.service.BasicKeyIdReadOnlyService;
 import com.github.bordertech.corpdir.api.service.BasicKeyIdService;
-import com.github.bordertech.corpdir.sync.api.mapper.ApiModelMapper;
 import java.util.List;
 
 /**
  * Abstract one-way synchronisation from Source to Destination
  *
- * @param <S> Read-only Service Api to fetch data
- * @param <D> Read-Write Service Api to save data
  * @param <A> the keyed API object
- * @param <M> mapper to copy API data
  * 
  * @author aswinkandula
  * @since 1.0.0
  */
-public abstract class AbstractKeyIdSynchronisation<A extends ApiKeyIdObject,
-						S extends BasicKeyIdReadOnlyService<A>, 
-						D extends BasicKeyIdService<A>, 
-						M extends ApiModelMapper<A>> 
-	implements ApiKeyIdSynchronisation<A, S, D, M> {
+public abstract class AbstractKeyIdSynchronisation<A extends ApiKeyIdObject> 
+	implements ApiKeyIdSynchronisation<A> {
 
-	private final S sourceService;
+	private final BasicKeyIdReadOnlyService<A> sourceService;
 
-	private final D destinationService;
+	private final BasicKeyIdService<A> destinationService;
 
-	protected AbstractKeyIdSynchronisation(S sourceService, D destinationService) {
+	protected AbstractKeyIdSynchronisation(final BasicKeyIdReadOnlyService<A> sourceService, 
+						final BasicKeyIdService<A> destinationService) {
 		this.sourceService = sourceService;
 		this.destinationService = destinationService;
 	}
@@ -42,13 +36,13 @@ public abstract class AbstractKeyIdSynchronisation<A extends ApiKeyIdObject,
 	@Override
 	public void syncBaseData() {
 		DataResponse<List<A>> sourceEntities = getSourceData();
-		for (A sourceEntity : sourceEntities.getData()) {
+		sourceEntities.getData().forEach((A sourceEntity) -> {
 			createOrUpdateData(sourceEntity);
-		}
+		});
 	}
 
 	@Override
-	public void createOrUpdateData(A fromApiData) {
+	public void createOrUpdateData(final A fromApiData) {
 		DataResponse<A> retrievedEntity;
 		try {
 			retrievedEntity = getDestinationService().retrieve(fromApiData.getBusinessKey());
@@ -65,12 +59,12 @@ public abstract class AbstractKeyIdSynchronisation<A extends ApiKeyIdObject,
 	}
 
 	@Override
-	public S getSourceService() {
+	public BasicKeyIdReadOnlyService<A> getSourceService() {
 		return sourceService;
 	}
 
 	@Override
-	public D getDestinationService() {
+	public BasicKeyIdService<A> getDestinationService() {
 		return destinationService;
 	}
 }

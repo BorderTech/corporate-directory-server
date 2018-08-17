@@ -13,12 +13,12 @@ import javax.inject.Inject;
  * @author aswinkandula
  * @since 1.0.0
  */
-public class PositionSynchronisation extends AbstractVersionKeyIdSynchronisation<Position, PositionReadOnlyService, PositionService, PositionMapper> {
+public class PositionSynchronisation extends AbstractVersionKeyIdSynchronisation<Position> {
 
 	private static final PositionMapper API_MAPPER = new PositionMapper();
 
 	@Inject
-	public PositionSynchronisation(PositionReadOnlyService sourceService, PositionService destinationService) {
+	public PositionSynchronisation(final PositionReadOnlyService sourceService, final PositionService destinationService) {
 		super(sourceService, destinationService);
 	}
 
