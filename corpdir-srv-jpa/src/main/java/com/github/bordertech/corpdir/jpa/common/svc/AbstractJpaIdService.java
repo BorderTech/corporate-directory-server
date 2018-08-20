@@ -3,11 +3,16 @@ package com.github.bordertech.corpdir.jpa.common.svc;
 import com.github.bordertech.corpdir.api.common.ApiIdObject;
 import com.github.bordertech.corpdir.api.exception.NotFoundException;
 import com.github.bordertech.corpdir.jpa.common.feature.PersistIdObject;
+import com.github.bordertech.corpdir.jpa.entity.SystemCtrlEntity;
+import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
 import com.github.bordertech.corpdir.jpa.util.CriteriaUtil;
+import com.github.bordertech.corpdir.jpa.util.EmfUtil;
 import com.github.bordertech.corpdir.jpa.util.MapperUtil;
+import java.io.Serializable;
 import java.util.Objects;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -22,7 +27,7 @@ import javax.persistence.criteria.Root;
  * @since 1.0.0
  */
 @Singleton
-public abstract class AbstractJpaIdService<A extends ApiIdObject, P extends PersistIdObject> extends AbstractJpaBaseService<A, P> {
+public abstract class AbstractJpaIdService<A extends ApiIdObject, P extends PersistIdObject> implements Serializable {
 
 	protected CriteriaQuery<P> handleSearchCriteria(final EntityManager em, final String search) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -69,7 +74,7 @@ public abstract class AbstractJpaIdService<A extends ApiIdObject, P extends Pers
 	}
 
 	protected P getEntity(final EntityManager em, final String id) {
-		P entity = MapperUtil.getEntityByKeyId(em, id, getEntityClass());
+		P entity = MapperUtil.getEntityByApiId(em, id, getEntityClass());
 		if (entity == null) {
 			throw new NotFoundException("Entity [" + id + "] not found.");
 		}
@@ -77,5 +82,25 @@ public abstract class AbstractJpaIdService<A extends ApiIdObject, P extends Pers
 	}
 
 	protected abstract Class<P> getEntityClass();
+	
+		/**
+	 * @return the entity manager
+	 */
+	protected EntityManager getEntityManager() {
+		return EmfUtil.getEMF().createEntityManager();
+	}
+
+	protected Long getCurrentVersionId() {
+		SystemCtrlEntity ctrl = getEntityManager().find(SystemCtrlEntity.class, Long.valueOf(1), LockModeType.NONE);
+		if (ctrl == null) {
+			throw new IllegalStateException("No System Control Record Available.");
+		}
+		VersionCtrlEntity version = ctrl.getCurrentVersion();
+		if (version == null) {
+			throw new IllegalStateException("No Default Version Configured.");
+		}
+		return version.getId();
+	}
+
 
 }

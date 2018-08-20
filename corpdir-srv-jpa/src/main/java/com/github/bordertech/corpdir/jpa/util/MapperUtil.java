@@ -156,7 +156,7 @@ public final class MapperUtil {
 	 * @param <T> the entity
 	 * @return the entity
 	 */
-	public static <T extends PersistIdObject> T getEntityByKeyId(final EntityManager em, final String keyId, final Class<T> clazz) {
+	public static <T extends PersistKeyIdObject> T getEntityByKeyId(final EntityManager em, final String keyId, final Class<T> clazz) {
 		if (keyId == null || keyId.isEmpty()) {
 			return null;
 		}
@@ -204,7 +204,7 @@ public final class MapperUtil {
 	 * @param <T> the entity
 	 * @return the entity
 	 */
-	public static <T extends PersistIdObject> T getEntityByBusinessKey(final EntityManager em, final String businessKey, final Class<T> clazz) {
+	public static <T extends PersistKeyIdObject> T getEntityByBusinessKey(final EntityManager em, final String businessKey, final Class<T> clazz) {
 		if (businessKey == null || businessKey.isEmpty()) {
 			return null;
 		}

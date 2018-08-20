@@ -1,6 +1,7 @@
 package com.github.bordertech.corpdir.jpa.common.svc;
 
 import com.github.bordertech.corpdir.api.common.ApiVersionable;
+import com.github.bordertech.corpdir.api.exception.NotFoundException;
 import com.github.bordertech.corpdir.api.response.BasicResponse;
 import com.github.bordertech.corpdir.api.response.DataResponse;
 import com.github.bordertech.corpdir.api.service.BasicVersionKeyIdService;
@@ -8,10 +9,16 @@ import com.github.bordertech.corpdir.jpa.common.feature.PersistVersionableKeyId;
 import com.github.bordertech.corpdir.jpa.common.map.MapperApiVersion;
 import com.github.bordertech.corpdir.jpa.common.version.ItemVersion;
 import com.github.bordertech.corpdir.jpa.entity.VersionCtrlEntity;
+import com.github.bordertech.corpdir.jpa.util.CriteriaUtil;
+import com.github.bordertech.corpdir.jpa.util.MapperUtil;
 import java.util.List;
+import java.util.Objects;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 /**
  * Keyed Entity JPA service implementation.
@@ -23,7 +30,24 @@ import javax.persistence.criteria.CriteriaQuery;
  * @since 1.0.0
  */
 @Singleton
-public abstract class JpaBasicVersionKeyIdService<A extends ApiVersionable, U extends ItemVersion<P>, P extends PersistVersionableKeyId<P, U>> extends AbstractJpaKeyIdService<A, P> implements BasicVersionKeyIdService<A> {
+public abstract class JpaBasicVersionKeyIdService<A extends ApiVersionable, U extends ItemVersion<P>, P extends PersistVersionableKeyId<P, U>> extends AbstractJpaIdService<A, P> implements BasicVersionKeyIdService<A> {
+
+	@Override
+	protected Predicate buildTextSearchPredicate(final CriteriaBuilder cb, final Root<P> from, final String search) {
+		// Include business key
+		return CriteriaUtil.createSearchTextKeyIdCriteria(cb, from, search);
+	}
+
+
+	@Override
+	protected P getEntity(final EntityManager em, final String keyId) {
+		// Get by ID or business key
+		P entity = MapperUtil.getEntityByKeyId(em, keyId, getEntityClass());
+		if (entity == null) {
+			throw new NotFoundException("Entity [" + keyId + "] not found.");
+		}
+		return entity;
+	}
 
 	@Override
 	public DataResponse<List<A>> search(final String search) {
@@ -115,6 +139,8 @@ public abstract class JpaBasicVersionKeyIdService<A extends ApiVersionable, U ex
 	@Override
 	protected void handleCreateVerify(final EntityManager em, final A api) {
 		super.handleCreateVerify(em, api);
+		// Check business key
+		MapperUtil.checkBusinessKey(em, api.getBusinessKey(), getEntityClass());
 		if (api.getVersionId() == null) {
 			throw new IllegalStateException("No version provided.");
 		}
@@ -123,10 +149,16 @@ public abstract class JpaBasicVersionKeyIdService<A extends ApiVersionable, U ex
 	@Override
 	protected void handleUpdateVerify(final EntityManager em, final A api, final P entity) {
 		super.handleUpdateVerify(em, api, entity);
+		// Check if business key changed
+		if (!Objects.equals(api.getBusinessKey(), entity.getBusinessKey())) {
+			MapperUtil.checkBusinessKey(em, api.getBusinessKey(), entity.getClass());
+		}
 		if (api.getVersionId() == null) {
 			throw new IllegalStateException("No version provided.");
 		}
 	}
+	
+	
 
 	/**
 	 *
