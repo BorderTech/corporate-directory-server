@@ -15,7 +15,8 @@ public enum ToolbarModifyItemType implements ToolbarItem {
 	CREATE("Create", ToolbarBaseEventType.CREATE),
 	CANCEL("Cancel", ToolbarBaseEventType.CANCEL),
 	DELETE("Delete", ToolbarBaseEventType.DELETE),
-	REFRESH("Refresh", ToolbarBaseEventType.REFRESH);
+	REFRESH("Refresh", ToolbarBaseEventType.REFRESH),
+	IMPORT("Import", ToolbarBaseEventType.IMPORT);
 
 	ToolbarModifyItemType(final String desc, final ToolbarEventType eventType) {
 		this(desc, eventType, null);

@@ -36,12 +36,20 @@ public class DefaultToolbarView<T> extends AbstractMenuToolbarView<T> {
 		}
 	};
 
+	private final WMenuItem itemImport = new FluxMenuItem(ToolbarModifyItemType.IMPORT.getDesc(), ToolbarBaseEventType.IMPORT) {
+		@Override
+		public boolean isVisible() {
+			return isUseToolbarItem(ToolbarModifyItemType.IMPORT);
+		}
+	};
+
 	public DefaultToolbarView(final String viewId) {
 		super(viewId);
 		WMenu menu = getMenu();
 		menu.add(itemBack);
 		menu.add(itemAdd);
 		menu.add(itemReset);
+		menu.add(itemImport);
 		menu.addHtmlClass("wc-neg-margin");
 
 		// Images
@@ -63,6 +71,10 @@ public class DefaultToolbarView<T> extends AbstractMenuToolbarView<T> {
 
 	public final WMenuItem getItemReset() {
 		return itemReset;
+	}
+
+	public final WMenuItem getItemImport() {
+		return itemImport;
 	}
 
 }

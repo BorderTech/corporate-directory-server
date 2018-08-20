@@ -1,5 +1,13 @@
 package com.github.bordertech.corpdir.jersey.config.hk2;
 
+import com.github.bordertech.corpdir.sync.apis.ContactSynchronisation;
+import com.github.bordertech.corpdir.sync.apis.LocationSynchronisation;
+import com.github.bordertech.corpdir.sync.apis.OrgUnitSynchronisation;
+import com.github.bordertech.corpdir.sync.apis.PositionSynchronisation;
+import com.github.bordertech.corpdir.sync.apis.PositionTypeSynchronisation;
+import com.github.bordertech.corpdir.sync.apis.UnitTypeSynchronisation;
+import com.github.bordertech.corpdir.sync.service.SynchronisationService;
+import com.github.bordertech.corpdir.sync.service.SynchronisationServiceImpl;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.ChannelActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.ContactActionCreator;
 import com.github.bordertech.corpdir.web.ui.flux.actioncreator.impl.LocationActionCreator;
@@ -74,6 +82,14 @@ public class CorpDirDidumsBinder implements DidumsBinder {
 		provider.bind(SystemCtrlStore.class, SystemCtrlStore.class, true);
 		provider.bind(UnitTypeStore.class, UnitTypeStore.class, true);
 		provider.bind(VersionCtrlStore.class, VersionCtrlStore.class, true);
+		
+		provider.bind(SynchronisationService.class, SynchronisationServiceImpl.class, true);
+		provider.bind(ContactSynchronisation.class, ContactSynchronisation.class, true);
+		provider.bind(PositionSynchronisation.class, PositionSynchronisation.class, true);
+		provider.bind(OrgUnitSynchronisation.class, OrgUnitSynchronisation.class, true);
+		provider.bind(UnitTypeSynchronisation.class, UnitTypeSynchronisation.class, true);
+		provider.bind(PositionTypeSynchronisation.class, PositionTypeSynchronisation.class, true);
+		provider.bind(LocationSynchronisation.class, LocationSynchronisation.class, true);
 
 	}
 

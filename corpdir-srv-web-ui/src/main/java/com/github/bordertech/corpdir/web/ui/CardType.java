@@ -6,6 +6,7 @@ import com.github.bordertech.corpdir.web.ui.view.smart.card.LocationCardTreeView
 import com.github.bordertech.corpdir.web.ui.view.smart.card.OrgUnitCardTreeView;
 import com.github.bordertech.corpdir.web.ui.view.smart.card.PositionCardTreeView;
 import com.github.bordertech.corpdir.web.ui.view.smart.card.PositionTypeCardView;
+import com.github.bordertech.corpdir.web.ui.view.smart.card.ImportCardView;
 import com.github.bordertech.corpdir.web.ui.view.smart.card.SystemCtrlCardView;
 import com.github.bordertech.corpdir.web.ui.view.smart.card.UnitTypeCardView;
 import com.github.bordertech.corpdir.web.ui.view.smart.card.VersionCtrlCardView;
@@ -25,7 +26,8 @@ public enum CardType {
 	// System
 	UNIT_TYPE("orgunittype", "Unit Type", true, UnitTypeCardView.class, null, CorpEntityType.UNIT_TYPE),
 	VERSION_CTRL("version", "Version Ctrl", true, VersionCtrlCardView.class, null, CorpEntityType.VERSION_CTRL),
-	SYSTEM_CTRL("system", "System Ctrl", true, SystemCtrlCardView.class, null, CorpEntityType.SYSTEM_CTRL);
+	SYSTEM_CTRL("system", "System Ctrl", true, SystemCtrlCardView.class, null, CorpEntityType.SYSTEM_CTRL),
+	IMPORT("import", "Import", true, ImportCardView.class, null, CorpEntityType.IMPORT);
 
 	CardType(final String path, final String desc, final boolean system, final Class<? extends SecureCardView> clazz, final String imageUrl, final CorpEntityType apiType) {
 		this.path = path;

@@ -25,6 +25,13 @@
 			<artifactId>corpdir-srv-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.github.bordertech.corpdir</groupId>
+			<artifactId>corpdir-srv-sync</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.github.bordertech.corpdir</groupId>
 			<artifactId>corpdir-lib-flux-wc</artifactId>
